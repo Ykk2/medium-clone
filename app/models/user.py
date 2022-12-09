@@ -17,7 +17,8 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
     profile_image = db.Column(db.String(255))
     bio = db.Column(db.String(1000))
-
+    createdAt = db.Column(db.DateTime, server_default=db.func.now())
+    updatedAt = db.Column(db.DateTime, server_default=db.func.now(),server_onupdate=db.func.now())
     @property
     def password(self):
         return self.hashed_password
@@ -33,5 +34,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profileImage': self.profile_image,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'bio': self.bio,
+            'createdAt': self.createdAt
         }
