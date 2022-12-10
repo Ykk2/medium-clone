@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .follow import follows
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -13,6 +13,29 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+    profile_image = db.Column(db.String(255))
+    bio = db.Column(db.String(1000))
+    createdAt = db.Column(db.DateTime, server_default=db.func.now())
+    updatedAt = db.Column(db.DateTime, server_default=db.func.now(),server_onupdate=db.func.now())
+
+    stories = db.relationship("Story", back_populates="users")
+    responses = db.relationship("Response", back_populates="users")
+    storyClaps = db.relationship("StoryClap", back_populates="users")
+    responseClaps = db.relationship("ResponseClap", back_populates="users")
+    follows = db.relationship(
+        "User",
+        secondary="follows",
+        primaryjoin=(id == follows.c.followedId),
+        secondaryjoin=(id == follows.c.followerId),
+        backref=db.backref("following",lazy="dynamic"),
+        lazy="dynamic"
+    )
+    # followerId = db.relationship("Follow", back_populates="User")
+    # followedId = db.relationship("Follow", back_populates="User")
+
+
 
     @property
     def password(self):
@@ -29,5 +52,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profileImage': self.profile_image,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'bio': self.bio,
+            'createdAt': self.createdAt
         }
