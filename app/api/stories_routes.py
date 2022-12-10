@@ -92,7 +92,7 @@ def get_stories_by_follow(userId):
 def create_story():
     form = StoryForm()
     if form.validate_on_submit():
-        new_story = StoryForm(
+        new_story = Story(
             title  = form.data["title"],
             story = form.data["story"],
             image = form.data["url"],
@@ -117,4 +117,4 @@ def delete_story(storyId):
         return ('No From Found!')
     else:
         story.session.delete(story)
-        return ({"message": "Successfully Deleted!", statusCode: 200})
+        return {"message": "Successfully Deleted!", "statusCode": 200}
