@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
-from ..models import db, Story, User
+from ..models import db, Story, User, follows
 from ..forms import StoryForm
 story_route = Blueprint("stories", __name__)
 
@@ -40,8 +40,8 @@ def get_all_stories():
 def get_stories_by_user(personId):
     stories = Story.query.filter_by(userId = personId).all()
     response = []
+    user = User.query.filter_by(id = personId).first()
     for story in stories:
-        user = User.query.filter_by(id = story.userId).first()
         response.append({"Story": {
             "UserId": story.userId,
             "Story": story.story,
@@ -62,15 +62,17 @@ def get_stories_by_user(personId):
 
 # GET ALL STORIES BY WHO USER IS FOLLOWING
 
-@story_route.route('/stories/<int:userId>/following')
+@story_route.route('/<int:userId>/following')
 def get_stories_by_follow(userId):
-    user = user.query.get(userId)
-    following = Follows.query.filter(follower.id == userId).all()
+    user = User.query.get(userId)
 
-    allFollows = user.query.all(followed.id == user.id)
-    followingList = []
-    for followed in followingList:
-        pass
+    following = user.follows
+    print(following == 5, "*********************************")
+    return "hello"
+    # allFollows = user.query.all(followed.id == user.id)
+    # followingList = []
+    # for followed in followingList:
+    #     pass
 
 '''
     Andrew = user.query.get(userId)
@@ -84,7 +86,7 @@ def get_stories_by_follow(userId):
         story = response.append(Story.query.filter(Story.user.id == person.id))
 
 '''
-# get all followedIds -> query for stories that match the followedIds
+# get all followedIds -> query for stories that match the
 
 # CREATE NEW STORY
 
