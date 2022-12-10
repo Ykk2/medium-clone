@@ -1,6 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
-from .follow import seed_follower, undo_follows
+from .follow import seed_follower, undo_follows, follows
 from .response import seed_response, undo_responses
 from .responseClap import seed_ResponseClaps, undo_responseClaps
 from .story import seed_stories, undo_stories
@@ -31,7 +31,7 @@ def seed():
     seed_response()
     seed_ResponseClaps()
     seed_storyClaps()
-    seed_follower()
+    seed_follower(follows)
     # Add other seed functions here
 
 

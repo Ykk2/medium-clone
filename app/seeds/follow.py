@@ -1,38 +1,22 @@
 from app.models import db, follows, environment, SCHEMA
 
-def seed_follower():
-    follow1 = follows(
-        id='1',
-        followerId='5',
-        followedId='1'
-    )
-    follow2 = follows(
-        id='2',
-        followerId='4',
-        followedId='3'
-    )
-    follow3 = follows(
-        id='3',
-        followerId='5',
-        followedId='2'
-    )
-    follow4 = follows(
-        id='4',
-        followerId='1',
-        followedId='5'
-    )
-    follow5 = follows(
-        id='5',
-        followerId='3',
-        followedId='5'
-    )
 
-    db.session.add(follow1)
-    db.session.add(follow2)
-    db.session.add(follow3)
-    db.session.add(follow4)
-    db.session.add(follow5)
+def seed_follower(follows):
+    insert_stmnt1 = follows.insert().values(followerId=5, followedId=1)
+    insert_stmnt2 = follows.insert().values(followerId=4, followedId=3)
+    insert_stmnt3 = follows.insert().values(followerId=5, followedId=2)
+    insert_stmnt4 = follows.insert().values(followerId=1, followedId=5)
+    insert_stmnt5 = follows.insert().values(followerId=3, followedId=5)
+
+
+    db.session.execute(insert_stmnt1)
+    db.session.execute(insert_stmnt2)
+    db.session.execute(insert_stmnt3)
+    db.session.execute(insert_stmnt4)
+    db.session.execute(insert_stmnt5)
     db.session.commit()
+
+
 
 def undo_follows():
     if environment == "production":
