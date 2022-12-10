@@ -161,8 +161,14 @@ def delete_story(storyId):
 @story_route.route('/<int:storyId>', methods=['POST'])
 # @login_required
 def create_story_clap(storyId):
+    # story.clapCount = 0
     story = Story.query.get(storyId)
-    print(story,"%%%%%%%%%%%%%%%%%%%%")
-    return "hi"
+    storyDict = story.to_dict()
+    if not storyDict.clapCount:
+        storyDict.setdefault("clapCount", 1)
+    else:
+        storyDict.clapCount += 1
+    print(storyDict,"%%%%%%%%%%%%%%%%%%%%")
+    return jsonify(storyDict.clapCount)
 
 # NOT DONE !!
