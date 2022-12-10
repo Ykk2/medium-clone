@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import story from './story'
 
 const rootReducer = combineReducers({
-  session,
+  session, story
 });
 
 
