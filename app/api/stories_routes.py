@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, Blueprint, redirect
+from flask import Flask, jsonify, Blueprint, redirect, request
 from ..models import db, Story, User
 from ..forms import StoryForm
 story_route = Blueprint("stories", __name__)
@@ -88,18 +88,21 @@ def get_stories_by_follow(userId):
 
 # CREATE NEW STORY
 
-@story_route.route('/stories', methods=['POST'])
+@story_route.route('/', methods=['POST'])
 def create_story():
     form = StoryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_story = Story(
             title  = form.data["title"],
             story = form.data["story"],
-            image = form.data["url"],
-            tag = form.data["tag"]
+            image = form.data["image"],
+            userId = form.data["userId"]
+            # tag = form.data["tag"]
         )
 
     if form.errors:
+        print(form.errors)
         return "Invalid data"
 
     db.session.add(new_story)
@@ -108,13 +111,39 @@ def create_story():
     return redirect('/<int:storyId>')
 
 
+# UPDATE A STORY
+@story_route.route('/<int:storyId>', methods=['PUT'])
+def update_story(storyId):
+    story = Story.query.filter_by(id = storyId).first()
+    form = StoryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        setattr(story, "title", form.data["title"])
+        setattr(story, "story", form.data["story"])
+        setattr(story, "image", form.data["image"])
+        setattr(story, "userId", form.data["userId"])
+
+        # tag = form.data["tag"]
+
+    if form.errors:
+        print(form.errors)
+        return "Invalid data"
+
+
+    db.session.commit()
+    #REVIST THIS LATER, NEED TO FIGURE OUT PATH
+    # return redirect('/<int:storyId>')
+    return story.to_dict()
+
 # DELETE A STORY
 
-@story_route.route('/stories/<int:storyId>', methods=['DELETE'])
+@story_route.route('/<int:storyId>', methods=['DELETE'])
 def delete_story(storyId):
-    story = Story.query(storyId)
+    story = Story.query.filter_by(id = storyId).first()
     if not story:
         return ('No From Found!')
     else:
-        story.session.delete(story)
+        db.session.delete(story)
         return {"message": "Successfully Deleted!", "statusCode": 200}
