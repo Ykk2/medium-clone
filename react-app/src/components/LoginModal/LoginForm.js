@@ -14,8 +14,8 @@ function LoginForm({ setShowModal }) {
     const [errors, setErrors] = useState([]);
 
     const demo = (event) => {
-        setCredential('Nhuts');
-        setPassword('1password')
+        setCredential('demo');
+        setPassword('password')
     }
 
     const handleSubmit = (e) => {

@@ -31,7 +31,6 @@ def get_all_stories():
     return jsonify({'Stories': response})
 
 
-
 # GET ALL STORIES MADE BY USER ROUTE
 #
 
