@@ -84,7 +84,7 @@ def get_stories_by_follow(userId):
         story = response.append(Story.query.filter(Story.user.id == person.id))
 
 '''
-
+# get all followedIds -> query for stories that match the followedIds
 
 # CREATE NEW STORY
 
