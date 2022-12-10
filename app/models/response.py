@@ -5,13 +5,18 @@ class Response(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(1000),nullable=False)
-    userId = db.Column(db.Integer, nullable=False)
-    storyId = db.Column(db.Integer, nullable=False)
+    userId = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
+    storyId = db.Column(db.Integer,db.ForeignKey("stories.id"), nullable=False)
+    createdAt = db.Column(db.DateTime, server_default=db.func.now())
+    updatedAt = db.Column(db.DateTime, server_default=db.func.now(),server_onupdate=db.func.now())
 
+    stories = db.relationship("Story", back_populates="responses")
+    users = db.relationship("User", back_populates="responses")
+    responseClaps = db.relationship("ResponseClap", back_populates="responses")
     def to_dict(self):
         return {
             "id": self.id,
-            "body": self.body
+            "body": self.body,
             "userId": self.userId,
             "storyId": self.storyId
         }
