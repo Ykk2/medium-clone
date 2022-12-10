@@ -89,10 +89,10 @@ def get_stories_by_follow(userId):
 # CREATE NEW STORY
 
 @story_route.route('/stories', methods=['POST'])
-def create_story(session.user.id):
+def create_story():
     form = StoryForm()
     if form.validate_on_submit():
-        new_story = StoryForm(
+        new_story = Story(
             title  = form.data["title"],
             story = form.data["story"],
             image = form.data["url"],
