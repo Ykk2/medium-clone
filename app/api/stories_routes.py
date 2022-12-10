@@ -106,3 +106,10 @@ def create_story():
     db.session.commit()
     #REVIST THIS LATER, NEED TO FIGURE OUT PATH
     return redirect('/<int:storyId>')
+
+
+# DELETE A STORY
+
+@story_route.route('/stories/<int:storyId>', methods=['DELETE'])
+def delete_story(storyId):
+    story = Story.query.get()
