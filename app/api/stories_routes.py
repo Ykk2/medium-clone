@@ -68,3 +68,16 @@ def get_stories_by_follow(userId):
     followingList = []
     for followed in followingList:
         pass
+
+'''
+    Andrew = user.query.get(userId)
+    AndrewsFollows = Follows.query.filter(follower.id == userId).all()
+    PeopleAndrewFollows = []
+    for AndrewsFollowed in AndrewsFollows:
+        PeopleAndrewFollows.append(user.query.get(AndrewsFollowed.id == userId))
+
+    response = []
+    for person in PeopleAndrewFollows:
+        story = response.append(Story.query.filter(Story.user.id == person.id))
+
+'''
