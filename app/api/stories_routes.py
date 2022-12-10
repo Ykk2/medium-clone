@@ -1,5 +1,6 @@
-from flask import Flask, jsonify, Blueprint
+from flask import Flask, jsonify, Blueprint, redirect
 from ..models import db, Story
+from ..forms import NewStory
 story_route = Blueprint("stories", __name__)
 
 
@@ -32,8 +33,10 @@ def get_all_stories():
 
 
 # GET ALL STORIES MADE BY USER ROUTE
+#
 
 @story_route.route('/stories/<int:userId>')
+# CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
 def get_stories_by_user(userId):
     stories = Story.query.filter(Story.userId == userId)
     response = []
@@ -64,7 +67,7 @@ def get_stories_by_follow(userId):
     user = user.query.get(userId)
     following = Follows.query.filter(follower.id == userId).all()
 
-    alskdfj = user.query.all(followed.id == user.id)
+    allFollows = user.query.all(followed.id == user.id)
     followingList = []
     for followed in followingList:
         pass
@@ -81,3 +84,25 @@ def get_stories_by_follow(userId):
         story = response.append(Story.query.filter(Story.user.id == person.id))
 
 '''
+
+
+# CREATE NEW STORY
+
+@story_route.route('/stories', methods=['POST'])
+def create_story():
+    form = NewStory()
+    if form.validate_on_submit():
+        new_story = NewStory(
+            title  = form.data["title"],
+            story = form.data["story"],
+            image = form.data["url"],
+            tag = form.data["tag"]
+        )
+
+    if form.errors:
+        return "Invalid data"
+
+    db.session.add(new_story)
+    db.session.commit()
+    #REVIST THIS LATER, NEED TO FIGURE OUT PATH
+    return redirect('/<int:storyId>')
