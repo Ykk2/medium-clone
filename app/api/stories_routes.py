@@ -115,4 +115,6 @@ def delete_story(storyId):
     story = Story.query(storyId)
     if not story:
         return ('No From Found!')
-    else: story.session
+    else:
+        story.session.delete(story)
+        return ({"message": "Successfully Deleted!", statusCode: 200})
