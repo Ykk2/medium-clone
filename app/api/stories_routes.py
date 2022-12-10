@@ -11,10 +11,8 @@ def get_all_stories():
     stories = Story.query.all()
     response = []
     for story in stories:
-        curStory = story.to_dict()
 
-        storyUser = User.query.get(story.userId == User.id)
-        curUser = storyUser.to_dict()
+        storyUser = User.query.filter_by(id=story.userId).first()
         response.append({"Story": {
             "UserId": story.userId,
             "story": story.story,
@@ -24,9 +22,9 @@ def get_all_stories():
             "createdAt": story.createdAt,
             "updatedAt": story.updatedAt,
             "User": {
-                "id": curUser.id,
-                "firstName": curUser.first_name,
-                "lastName": curUser.last_name
+                "id": storyUser.id,
+                "firstName": storyUser.first_name,
+                "lastName": storyUser.last_name
             }
         }})
     return jsonify({'Stories': response})
