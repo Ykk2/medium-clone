@@ -1,34 +1,35 @@
 from flask import Flask, jsonify, Blueprint, redirect
-from ..models import db, Story
+from ..models import db, Story, User
 from ..forms import StoryForm
 story_route = Blueprint("stories", __name__)
 
 
 # GET ALL STORIES ROUTE
 
-@story_route.route("/")
+@story_route.route('/')
 def get_all_stories():
     stories = Story.query.all()
-    # print(jsonify(stories))
     response = []
     for story in stories:
-        user = user.query(story.userId)
+        curStory = story.to_dict()
+
+        storyUser = User.query.get(story.userId == User.id)
+        curUser = storyUser.to_dict()
         response.append({"Story": {
             "UserId": story.userId,
-            "Story": story.story,
+            "story": story.story,
             "Tag": story.tag,
             "Title": story.title,
             "Image": story.image,
             "createdAt": story.createdAt,
             "updatedAt": story.updatedAt,
             "User": {
-                "id": user.id,
-                "firstName": user.firstName,
-                "lastName": user.lastName
+                "id": curUser.id,
+                "firstName": curUser.first_name,
+                "lastName": curUser.last_name
             }
         }})
-
-    return jsonify({"Stories": response})
+    return jsonify({'Stories': response})
 
 
 
@@ -92,7 +93,7 @@ def get_stories_by_follow(userId):
 def create_story():
     form = StoryForm()
     if form.validate_on_submit():
-        new_story = StoryForm(
+        new_story = Story(
             title  = form.data["title"],
             story = form.data["story"],
             image = form.data["url"],
@@ -112,4 +113,9 @@ def create_story():
 
 @story_route.route('/stories/<int:storyId>', methods=['DELETE'])
 def delete_story(storyId):
-    story = Story.query.get()
+    story = Story.query(storyId)
+    if not story:
+        return ('No From Found!')
+    else:
+        story.session.delete(story)
+        return {"message": "Successfully Deleted!", "statusCode": 200}
