@@ -115,4 +115,4 @@ def delete_story(storyId):
     story = Story.query(storyId)
     if not story:
         return ('No From Found!')
-    else: db.session.delete(story)
+    else: story.session
