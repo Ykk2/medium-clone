@@ -8,9 +8,9 @@ response_route = Blueprint("responses", __name__)
 
 @response_route('/stories/<int:storyId>/response', methods=['POST'])
 def create_response():
-    form = ReponseForm()
+    form = ResponseForm()
     if form.validate_on_submit():
-        new_response = Reponse(
+        new_response = Response(
             body = form.data['body'],
             userId = form.data['userId'],
             storyId = form.data['storyId']
