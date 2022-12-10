@@ -112,4 +112,9 @@ def create_story():
 
 @story_route.route('/stories/<int:storyId>', methods=['DELETE'])
 def delete_story(storyId):
-    story = Story.query.get()
+    story = Story.query(storyId)
+    if not story:
+        return ('No From Found!')
+    else:
+        story.session.delete(story)
+        return ({"message": "Successfully Deleted!", statusCode: 200})
