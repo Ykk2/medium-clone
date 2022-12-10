@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
 from ..models import db, Story, User, follows
 from ..forms import StoryForm
+from flask_login import login_required
 story_route = Blueprint("stories", __name__)
 
 
@@ -36,6 +37,7 @@ def get_all_stories():
 #
 
 @story_route.route('/<int:personId>')
+@login_required
 # CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
 def get_stories_by_user(personId):
     stories = Story.query.filter_by(userId = personId).all()
@@ -63,6 +65,7 @@ def get_stories_by_user(personId):
 # GET ALL STORIES BY WHO USER IS FOLLOWING
 
 @story_route.route('/<int:userId>/following')
+@login_required
 def get_stories_by_follow(userId):
     user = User.query.get(userId)
 
@@ -90,31 +93,33 @@ def get_stories_by_follow(userId):
 
 # CREATE NEW STORY
 
-@story_route.route('/', methods=['POST'])
-def create_story():
-    form = StoryForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        new_story = Story(
-            title  = form.data["title"],
-            story = form.data["story"],
-            image = form.data["image"],
-            userId = form.data["userId"]
-            # tag = form.data["tag"]
-        )
+# @story_route.route('/', methods=['POST'])
+# @login_required
+# def create_story():
+#     form = StoryForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         new_story = Story(
+#             title  = form.data["title"],
+#             story = form.data["story"],
+#             image = form.data["image"],
+#             userId = form.data["userId"]
+#             # tag = form.data["tag"]
+#         )
 
-    if form.errors:
-        print(form.errors)
-        return "Invalid data"
+#     if form.errors:
+#         print(form.errors)
+#         return "Invalid data"
 
-    db.session.add(new_story)
-    db.session.commit()
-    #REVIST THIS LATER, NEED TO FIGURE OUT PATH
-    return redirect('/<int:storyId>')
+#     db.session.add(new_story)
+#     db.session.commit()
+#     #REVIST THIS LATER, NEED TO FIGURE OUT PATH
+#     return redirect('/<int:storyId>')
 
 
 # UPDATE A STORY
 @story_route.route('/<int:storyId>', methods=['PUT'])
+@login_required
 def update_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     form = StoryForm()
@@ -142,6 +147,7 @@ def update_story(storyId):
 # DELETE A STORY
 
 @story_route.route('/<int:storyId>', methods=['DELETE'])
+@login_required
 def delete_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     if not story:
@@ -149,3 +155,14 @@ def delete_story(storyId):
     else:
         db.session.delete(story)
         return {"message": "Successfully Deleted!", "statusCode": 200}
+
+# CREATE A CLAP FOR STORY
+
+@story_route.route('/<int:storyId>', methods=['POST'])
+# @login_required
+def create_story_clap(storyId):
+    story = Story.query.get(storyId)
+    print(story,"%%%%%%%%%%%%%%%%%%%%")
+    return "hi"
+
+# NOT DONE !!
