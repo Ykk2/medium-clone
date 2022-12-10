@@ -32,3 +32,21 @@ def delete_response(responseId):
     else:
         response.session.delete(response)
         return {"message": "Successfully Deleted!", "statusCode": 200}
+
+#EDIT A RESPONSE
+
+@response_route('/stories/<int:storyId>/response/<int:responseId>', methods=['PUT'])
+def update_response(responseId):
+    response = Response.query.filter_by(id = responseId).first()
+    form = ResponseForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        setattr(response, 'body', form.data['body'])
+    if form.errors:
+        return "Invalid Data"
+
+    db.session.commit()
+
+    return response.to_dict()
