@@ -64,7 +64,7 @@ export const addingStory = story => async dispatch => {
     }
 }
 
-export const edittingStory = story => async dispatch => {
+export const edittingStory = (story, id) => async dispatch => {
     const response = await csrfFetch('/api/spots/${id}', {
         method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
     })
@@ -75,7 +75,7 @@ export const edittingStory = story => async dispatch => {
     }
 }
 
-export const deletingStory = story => async dispatch => {
+export const deletingStory = id => async dispatch => {
     const response = await csrfFetch('/api/stories/${id}', { method: 'DELETE' })
     if (response.ok) dispatch(deleteStory(id))
 }
