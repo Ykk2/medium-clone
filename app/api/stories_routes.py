@@ -117,4 +117,4 @@ def delete_story(storyId):
         return ('No From Found!')
     else:
         story.session.delete(story)
-        return ({"message": "Successfully Deleted!", "statusCode: 200})"
+        return {"message": "Successfully Deleted!", "statusCode": 200}
