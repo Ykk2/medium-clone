@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, Blueprint, redirect
 from ..models import db, Story
-from ..forms import NewStory
+from ..forms import StoryForm
 story_route = Blueprint("stories", __name__)
 
 
@@ -90,9 +90,9 @@ def get_stories_by_follow(userId):
 
 @story_route.route('/stories', methods=['POST'])
 def create_story():
-    form = NewStory()
+    form = StoryForm()
     if form.validate_on_submit():
-        new_story = NewStory(
+        new_story = StoryForm(
             title  = form.data["title"],
             story = form.data["story"],
             image = form.data["url"],
