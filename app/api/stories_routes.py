@@ -137,7 +137,6 @@ def update_story(storyId):
         setattr(story, "title", form.data["title"])
         setattr(story, "story", form.data["story"])
         setattr(story, "image", form.data["image"])
-        setattr(story, "userId", form.data["userId"])
 
         # tag = form.data["tag"]
 

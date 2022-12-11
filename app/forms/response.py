@@ -5,7 +5,5 @@ from wtforms.fields import (
 from wtforms.validators import DataRequired
 
 class ResponseForm(FlaskForm):
-    response = StringField("Response",[DataRequired()])
-    userId = IntegerField("userId",[DataRequired()],coerce=int)
-    storyId = IntegerField("storyId",[DataRequired()],coerce=int)
+    body = StringField("Response",[DataRequired()])
     submit = SubmitField("Submit")
