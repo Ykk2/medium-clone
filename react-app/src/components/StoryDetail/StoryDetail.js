@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import './StoryDetail.css'
-
+import { getOneStory, deletingStory } from '../../store/story';
 const StoryDetail = ({ storyDetails }) => {
     const dispatch = useDispatch();
     const history = useHistory();

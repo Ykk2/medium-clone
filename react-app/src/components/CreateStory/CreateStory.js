@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-
+import { addingStory } from '../../store/story';
 // NEED TO IMPORT CREATE STORY THUNK!!
 
 import './CreateStory.css'

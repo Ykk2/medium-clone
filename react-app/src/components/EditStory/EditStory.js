@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
-
+import { edittingStory } from '../../store/story';
 import './EditStory.css'
 
 // NEED TO IMPORT EDIT STORY THUNK

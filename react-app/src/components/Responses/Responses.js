@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-
+import { getResponses } from '../../store/response';
 import './Responses.css'
 
 const GetResponsesByStory = ({ storyDetails }) => {
