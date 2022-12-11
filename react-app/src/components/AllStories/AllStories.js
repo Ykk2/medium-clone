@@ -7,7 +7,7 @@ const AllStories = ({ story }) => {
         <div>
             <div className="story-image">
                 <NavLink to={`/stories/${story.id}`}>
-                    <h6>{story.userId}</h6>
+                    <h6>{story.user.firstName} {story.user.lastName}</h6>
                     <h3>{story.title}</h3>
                     <p>{story.story}</p>
                     <img src={story.image} alt={story.name}></img>
