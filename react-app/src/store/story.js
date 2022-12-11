@@ -36,7 +36,7 @@ const deleteStory = story => {
 }
 
 export const getAllStories = () => async dispatch => {
-    const response = await csrfFetch('/api/stories')
+    const response = await csrfFetch(`/api/stories`)
     if (response.ok) {
         const stories = await response.json()
         dispatch(allStories(stories))
@@ -45,7 +45,7 @@ export const getAllStories = () => async dispatch => {
 }
 
 export const getOneStory = (storyId) => async dispatch => {
-    const response = await fetch('/api/stories/${storyId}')
+    const response = await fetch(`/api/stories/${storyId}`)
     if (response.ok) {
         const story = await response.json()
         dispatch(oneStory(story))
@@ -54,7 +54,7 @@ export const getOneStory = (storyId) => async dispatch => {
 }
 
 export const addingStory = story => async dispatch => {
-    const response = await csrfFetch('/api/stories', {
+    const response = await csrfFetch(`/api/stories`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
     })
     if (response.ok) {
@@ -65,7 +65,7 @@ export const addingStory = story => async dispatch => {
 }
 
 export const edittingStory = (story, id) => async dispatch => {
-    const response = await csrfFetch('/api/spots/${id}', {
+    const response = await csrfFetch(`/api/spots/${id}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
     })
     if (response.ok) {
@@ -76,7 +76,7 @@ export const edittingStory = (story, id) => async dispatch => {
 }
 
 export const deletingStory = id => async dispatch => {
-    const response = await csrfFetch('/api/stories/${id}', { method: 'DELETE' })
+    const response = await csrfFetch(`/api/stories/${id}`, { method: 'DELETE' })
     if (response.ok) dispatch(deleteStory(id))
 }
 
