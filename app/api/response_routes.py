@@ -5,6 +5,10 @@ from flask_login import login_required
 response_route = Blueprint("responses", __name__)
 
 
+# GET ALL RESPONSES BY STORY ID
+
+
+
 # CREATE NEW RESPONSE
 
 @response_route.route('/stories/<int:storyId>/response', methods=['POST'])

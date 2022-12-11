@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
+from sqlalchemy
 from ..models import db, Story, User, follows, StoryClap
 from ..forms import StoryForm, StoryClapForm
 from flask_login import login_required
@@ -33,9 +34,8 @@ def get_all_stories():
 
 
 # GET ALL STORIES MADE BY USER ROUTE
-#
 
-@story_route.route('/<int:personId>')
+@story_route.route('/user/<int:personId>')
 @login_required
 # CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
 def get_stories_by_user(personId):
@@ -63,7 +63,7 @@ def get_stories_by_user(personId):
 
 # GET ALL STORIES BY WHO USER IS FOLLOWING
 
-@story_route.route('/<int:userId>/following')
+@story_route.route('/user/<int:userId>/following')
 # @login_required
 def get_stories_by_follow(userId):
 
@@ -86,6 +86,14 @@ def get_stories_by_follow(userId):
     return {"Stories": response}
 
 
+# GET STORY BY ID
+
+@story_route.route('/<int:storyId>')
+@login_required
+def get_story(storyId):
+    story = Story.query.get(storyId)
+    claps = StoryClap.query.
+    pass
 
 # CREATE NEW STORY
 
