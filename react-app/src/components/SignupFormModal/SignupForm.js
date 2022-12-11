@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
 
 
 function SignupFormPage({ setShowModal }) {
@@ -26,7 +24,7 @@ function SignupFormPage({ setShowModal }) {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
+            return dispatch(sessionActions.signUp({ firstName, lastName, email, username, password }))
                 .then(() => setShowModal(false))
                 .catch(async (res) => {
                     const data = await res.json();

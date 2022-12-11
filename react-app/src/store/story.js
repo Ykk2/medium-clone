@@ -1,9 +1,9 @@
+import { csrfFetch } from './csrf'
 const LOAD_ALL_STORIES = '/stories/LOAD_ALL_STORIES'
 const LOAD_ONE_STORY = '/stories/LOAD_ONE_STORY'
 const ADD_STORY = '/stories/ADD_STORY'
 const EDIT_STORY = '/stories/EDIT_STORY'
 const DELETE_STORY = '/stories/DELETE_STORY'
-import { csrfFetch } from './csrf'
 
 const allStories = stories => {
     return {
@@ -69,7 +69,7 @@ export const edittingStory = (story, id) => async dispatch => {
         method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
     })
     if (response.ok) {
-        const story = res.json()
+        const story = response.json()
         dispatch(editStory(story))
         return story
     }
