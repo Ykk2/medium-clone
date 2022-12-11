@@ -4,7 +4,6 @@ import { Modal } from '../context/Modal';
 import LoginForm from '../components/LoginFormModal';
 import SignupForm from '../components/SignupFormModal';
 
-
 function NavBar() {
   const [showModal, setShowModal] = useState(false)
   const [login, setLogin] = useState(true)
