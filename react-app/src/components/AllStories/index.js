@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-
+import { getAllStories } from "../../store/story";
+import { NavLink } from "react-router-dom";
 
 const ShowAllStories = () => {
     const getStories = useSelector(state => Object.values(state.story.allStories))
@@ -15,17 +16,18 @@ const ShowAllStories = () => {
     return (
         <div>
             {getStories.map(story => (
-                <div className="story-image">
+                < div className="story-image" >
                     <NavLink to={`/stories/${story.id}`}>
-                        <h6>{story.user.firstName} {story.user.lastName}</h6>
+                        <h6>{story.User.firstName} {story.User.lastName}</h6>
                         <h3>{story.title}</h3>
                         <p>{story.story}</p>
                         <img src={story.image} alt={story.name}></img>
                     </NavLink>
                 </div>
                 // <AllStories key={story.id} story={story} />
-            ))}
-        </div>
+            ))
+            }
+        </div >
     )
 }
 

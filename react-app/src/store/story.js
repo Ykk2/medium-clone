@@ -36,7 +36,7 @@ const deleteStory = story => {
 }
 
 export const getAllStories = () => async dispatch => {
-    const response = await csrfFetch(`/api/stories`)
+    const response = await fetch(`/api/stories`)
     if (response.ok) {
         const stories = await response.json()
         dispatch(allStories(stories))
@@ -85,9 +85,13 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
     switch (action.type) {
         case LOAD_ALL_STORIES: {
             const newState = { oneStory: {}, allStories: {} }
-            action.stories.Story.forEach(e => {
-                newState.allStories[e.id] = e
+            action.stories.Stories.forEach(e => {
+                console.log('THIS IS MY IT', e)
             })
+            action.stories.Stories.forEach(e => {
+                newState.allStories[e.storyId] = e
+            })
+            // newState.allStories = action.stories
             return newState
         }
         case LOAD_ONE_STORY: {
