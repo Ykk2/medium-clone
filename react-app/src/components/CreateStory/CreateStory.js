@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import './CreateStory.css'
 
-const CreateStory = ({ story }) => {
+const CreateStory = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
