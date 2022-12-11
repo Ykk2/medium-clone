@@ -107,7 +107,7 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
             return newState
         }
         case DELETE_STORY: {
-            const newState = { ...state, oneStory: { ...state }, allStories: { ...state.allStories } }
+            const newState = { ...state, oneStory: { ...state.story }, allStories: { ...state.allStories } }
             delete newState.allStories[action.story.id]
             return newState
         }
