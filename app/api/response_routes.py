@@ -1,12 +1,17 @@
-from flask import Flask, jsonify, Blueprint, redirect
-from ..models import db, Story, User, Response
-from ..forms import ResponseForm
+from flask import Flask, jsonify, Blueprint, redirect, request
+from ..models import db, Story, User, Response, ResponseClap
+from ..forms import ResponseForm, ResponseClapForm
+from flask_login import login_required
 response_route = Blueprint("responses", __name__)
+
+
+# GET ALL RESPONSES BY STORY ID
+
 
 
 # CREATE NEW RESPONSE
 
-@response_route('/stories/<int:storyId>/response', methods=['POST'])
+@response_route.route('/stories/<int:storyId>/response', methods=['POST'])
 def create_response():
     form = ResponseForm()
     if form.validate_on_submit():
@@ -19,12 +24,12 @@ def create_response():
         return "Invalid data"
     db.session.add(new_response)
     db.session.commit()
-    #FIGURE OUT THE PATH HERE vv
-    return redirect('/<int:storyId>')
+    #ALWAYS REDIRECT IN THE FRONT END
+    return new_response.to_dict()
 
 #DELETE A RESPONSE
 
-@response_route('/stories/<int:storyId>/response/<int:responseId>', methods=['DELETE'])
+@response_route.route('/stories/<int:storyId>/response/<int:responseId>', methods=['DELETE'])
 def delete_response(responseId):
     response = Response.query.filter_by(id = responseId)
     if not response:
@@ -35,7 +40,7 @@ def delete_response(responseId):
 
 #EDIT A RESPONSE
 
-@response_route('/stories/<int:storyId>/response/<int:responseId>', methods=['PUT'])
+@response_route.route('/stories/<int:storyId>/response/<int:responseId>', methods=['PUT'])
 def update_response(responseId):
     response = Response.query.filter_by(id = responseId).first()
     form = ResponseForm()
@@ -50,3 +55,22 @@ def update_response(responseId):
     db.session.commit()
 
     return response.to_dict()
+
+# CREATE A CLAP FOR RESPONSE
+
+@response_route.route('/claps/<int:responseId>', methods=['POST'])
+# @login_required
+def create_response_clap(responseId):
+
+    form = ResponseClapForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_clap = ResponseClap(
+            userId = form.data["userId"],
+         responseId = responseId
+        )
+    if form.errors:
+        return "Invalid data."
+    db.session.add(new_clap)
+    db.session.commit()
+    return new_clap.to_dict()
