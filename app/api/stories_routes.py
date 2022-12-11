@@ -64,31 +64,28 @@ def get_stories_by_user(personId):
 # GET ALL STORIES BY WHO USER IS FOLLOWING
 
 @story_route.route('/<int:userId>/following')
-@login_required
+# @login_required
 def get_stories_by_follow(userId):
-    user = User.query.get(userId)
-
-    following = user.follows
-    print(following == 5, "*********************************")
-    return "hello"
-    # allFollows = user.query.all(followed.id == user.id)
-    # followingList = []
-    # for followed in followingList:
-    #     pass
-
-'''
-    Andrew = user.query.get(userId)
-    AndrewsFollows = Follows.query.filter(follower.id == userId).all()
-    PeopleAndrewFollows = []
-    for AndrewsFollowed in AndrewsFollows:
-        PeopleAndrewFollows.append(user.query.get(AndrewsFollowed.id == userId))
 
     response = []
-    for person in PeopleAndrewFollows:
-        story = response.append(Story.query.filter(Story.user.id == person.id))
 
-'''
-# get all followedIds -> query for stories that match the
+    user = User.query.get(userId)
+
+    following_users = user.following.all()
+
+    # follow2 = user.followers.all()
+
+    following_user_ids = [user.to_dict()['id'] for user in following_users]
+
+    for id in following_user_ids:
+        following_user = User.query.get(id).to_dict()
+        following_user_stories = Story.query.filter_by(userId = id)
+        following_user["stories"] = [story.to_dict() for story in following_user_stories]
+        response.append(following_user)
+
+    return {"Stories": response}
+
+
 
 # CREATE NEW STORY
 
