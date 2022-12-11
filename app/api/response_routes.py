@@ -7,13 +7,27 @@ response_route = Blueprint("responses", __name__)
 
 # GET ALL RESPONSES BY STORY ID
 
+@response_route.route('/stories/<int:storyId>')
+def get_response(storyId):
+
+    result = []
+    responses = Response.query.filter_by(storyId = storyId).all()
+
+    for response in responses:
+        res = response.to_dict()
+        claps = ResponseClap.query.filter_by(responseId = res["id"]).all()
+        res['totalClaps'] = len(claps)
+        result.append(res)
+
+    return jsonify(result)
 
 
-# CREATE NEW RESPONSE
+# CREATE NEW RESPONSE FOR A STORY
 
-@response_route.route('/stories/<int:storyId>/response', methods=['POST'])
+@response_route.route('/stories/<int:storyId>', methods=['POST'])
 def create_response():
     form = ResponseForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_response = Response(
             body = form.data['body'],
@@ -29,7 +43,7 @@ def create_response():
 
 #DELETE A RESPONSE
 
-@response_route.route('/stories/<int:storyId>/response/<int:responseId>', methods=['DELETE'])
+@response_route.route('/<int:responseId>', methods=['DELETE'])
 def delete_response(responseId):
     response = Response.query.filter_by(id = responseId)
     if not response:
@@ -40,15 +54,17 @@ def delete_response(responseId):
 
 #EDIT A RESPONSE
 
-@response_route.route('/stories/<int:storyId>/response/<int:responseId>', methods=['PUT'])
+@response_route.route('/<int:responseId>', methods=['PUT'])
 def update_response(responseId):
+
     response = Response.query.filter_by(id = responseId).first()
+
     form = ResponseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-
         setattr(response, 'body', form.data['body'])
+
     if form.errors:
         return "Invalid Data"
 
@@ -64,13 +80,16 @@ def create_response_clap(responseId):
 
     form = ResponseClapForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         new_clap = ResponseClap(
             userId = form.data["userId"],
-         responseId = responseId
+            responseId = responseId
         )
+
     if form.errors:
         return "Invalid data."
+
     db.session.add(new_clap)
     db.session.commit()
     return new_clap.to_dict()
