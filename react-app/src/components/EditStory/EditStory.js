@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-// NEED TO IMPORT CREATE STORY THUNK
+import './EditStory.css'
 
-import './CreateStory.css'
+// NEED TO IMPORT EDIT STORY THUNK
 
-const CreateStory = ({ story }) => {
+function EditStory() {
     const sessionUser = useSelector(state => state.session.user)
+    const updatedThisStory = useSelector(state => state.story.singleStory)
+    const { storyId } = useParams()
     const dispatch = useDispatch();
     const history = useHistory();
     const [story, setStory] = useState("")
@@ -27,7 +29,9 @@ const CreateStory = ({ story }) => {
         const formValues = {
             title, story, image
         }
-        history.push('/')
+        // NEED EDIT STORY THUNK
+        // const isUpdated = await dispatch(editStoryThunk(formValues))
+        // if (isUpdated) await history.push(`/story/${storyId}`)
     }
 
     return (
@@ -48,7 +52,6 @@ const CreateStory = ({ story }) => {
                     required />
             </label>
             <label>
-                {/* Story */}
                 <input
                     type="text"
                     placeholder="Tell your story..."
@@ -56,7 +59,6 @@ const CreateStory = ({ story }) => {
                     required />
             </label>
             <label>
-                {/* Image */}
                 <input
                     type="text"
                     value={image}
@@ -64,11 +66,11 @@ const CreateStory = ({ story }) => {
                     onChange={(e) => setImage(e.target.value)} />
             </label>
             <button type='submit' disabled={errors.length > 0}>
-                Publish
+                Publish Changes
             </button>
 
         </form>
     )
 }
 
-export default CreateStory
+export default EditStory
