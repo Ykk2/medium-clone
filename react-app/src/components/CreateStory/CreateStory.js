@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
-// NEED TO IMPORT CREATE STORY THUNK
+// NEED TO IMPORT CREATE STORY THUNK!!
 
 import './CreateStory.css'
 
