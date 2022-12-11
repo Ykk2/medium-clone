@@ -19,8 +19,8 @@ def create_response():
         return "Invalid data"
     db.session.add(new_response)
     db.session.commit()
-    #FIGURE OUT THE PATH HERE vv
-    return redirect('/<int:storyId>')
+    #ALWAYS REDIRECT IN THE FRONT END
+    return jsonify(new_response)
 
 #DELETE A RESPONSE
 
@@ -56,7 +56,7 @@ def update_response(responseId):
 @response_route.route('/claps/<int:responseId>', methods=['POST'])
 @login_required
 def create_response_clap(responseId):
-    # response = response.query.get(responseId)
+
     form = ResponseClapForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -68,4 +68,4 @@ def create_response_clap(responseId):
         return "Invalid data."
     db.session.add(new_clap)
     db.session.commit()
-    return "Success clap."
+    return jsonify(new_clap)

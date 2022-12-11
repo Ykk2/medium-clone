@@ -113,7 +113,7 @@ def create_story():
     db.session.add(new_story)
     db.session.commit()
     #REVIST THIS LATER, NEED TO FIGURE OUT PATH
-    return redirect('/<int:storyId>')
+    return jsonify(new_story)
 
 
 # UPDATE A STORY
@@ -172,7 +172,7 @@ def create_story_clap(storyId):
         return "Invalid data."
     db.session.add(new_clap)
     db.session.commit()
-    return "Success clap."
+    return jsonify(new_clap)
 
 
 
