@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
-from sqlalchemy
+from sqlalchemy.sql import func, select
 from ..models import db, Story, User, follows, StoryClap
 from ..forms import StoryForm, StoryClapForm
 from flask_login import login_required
@@ -89,11 +89,14 @@ def get_stories_by_follow(userId):
 # GET STORY BY ID
 
 @story_route.route('/<int:storyId>')
-@login_required
+# @login_required
 def get_story(storyId):
-    story = Story.query.get(storyId)
-    claps = StoryClap.query.
-    pass
+    story = Story.query.get(storyId).to_dict()
+    claps = StoryClap.query.filter_by(storyId = storyId).all()
+    story['totalClaps'] = len(claps)
+
+    return jsonify(story)
+
 
 # CREATE NEW STORY
 
