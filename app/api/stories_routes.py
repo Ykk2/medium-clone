@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
-from ..models import db, Story, User, follows
-from ..forms import StoryForm
+from ..models import db, Story, User, follows, StoryClap
+from ..forms import StoryForm, StoryClapForm
+from flask_login import login_required
 story_route = Blueprint("stories", __name__)
 
 
@@ -36,6 +37,7 @@ def get_all_stories():
 #
 
 @story_route.route('/<int:personId>')
+@login_required
 # CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
 def get_stories_by_user(personId):
     stories = Story.query.filter_by(userId = personId).all()
@@ -63,6 +65,7 @@ def get_stories_by_user(personId):
 # GET ALL STORIES BY WHO USER IS FOLLOWING
 
 @story_route.route('/<int:userId>/following')
+@login_required
 def get_stories_by_follow(userId):
     user = User.query.get(userId)
 
@@ -91,6 +94,7 @@ def get_stories_by_follow(userId):
 # CREATE NEW STORY
 
 @story_route.route('/', methods=['POST'])
+@login_required
 def create_story():
     form = StoryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -115,6 +119,7 @@ def create_story():
 
 # UPDATE A STORY
 @story_route.route('/<int:storyId>', methods=['PUT'])
+@login_required
 def update_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     form = StoryForm()
@@ -142,6 +147,7 @@ def update_story(storyId):
 # DELETE A STORY
 
 @story_route.route('/<int:storyId>', methods=['DELETE'])
+@login_required
 def delete_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     if not story:
@@ -149,3 +155,28 @@ def delete_story(storyId):
     else:
         db.session.delete(story)
         return {"message": "Successfully Deleted!", "statusCode": 200}
+
+# CREATE A CLAP FOR STORY
+
+@story_route.route('/claps/<int:storyId>', methods=['POST'])
+@login_required
+def create_story_clap(storyId):
+    # story = Story.query.get(storyId)
+    form = StoryClapForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_clap = StoryClap(
+            userId = form.data["userId"],
+         storyId = storyId
+        )
+    if form.errors:
+        return "Invalid data."
+    db.session.add(new_clap)
+    db.session.commit()
+    return "Success clap."
+
+
+
+
+
+# NOT DONE !!
