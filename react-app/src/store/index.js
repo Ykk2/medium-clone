@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 import session from './session'
 import story from './story'
 import response from './response'
+import follow from './follow'
 const rootReducer = combineReducers({
-  session, story, response
+  session, story, response, follow
 });
 
 
