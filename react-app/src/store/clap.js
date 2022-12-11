@@ -50,24 +50,25 @@ export const deletingClap = () => async dispatch => {
     }
 }
 
-export default function reducer(state = { oneClap: {}, allClaps: {} }, action)
-switch (action.type) {
-    case LOAD_CLAPS: {
-        const newState = { oneClap: {}, allClaps: {} }
-        action.claps.Clap.forEach(e => {
-            newState.allClaps[e.id] = e
-        })
-        return newState
+export default function reducer(state = { oneClap: {}, allClaps: {} }, action) {
+    switch (action.type) {
+        case LOAD_CLAPS: {
+            const newState = { oneClap: {}, allClaps: {} }
+            action.claps.Clap.forEach(e => {
+                newState.allClaps[e.id] = e
+            })
+            return newState
+        }
+        case ADD_CLAP: {
+            const newState = { ...state, oneClap: { ...state.oneClap }, allClaps: { ...state.allClaps } }
+            newState.oneClap = action.clap
+            return newState
+        }
+        case DELETE_CLAP: {
+            const newState = { ...state, oneClap: { ...state.oneClap }, allClaps: { ...state.allClaps } }
+            delete newState.allClaps[action.clap.id]
+            return newState
+        }
+        default: return state
     }
-    case ADD_CLAP: {
-        const newState = { ...state, oneClap: { ...state.oneClap }, allClaps: { ...state.allClaps } }
-        newState.oneClap = action.clap
-        return newState
-    }
-    case DELETE_CLAP: {
-        const newState = { ...state, oneClap: { ...state.oneClap }, allClaps: { ...state.allClaps } }
-        delete newState.allClaps[action.clap.id]
-        return newState
-    }
-    default: return state
 }
