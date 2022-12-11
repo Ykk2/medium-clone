@@ -7,18 +7,18 @@ import { useHistory } from 'react-router-dom';
 import './CreateStory.css'
 
 const CreateStory = ({ story }) => {
-    const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
-    const [story, setStory] = useState("")
-    const [title, setTitle] = useState("")
-    const [image, setImage] = useState("")
+    const [story, setStory] = useState("");
+    const [title, setTitle] = useState("");
+    const [image, setImage] = useState("");
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const validationErrors = [];
-        if (!title || title.length > 50) validationErrors.push("Title of your story may not be empty and must be less than 50 characters long.")
-        if (!story || story.length > 255) validationErrors.push("Your story cannot be empty and it must be less than 255 characters long.")
+        if (!title || title.length > 50) validationErrors.push("Title of your story may not be empty and must be less than 50 characters long.");
+        if (!story || story.length > 2000) validationErrors.push("Your story cannot be empty and it must be less than 2000 characters long.");
         if (!image.match(/\.(gif|png|jpeg|jpg)$/)) validationErrors.push("The photo's URL must end in .gif, .png, .jpeg, or .jpg");
         setErrors(validationErrors)
     }, [story, title, image])
