@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
-from ..models import db, Story, User, follows
-from ..forms import StoryForm
+from ..models import db, Story, User, follows, StoryClap
+from ..forms import StoryForm, StoryClapForm
 from flask_login import login_required
 story_route = Blueprint("stories", __name__)
 
@@ -93,28 +93,28 @@ def get_stories_by_follow(userId):
 
 # CREATE NEW STORY
 
-# @story_route.route('/', methods=['POST'])
-# @login_required
-# def create_story():
-#     form = StoryForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         new_story = Story(
-#             title  = form.data["title"],
-#             story = form.data["story"],
-#             image = form.data["image"],
-#             userId = form.data["userId"]
-#             # tag = form.data["tag"]
-#         )
+@story_route.route('/', methods=['POST'])
+@login_required
+def create_story():
+    form = StoryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_story = Story(
+            title  = form.data["title"],
+            story = form.data["story"],
+            image = form.data["image"],
+            userId = form.data["userId"]
+            # tag = form.data["tag"]
+        )
 
-#     if form.errors:
-#         print(form.errors)
-#         return "Invalid data"
+    if form.errors:
+        print(form.errors)
+        return "Invalid data"
 
-#     db.session.add(new_story)
-#     db.session.commit()
-#     #REVIST THIS LATER, NEED TO FIGURE OUT PATH
-#     return redirect('/<int:storyId>')
+    db.session.add(new_story)
+    db.session.commit()
+    #REVIST THIS LATER, NEED TO FIGURE OUT PATH
+    return redirect('/<int:storyId>')
 
 
 # UPDATE A STORY
@@ -158,17 +158,25 @@ def delete_story(storyId):
 
 # CREATE A CLAP FOR STORY
 
-@story_route.route('/<int:storyId>', methods=['POST'])
-# @login_required
+@story_route.route('/claps/<int:storyId>', methods=['POST'])
+@login_required
 def create_story_clap(storyId):
-    # story.clapCount = 0
-    story = Story.query.get(storyId)
-    storyDict = story.to_dict()
-    if not storyDict.clapCount:
-        storyDict.setdefault("clapCount", 1)
-    else:
-        storyDict.clapCount += 1
-    print(storyDict,"%%%%%%%%%%%%%%%%%%%%")
-    return jsonify(storyDict.clapCount)
+    # story = Story.query.get(storyId)
+    form = StoryClapForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_clap = StoryClap(
+            userId = form.data["userId"],
+         storyId = storyId
+        )
+    if form.errors:
+        return "Invalid data."
+    db.session.add(new_clap)
+    db.session.commit()
+    return "Success clap."
+
+
+
+
 
 # NOT DONE !!
