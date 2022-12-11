@@ -5,7 +5,6 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
 
-
 function SignupFormPage({ setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -31,21 +30,17 @@ function SignupFormPage({ setShowModal }) {
                     if (data && data.errors) setErrors(Object.values(data.errors));
                 });
         }
-
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
     return (
         <div className="signupform">
-            <i id="signupxmark" class="fa-solid fa-xmark" onClick={() => setShowModal(false)}></i>
-
             <span id="signupspan">Signup</span>
             <form onSubmit={handleSubmit} >
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-
                     <input id="signupinput" placeholder="First Name"
                         type="text"
                         value={firstName}
@@ -54,7 +49,6 @@ function SignupFormPage({ setShowModal }) {
                     />
                 </label>
                 <label>
-
                     <input id="signupinput" placeholder="Last Name"
                         type="text"
                         value={lastName}
@@ -63,7 +57,6 @@ function SignupFormPage({ setShowModal }) {
                     />
                 </label>
                 <label>
-
                     <input id="signupinput" placeholder="Email"
                         type="text"
                         value={email}
@@ -72,7 +65,6 @@ function SignupFormPage({ setShowModal }) {
                     />
                 </label>
                 <label>
-
                     <input id="signupinput" placeholder="Username"
                         type="text"
                         value={username}
@@ -81,7 +73,6 @@ function SignupFormPage({ setShowModal }) {
                     />
                 </label>
                 <label>
-
                     <input id="signupinput" placeholder="Password"
                         type="password"
                         value={password}
@@ -90,7 +81,6 @@ function SignupFormPage({ setShowModal }) {
                     />
                 </label>
                 <label>
-
                     <input id="signupinput" placeholder="Confirm Password"
                         type="password"
                         value={confirmPassword}
@@ -102,7 +92,6 @@ function SignupFormPage({ setShowModal }) {
                     <button id="signupbutton" type="submit">Sign Up</button>
                 </div>
             </form>
-
         </div>
     );
 }

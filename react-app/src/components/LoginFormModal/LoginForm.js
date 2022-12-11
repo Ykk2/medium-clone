@@ -1,5 +1,3 @@
-
-// frontend/src/components/LoginFormModal/LoginForm.js
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
@@ -11,7 +9,7 @@ function LoginForm({ setShowModal }) {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const demo = (event) => {
+    const demo = () => {
         setCredential('demo');
         setPassword('password')
     }
@@ -30,9 +28,7 @@ function LoginForm({ setShowModal }) {
     };
 
     return (
-        <div className="signupform">
-            <i id="signupxmark" className="fa-solid fa-xmark" onClick={() => setShowModal(false)} />
-            <span id="useremailspan">Login</span>
+        <div className="signupform" >
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -40,7 +36,6 @@ function LoginForm({ setShowModal }) {
                     ))}
                 </ul>
                 <label>
-
                     <input id="signupinput" placeholder="Username or Email"
                         type="text"
                         value={credential}
@@ -49,7 +44,6 @@ function LoginForm({ setShowModal }) {
                     />
                 </label>
                 <label>
-
                     <input id="signupinput" placeholder="Password"
                         type="password"
                         value={password}
