@@ -113,7 +113,7 @@ def create_story():
     db.session.add(new_story)
     db.session.commit()
     #REVIST THIS LATER, NEED TO FIGURE OUT PATH
-    return jsonify(new_story)
+    return new_story.to_dict()
 
 
 # UPDATE A STORY
@@ -150,7 +150,7 @@ def update_story(storyId):
 def delete_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     if not story:
-        return ('No From Found!')
+        return ('No Story Found.')
     else:
         db.session.delete(story)
         return {"message": "Successfully Deleted!", "statusCode": 200}
@@ -172,7 +172,7 @@ def create_story_clap(storyId):
         return "Invalid data."
     db.session.add(new_clap)
     db.session.commit()
-    return jsonify(new_clap)
+    return new_clap.to_dict()
 
 
 

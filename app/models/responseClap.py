@@ -14,5 +14,5 @@ class ResponseClap(db.Model):
         return {
             "id": self.id,
             "userId": self.userId,
-            "storyId": self.storyId
+            "responseId": self.responseId
         }

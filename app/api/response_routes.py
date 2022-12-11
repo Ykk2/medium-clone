@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
 from ..models import db, Story, User, Response, ResponseClap
 from ..forms import ResponseForm, ResponseClapForm
+from flask_login import login_required
 response_route = Blueprint("responses", __name__)
 
 
@@ -20,7 +21,7 @@ def create_response():
     db.session.add(new_response)
     db.session.commit()
     #ALWAYS REDIRECT IN THE FRONT END
-    return jsonify(new_response)
+    return new_response.to_dict()
 
 #DELETE A RESPONSE
 
@@ -54,7 +55,7 @@ def update_response(responseId):
 # CREATE A CLAP FOR RESPONSE
 
 @response_route.route('/claps/<int:responseId>', methods=['POST'])
-@login_required
+# @login_required
 def create_response_clap(responseId):
 
     form = ResponseClapForm()
@@ -68,4 +69,4 @@ def create_response_clap(responseId):
         return "Invalid data."
     db.session.add(new_clap)
     db.session.commit()
-    return jsonify(new_clap)
+    return new_clap.to_dict()
