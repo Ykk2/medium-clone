@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 
 class StoryClap(db.Model):
     __tablename__ = 'storyClaps'
