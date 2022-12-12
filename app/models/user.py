@@ -20,17 +20,18 @@ class User(db.Model, UserMixin):
     createdAt = db.Column(db.DateTime, server_default=db.func.now())
     updatedAt = db.Column(db.DateTime, server_default=db.func.now(),server_onupdate=db.func.now())
 
-    stories = db.relationship("Story", back_populates="users")
-    responses = db.relationship("Response", back_populates="users")
-    storyClaps = db.relationship("StoryClap", back_populates="users")
-    responseClaps = db.relationship("ResponseClap", back_populates="users")
+    stories = db.relationship("Story", back_populates="users",cascade="all, delete")
+    responses = db.relationship("Response", back_populates="users",cascade="all, delete")
+    storyClaps = db.relationship("StoryClap", back_populates="users",cascade="all, delete")
+    responseClaps = db.relationship("ResponseClap", back_populates="users",cascade="all, delete")
     followers = db.relationship(
         "User",
         secondary="follows",
         primaryjoin=(id == follows.c.followerId),
         secondaryjoin=(id == follows.c.followedId),
         backref=db.backref("following",lazy="dynamic"),
-        lazy="dynamic"
+        lazy="dynamic",
+        cascade="all, delete"
     )
     # followerId = db.relationship("Follow", back_populates="User")
     # followedId = db.relationship("Follow", back_populates="User")
