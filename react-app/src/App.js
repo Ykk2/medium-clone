@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ShowAllStories from './components/AllStories';
 import GetStoryDetail from './components/StoryDetail';
 import CreateStory from './components/CreateStory/CreateStory';
+import ShowMyStories from './components/MyStories/MyStories';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path='/stories/new' exact={true}>
           <CreateStory />
+        </Route>
+        <Route path='/profile' exact={true}>
+          <ShowMyStories />
         </Route>
         <Route path='/stories/:storyId' exact={true}>
           <GetStoryDetail />
