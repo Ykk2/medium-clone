@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import StoryDetail from "./StoryDetail";
 import { getOneStory } from "../../store/story";
-
+import { GetResponsesByStory } from "../Responses/Responses";
 import './StoryDetail.css'
 
 const GetStoryDetail = () => {
     const storyDetails = useSelector(state => state.story.oneStory)
-    console.log('THIS IS THE STORY DETAILS', storyDetails)
     const [isLoaded, setLoaded] = useState(false)
     const { storyId } = useParams();
     const dispatch = useDispatch();
@@ -22,6 +21,7 @@ const GetStoryDetail = () => {
     return isLoaded && (
         <div>
             <StoryDetail key={storyDetails.storyId} storyDetails={storyDetails} />
+            <GetResponsesByStory storyDetails={storyDetails} />
         </div>
     )
 }

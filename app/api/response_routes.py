@@ -7,12 +7,12 @@ response_route = Blueprint("responses", __name__)
 
 # GET ALL RESPONSES BY STORY ID
 
-@response_route.route('/stories/<int:storyId>')
+@response_route.route('/<int:storyId>')
 def get_response(storyId):
 
     result = []
     responses = Response.query.filter_by(storyId = storyId).all()
-
+    print('*********************************************', responses)
     for response in responses:
         res = response.to_dict()
         claps = ResponseClap.query.filter_by(responseId = res["id"]).all()
