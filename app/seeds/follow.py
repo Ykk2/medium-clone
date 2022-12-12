@@ -1,7 +1,7 @@
 from app.models import db, follows, environment, SCHEMA
 
 
-def seed_follower(follows):
+def seed_follower():
     insert_stmnt1 = follows.insert().values(followerId=5, followedId=1)
     insert_stmnt2 = follows.insert().values(followerId=4, followedId=3)
     insert_stmnt3 = follows.insert().values(followerId=5, followedId=2)

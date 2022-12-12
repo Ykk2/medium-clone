@@ -31,7 +31,7 @@ def seed():
     seed_response()
     seed_ResponseClaps()
     seed_storyClaps()
-    seed_follower(follows)
+    seed_follower()
     # Add other seed functions here
 
 
