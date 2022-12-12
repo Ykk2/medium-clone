@@ -31,7 +31,6 @@ class User(db.Model, UserMixin):
         secondaryjoin=(id == follows.c.followedId),
         backref=db.backref("following",lazy="dynamic"),
         lazy="dynamic",
-        cascade="all, delete"
     )
     # followerId = db.relationship("Follow", back_populates="User")
     # followedId = db.relationship("Follow", back_populates="User")
