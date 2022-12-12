@@ -8,14 +8,17 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import ShowAllStories from './components/AllStories';
+import GetStoryDetail from './components/StoryDetail';
+import CreateStory from './components/CreateStory/CreateStory';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
-      dispatch(authenticate());
+    (async () => {
+      await dispatch(authenticate());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -24,7 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar loaded={loaded} setLoaded={setLoaded}/>
+      <NavBar loaded={loaded} setLoaded={setLoaded} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -32,8 +35,8 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -42,7 +45,7 @@ function App() {
           <h1>My Home Page</h1>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 
