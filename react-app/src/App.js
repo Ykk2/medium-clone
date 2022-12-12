@@ -23,16 +23,30 @@ function App() {
     })();
   }, [dispatch]);
 
+<<<<<<<< < Temporary merge branch 1
+
+
+=========
   if (!loaded) {
     return null;
   }
   //h
+>>>>>>>>> Temporary merge branch 2
   return (
     <BrowserRouter>
       <NavBar loaded={loaded} setLoaded={setLoaded} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
+        </Route>
+        <Route path='/stories' exact={true}>
+          <ShowAllStories />
+        </Route>
+        <Route path='/stories/new' exact={true}>
+          <CreateStory />
+        </Route>
+        <Route path='/stories/:storyId' exact={true}>
+          <GetStoryDetail />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
@@ -42,7 +56,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>
