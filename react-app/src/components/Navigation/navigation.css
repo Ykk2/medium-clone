@@ -1,0 +1,32 @@
+.navBar {
+    border: 3px red solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+}
+
+.navBar-right {
+
+    margin-right: 20vw;
+    display:flex;
+
+}
+
+.logo {
+    margin-left: 20vw;
+}
+
+.get-started {
+    border: 3px solid green;
+    border-radius: 40px;
+    text-decoration: none;
+    background-color: green;
+
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
