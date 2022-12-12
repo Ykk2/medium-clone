@@ -22,8 +22,8 @@ class User(db.Model, UserMixin):
 
     stories = db.relationship("Story", back_populates="users",cascade="all, delete")
     responses = db.relationship("Response", back_populates="users",cascade="all, delete")
-    storyClaps = db.relationship("StoryClap", back_populates="users",cascade="all, delete")
-    responseClaps = db.relationship("ResponseClap", back_populates="users",cascade="all, delete")
+    storyclaps = db.relationship("StoryClap", back_populates="users",cascade="all, delete")
+    responseclaps = db.relationship("ResponseClap", back_populates="users",cascade="all, delete")
     followers = db.relationship(
         "User",
         secondary="follows",

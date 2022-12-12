@@ -16,7 +16,7 @@ class Story(db.Model):
     createdAt = db.Column(db.DateTime, server_default=db.func.now())
     updatedAt = db.Column(db.DateTime, server_default=db.func.now(),server_onupdate=db.func.now())
 
-    storyClaps = db.relationship("StoryClap", back_populates="stories",cascade="all, delete")
+    storyclaps = db.relationship("StoryClap", back_populates="stories",cascade="all, delete")
     responses = db.relationship("Response", back_populates="stories",cascade="all, delete")
     users = db.relationship("User",back_populates="stories")
     # user = db.relationship("")
