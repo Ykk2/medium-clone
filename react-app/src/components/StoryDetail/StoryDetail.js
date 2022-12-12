@@ -2,13 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import './StoryDetail.css'
 import { getOneStory, deletingStory } from '../../store/story';
+import { useEffect } from 'react';
 const StoryDetail = ({ storyDetails }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const storyImage = storyDetails.image;
     const currentUser = useSelector(state => state.session.user)
 
-    if (!storyImage) return null;
+    // useEffect(() => {
+
+    // })
+    // if (!storyImage) return null;
 
     // DELETE STORY TO BE IMPLEMENTED LATER
 
@@ -18,10 +22,9 @@ const StoryDetail = ({ storyDetails }) => {
     //     await history.push('/');
     //     await dispatch(deleteStory(storyDetails.id))
     // }
-
     return (
         <div>
-            <h6>{storyDetails.user.firstName} {storyDetails.user.lastName}</h6>
+            <h6>{storyDetails.storyUser.firstName} {storyDetails.storyUser.lastName}</h6>
             <div className='story-image'>
                 <img src={storyDetails.image} alt={storyDetails.title}></img>
             </div>

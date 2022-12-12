@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import ShowAllStories from './components/AllStories';
-
+import GetStoryDetail from './components/StoryDetail';
 
 
 function App() {
@@ -40,6 +40,9 @@ function App() {
         <Route path='/stories' exact={true}>
           <ShowAllStories />
         </Route>
+        <Route path='/stories/:storyId' exact={true}>
+          <GetStoryDetail />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
@@ -50,7 +53,7 @@ function App() {
           <h1>My Home Page</h1>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

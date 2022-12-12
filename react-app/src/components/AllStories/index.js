@@ -7,7 +7,6 @@ const ShowAllStories = () => {
     const getStories = useSelector(state => Object.values(state.story.allStories))
     // const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getAllStories())
     }, [dispatch])

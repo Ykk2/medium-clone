@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import './AllStories.css'
 
 const AllStories = ({ story }) => {
-
+    console.log('THIS IS THE ALL STORIES COMP')
     return (
         <div>
             <div className="story-image">

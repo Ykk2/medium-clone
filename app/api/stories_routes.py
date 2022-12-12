@@ -94,7 +94,9 @@ def get_story(storyId):
     story = Story.query.get(storyId).to_dict()
     claps = StoryClap.query.filter_by(storyId = storyId).all()
     story['totalClaps'] = len(claps)
-
+    userInfo = User.query.get(story["userId"])
+    user = userInfo.to_dict()
+    story['storyUser'] = user
     return jsonify(story)
 
 

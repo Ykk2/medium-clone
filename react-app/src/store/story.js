@@ -46,6 +46,7 @@ export const getAllStories = () => async dispatch => {
 
 export const getOneStory = (storyId) => async dispatch => {
     const response = await fetch(`/api/stories/${storyId}`)
+    console.log('this is what our user thing', response)
     if (response.ok) {
         const story = await response.json()
         dispatch(oneStory(story))
@@ -54,7 +55,7 @@ export const getOneStory = (storyId) => async dispatch => {
 }
 
 export const addingStory = story => async dispatch => {
-    const response = await csrfFetch(`/api/stories`, {
+    const response = await fetch(`/api/stories`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
     })
     if (response.ok) {
@@ -86,9 +87,6 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
         case LOAD_ALL_STORIES: {
             const newState = { oneStory: {}, allStories: {} }
             action.stories.Stories.forEach(e => {
-                console.log('THIS IS MY IT', e)
-            })
-            action.stories.Stories.forEach(e => {
                 newState.allStories[e.storyId] = e
             })
             // newState.allStories = action.stories
@@ -96,7 +94,7 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
         }
         case LOAD_ONE_STORY: {
             const newState = { oneStory: {}, allStories: {} }
-            newState.story = action.story
+            newState.oneStory = action.story
             return newState
         }
         case ADD_STORY: {
