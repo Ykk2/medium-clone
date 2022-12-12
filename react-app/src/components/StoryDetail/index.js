@@ -11,7 +11,6 @@ const GetStoryDetail = () => {
     const [isLoaded, setLoaded] = useState(false)
     const { storyId } = useParams();
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getOneStory(storyId)).then(() => {
             setLoaded(true)

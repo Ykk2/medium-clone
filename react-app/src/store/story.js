@@ -78,13 +78,22 @@ export const edittingStory = (story, id) => async dispatch => {
 }
 
 export const deletingStory = id => async dispatch => {
-    console.log('THIS IS MY DELETE REPONSE', id)
     const response = await fetch(`/api/stories/${id}`, { method: 'DELETE' })
     if (response.ok) {
         const story = await response.json()
         await dispatch(deleteStory(id))
         return story
 
+    }
+}
+
+export const addLike = (id, userId) => async dispatch => {
+    const response = await fetch(`/api/stories/claps/${id}`, {
+        method: 'POST', body: { userId: userId, storyId: id }
+    })
+    console.log('THIS HIT BITCH', response)
+    if (response.ok) {
+        return
     }
 }
 
@@ -117,7 +126,6 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
         }
         case DELETE_STORY: {
             const newState = { ...state, oneStory: { ...state.story }, allStories: { ...state.allStories } }
-            console.log('DELETE REDUCER', action.story)
             delete newState.allStories[action.story]
             return newState
         }

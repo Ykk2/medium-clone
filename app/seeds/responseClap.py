@@ -1,6 +1,6 @@
 from app.models import db, ResponseClap, environment, SCHEMA
 
-def seed_ResponseClaps():
+def seed_responseClaps():
     responseClap1 = ResponseClap(
         id='1',
         userId='5',
@@ -96,8 +96,14 @@ def seed_ResponseClaps():
 
 def undo_responseClaps():
     if environment == "production":
+<<<<<<< HEAD
         db.session.execute(f"TRUNCATE table {SCHEMA}.responseClaps RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM responseClaps")
+=======
+        db.session.execute(f"TRUNCATE table {SCHEMA}.responseclaps RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM responseclaps")
+>>>>>>> newStoriesFix
 
     db.session.commit()
