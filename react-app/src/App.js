@@ -10,7 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ShowAllStories from './components/AllStories';
 import GetStoryDetail from './components/StoryDetail';
-
+import CreateStory from './components/CreateStory/CreateStory';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +39,9 @@ function App() {
         </Route>
         <Route path='/stories' exact={true}>
           <ShowAllStories />
+        </Route>
+        <Route path='/stories/new' exact={true}>
+          <CreateStory />
         </Route>
         <Route path='/stories/:storyId' exact={true}>
           <GetStoryDetail />

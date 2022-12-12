@@ -46,7 +46,6 @@ export const getAllStories = () => async dispatch => {
 
 export const getOneStory = (storyId) => async dispatch => {
     const response = await fetch(`/api/stories/${storyId}`)
-    console.log('this is what our user thing', response)
     if (response.ok) {
         const story = await response.json()
         dispatch(oneStory(story))
@@ -54,10 +53,14 @@ export const getOneStory = (storyId) => async dispatch => {
     }
 }
 
-export const addingStory = story => async dispatch => {
-    const response = await fetch(`/api/stories`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
+export const addingStory = (story) => async dispatch => {
+    console.log('THIS IS THE STORY I AM SHOVING IN', story)
+    const response = await fetch(`/api/stories/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(story)
     })
+    console.log('THIS SI MY ADDING STORY RESPOSNE', response)
     if (response.ok) {
         const story = await response.json()
         dispatch(addStory(story))

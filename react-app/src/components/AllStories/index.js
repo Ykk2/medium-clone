@@ -14,6 +14,9 @@ const ShowAllStories = () => {
     if (!getStories.length) return null;
     return (
         <div>
+            <NavLink to={`/stories/new`}>
+                <button>CREATE A STORY</button>
+            </NavLink>
             {getStories.map(story => (
                 < div className="story-image" >
                     <NavLink to={`/stories/${story.id}`}>

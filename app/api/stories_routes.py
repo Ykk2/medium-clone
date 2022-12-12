@@ -2,7 +2,7 @@ from flask import Flask, jsonify, Blueprint, redirect, request
 from sqlalchemy.sql import func, select
 from ..models import db, Story, User, follows, StoryClap
 from ..forms import StoryForm, StoryClapForm
-from flask_login import login_required
+from flask_login import login_required, current_user
 story_route = Blueprint("stories", __name__)
 
 
@@ -112,10 +112,8 @@ def create_story():
             title  = form.data["title"],
             story = form.data["story"],
             image = form.data["image"],
-            userId = form.data["userId"]
-            # tag = form.data["tag"]
+            userId = current_user.id
         )
-
     if form.errors:
         print(form.errors)
         return "Invalid data"
