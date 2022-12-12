@@ -10,7 +10,9 @@ def seed_storyClaps():
 def undo_storyClaps():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.storyclaps RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.storyclaps RESTART IDENTITY CASCADE;")
     else:
+        db.session.execute("DELETE FROM storyclaps")
         db.session.execute("DELETE FROM storyclaps")
 
     db.session.commit()

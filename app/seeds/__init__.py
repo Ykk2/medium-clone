@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .follow import seed_follower, undo_follows, follows
 from .response import seed_response, undo_responses
 from .responseClap import seed_responseClaps, undo_responseClaps
+from .responseClap import seed_responseClaps, undo_responseClaps
 from .story import seed_stories, undo_stories
 from .storyClap import seed_storyClaps, undo_storyClaps
 from app.models.db import db, environment, SCHEMA
@@ -20,9 +21,11 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+
         undo_responseClaps()
         undo_storyClaps()
         undo_follows()
+
         undo_responses()
         undo_stories()
         undo_users()

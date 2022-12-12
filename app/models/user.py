@@ -1,9 +1,11 @@
 from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .follow import follows
 
 class User(db.Model, UserMixin):
+    __tablename__ = "users"
     __tablename__ = "users"
 
     if environment == "production":
@@ -24,6 +26,8 @@ class User(db.Model, UserMixin):
     responses = db.relationship("Response", back_populates="users",cascade="all, delete")
     storyclaps = db.relationship("StoryClap", back_populates="users",cascade="all, delete")
     responseclaps = db.relationship("ResponseClap", back_populates="users",cascade="all, delete")
+    storyclaps = db.relationship("StoryClap", back_populates="users",cascade="all, delete")
+    responseclaps = db.relationship("ResponseClap", back_populates="users",cascade="all, delete")
     followers = db.relationship(
         "User",
         secondary="follows",
@@ -31,7 +35,13 @@ class User(db.Model, UserMixin):
         secondaryjoin=(id == follows.c.followedId),
         backref=db.backref("following",lazy="dynamic"),
         lazy="dynamic",
+
+        cascade="all, delete"
     )
+    # followerId = db.relationship("Follow", back_populates="User")
+    # followedId = db.relationship("Follow", back_populates="User")
+
+
 
 
 
