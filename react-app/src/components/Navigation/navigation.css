@@ -19,14 +19,16 @@
 }
 
 .get-started {
-    border: 3px solid green;
+    border: 3px solid black;
     border-radius: 40px;
     text-decoration: none;
-    background-color: green;
+    color: white;
+    background-color: black;
 
 }
 
 button {
     background-color: transparent;
     border: none;
+
 }

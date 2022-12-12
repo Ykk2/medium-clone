@@ -36,8 +36,8 @@ function NavBar({ loaded }) {
                                 setShowModal(true)
                             }}>Sign in</button>
                         </div>
-                        <div className='get-started'>
-                            <button onClick={() => {
+                        <div >
+                            <button className='get-started' onClick={() => {
                                 setLogin(false)
                                 setShowModal(true)
                             }}>Get started</button>
