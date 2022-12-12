@@ -159,7 +159,6 @@ def delete_story(storyId):
     if not story:
         return ('No Story Found.')
     else:
-        print('**************************************************', story)
         db.session.delete(story)
         db.session.commit()
         return {"message": "Successfully Deleted!", "statusCode": 200}
@@ -172,10 +171,12 @@ def create_story_clap(storyId):
     # story = Story.query.get(storyId)
     form = StoryClapForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    form['userId'].data = current_user.id
+    form['storyId'].data = storyId
     if form.validate_on_submit():
         new_clap = StoryClap(
-            userId = form.data["userId"],
-         storyId = storyId
+        userId = current_user.id,
+        storyId = storyId
         )
     if form.errors:
         return "Invalid data."

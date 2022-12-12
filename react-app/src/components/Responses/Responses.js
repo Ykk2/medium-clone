@@ -20,7 +20,6 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     //     // NEED ONE STORY RESPONSE THUNK
     //     dispatch(getOneStory(storyDetails.id))
     // }, storyDetails.id, storyResponseNoObjectValues, dispatch)
-    console.log('I HOPE THIS IS RESPOSNES', storyResponse)
     return (
         <div>
             {/* {storyResponse.forEach(story => {

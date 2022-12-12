@@ -29,12 +29,10 @@ const CreateStory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('THIS IS WHAT THE user LOOKS LIKE RN', sessionUser)
         const formValues = {
             title, story, image
         }
         const newStory = await dispatch(addingStory(formValues))
-        console.log('THIS IS THE NEW STORY', newStory)
         if (newStory) {
             history.push(`/stories/${newStory.id}`)
         }

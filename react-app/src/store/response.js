@@ -24,7 +24,6 @@ const deleteResponse = response => {
 // switched to res instead of response for our fetch calls
 
 export const getResponses = storyId => async dispatch => {
-    console.log('THIS IS THE STORY ID', storyId)
     const res = await fetch(`/api/responses/${storyId}`)
     if (res.ok) {
         const responses = await res.json()
@@ -61,7 +60,6 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
             action.responses.forEach(e => {
                 newState.allResponses[e.storyId] = e.body
             })
-            console.log('THIS IS THE REDUCER', newState)
             return newState
         }
         case ADD_RESPONSE: {
