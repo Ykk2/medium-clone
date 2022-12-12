@@ -4,6 +4,9 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 class Story(db.Model):
     __tablename__ = 'stories'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
     story = db.Column(db.String(10000),nullable=False)
