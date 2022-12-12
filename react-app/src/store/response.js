@@ -28,6 +28,7 @@ export const getResponses = storyId => async dispatch => {
     const res = await fetch(`/api/responses/${storyId}`)
     if (res.ok) {
         const responses = await res.json()
+        // console.log("XXXXXXXXXXXXXXXXXXXXXXXX responses = ", responses)
         dispatch(loadResponses(responses))
         return responses
     }
@@ -59,9 +60,11 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         case LOAD_RESPONSE: {
             const newState = { oneResponse: {}, allResponses: {} }
             action.responses.forEach(e => {
-                newState.allResponses[e.storyId] = e.body
+                // console.log("eeeeeeeeeeeeeeeee = ", e)
+                newState.allResponses[e.storyId] = e
+                // console.log("NEW STATE IN REDUCER =====, ", newState.allResponses[e.storyId])
             })
-            console.log('THIS IS THE REDUCER', newState)
+            // console.log('THIS IS THE REDUCER', newState)
             return newState
         }
         case ADD_RESPONSE: {
