@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class ResponseClap(db.Model):
-    __tablename__ = "responseClaps"
+    __tablename__ = "responseclaps"
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -10,8 +10,8 @@ class ResponseClap(db.Model):
     userId = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     responseId = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod("responses.id")), nullable=False)
 
-    responses = db.relationship("Response", back_populates="responseClaps")
-    users = db.relationship("User", back_populates="responseClaps")
+    responses = db.relationship("Response", back_populates="responseclaps")
+    users = db.relationship("User", back_populates="responseclaps")
 
     def to_dict(self):
         return {

@@ -96,8 +96,8 @@ def seed_responseClaps():
 
 def undo_responseClaps():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.responseClaps RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.responseclaps RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM responseClaps")
+        db.session.execute("DELETE FROM responseclaps")
 
     db.session.commit()
