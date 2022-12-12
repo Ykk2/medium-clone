@@ -23,15 +23,7 @@ function App() {
     })();
   }, [dispatch]);
 
-<<<<<<<< < Temporary merge branch 1
 
-
-=========
-  if (!loaded) {
-    return null;
-  }
-  //h
->>>>>>>>> Temporary merge branch 2
   return (
     <BrowserRouter>
       <NavBar loaded={loaded} setLoaded={setLoaded} />
