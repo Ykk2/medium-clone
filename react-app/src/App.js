@@ -23,8 +23,10 @@ function App() {
     })();
   }, [dispatch]);
 
-
-
+  if (!loaded) {
+    return null;
+  }
+  //h
   return (
     <BrowserRouter>
       <NavBar loaded={loaded} setLoaded={setLoaded} />
