@@ -4,43 +4,50 @@ import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 
-function ProfileButton({setLogin, setLoggedIn}) {
+function ProfileButton({ setLogin, setLoggedIn }) {
 
-    const dispatch = useDispatch()
-    const [showMenu, setShowMenu] = useState(false)
-    const history = useHistory()
+  const dispatch = useDispatch()
+  const [showMenu, setShowMenu] = useState(false)
+  const history = useHistory()
 
-    const openMenu = () => {
-        if (showMenu) return
-        setShowMenu(true)
-    }
+  const openMenu = () => {
+    if (showMenu) return
+    setShowMenu(true)
+  }
 
-    useEffect(() => {
-        if (!showMenu) return;
+  useEffect(() => {
+    if (!showMenu) return;
 
-        const closeMenu = () => {
-          setShowMenu(false);
-        };
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
 
-        document.addEventListener('click', closeMenu);
+    document.addEventListener('click', closeMenu);
 
-        return () => document.removeEventListener("click", closeMenu);
-      }, [showMenu]);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
 
-      const logout = (e) => {
-        e.preventDefault()
-        dispatch(sessionActions.logout())
-        setLogin(false)
-        setLoggedIn(false)
-        history.push('/')
+  const logout = (e) => {
+    e.preventDefault()
+    dispatch(sessionActions.logout())
+    setLogin(false)
+    setLoggedIn(false)
+    history.push('/')
+  }
+
+  return (
+    <div onClick={openMenu}>
+      <p>profile icon goes here</p>
+      {showMenu &&
+        <div>
+          <div>Stories goes here</div>
+          <div>user goes here</div>
+          <button className="logout" onClick={logout}>Log Out</button>
+        </div>
       }
-
-    return(
-        <>
-        <button className="logout" onClick={logout}>Log Out</button>
-        </>
-    )
+    </div>
+  )
 }
 
 export default ProfileButton
