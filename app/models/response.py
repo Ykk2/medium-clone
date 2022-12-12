@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Response(db.Model):
     __tablename__ = 'responses'
@@ -8,8 +8,8 @@ class Response(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(1000),nullable=False)
-    userId = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
-    storyId = db.Column(db.Integer,db.ForeignKey("stories.id"), nullable=False)
+    userId = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    storyId = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod("stories.id")), nullable=False)
     createdAt = db.Column(db.DateTime, server_default=db.func.now())
     updatedAt = db.Column(db.DateTime, server_default=db.func.now(),server_onupdate=db.func.now())
 

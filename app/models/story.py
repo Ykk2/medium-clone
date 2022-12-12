@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class Story(db.Model):
@@ -8,7 +8,7 @@ class Story(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
+    userId = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     story = db.Column(db.String(10000),nullable=False)
     tag = db.Column(db.String(50), nullable=True)
     title = db.Column(db.String(255),nullable=False)

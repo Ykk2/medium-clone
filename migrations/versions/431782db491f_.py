@@ -1,12 +1,16 @@
 """empty message
 
 Revision ID: 431782db491f
-Revises: 
+Revises:
 Create Date: 2022-12-09 18:30:41.485930
 
 """
 from alembic import op
 import sqlalchemy as sa
+
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -33,12 +37,20 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('follows',
     sa.Column('followedId', sa.Integer(), nullable=True),
     sa.Column('followerId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['followedId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['followerId'], ['users.id'], )
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
+
     op.create_table('stories',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -51,6 +63,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE stories SET SCHEMA {SCHEMA};")
+
     op.create_table('responses',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(length=1000), nullable=False),
@@ -62,6 +78,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE responses SET SCHEMA {SCHEMA};")
+
     op.create_table('storyClaps',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -70,6 +90,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE storyClaps SET SCHEMA {SCHEMA};")
+
     op.create_table('responseClaps',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -78,6 +102,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE responseClaps SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
