@@ -2,21 +2,19 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getAllStories } from "../../store/story";
 import { NavLink } from "react-router-dom";
+import { deletingStory } from "../../store/story";
 
-const ShowAllStories = () => {
+const ShowMyStories = () => {
     const getStories = useSelector(state => Object.values(state.story.allStories))
     // const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllStories())
     }, [dispatch])
-
     if (!getStories.length) return null;
     return (
         <div>
-            <NavLink to={`/stories/new`}>
-                <button>CREATE A STORY</button>
-            </NavLink>
+
             {getStories.map(story => (
                 < div className="story-image" >
                     <NavLink to={`/stories/${story.storyId}`}>
@@ -25,12 +23,18 @@ const ShowAllStories = () => {
                         <p>{story.story}</p>
                         <img src={story.image} alt={story.name}></img>
                     </NavLink>
+                    <button
+                        onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(deletingStory(story.storyId))
+                        }}
+
+                    >DELETE THIS STORY</button>
                 </div>
-                // <AllStories key={story.id} story={story} />
             ))
             }
         </div >
     )
 }
 
-export default ShowAllStories
+export default ShowMyStories

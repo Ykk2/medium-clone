@@ -54,13 +54,11 @@ export const getOneStory = (storyId) => async dispatch => {
 }
 
 export const addingStory = (story) => async dispatch => {
-    console.log('THIS IS THE STORY I AM SHOVING IN', story)
     const response = await fetch(`/api/stories/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(story)
     })
-    console.log('THIS SI MY ADDING STORY RESPOSNE', response)
     if (response.ok) {
         const story = await response.json()
         dispatch(addStory(story))
@@ -80,8 +78,14 @@ export const edittingStory = (story, id) => async dispatch => {
 }
 
 export const deletingStory = id => async dispatch => {
-    const response = await csrfFetch(`/api/stories/${id}`, { method: 'DELETE' })
-    if (response.ok) dispatch(deleteStory(id))
+    console.log('THIS IS MY DELETE REPONSE', id)
+    const response = await fetch(`/api/stories/${id}`, { method: 'DELETE' })
+    if (response.ok) {
+        const story = await response.json()
+        await dispatch(deleteStory(id))
+        return story
+
+    }
 }
 
 // We definitely need to change logic in this reducer
@@ -113,7 +117,8 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
         }
         case DELETE_STORY: {
             const newState = { ...state, oneStory: { ...state.story }, allStories: { ...state.allStories } }
-            delete newState.allStories[action.story.id]
+            console.log('DELETE REDUCER', action.story)
+            delete newState.allStories[action.story]
             return newState
         }
         default: return state
