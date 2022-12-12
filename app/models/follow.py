@@ -8,4 +8,4 @@ follows = db.Table(
 )
 
 if environment == 'production':
-    follows.schema = SCHEMA
+    __table_args__ = {'schema': SCHEMA}
