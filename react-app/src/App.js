@@ -12,6 +12,8 @@ import ShowAllStories from './components/AllStories';
 import GetStoryDetail from './components/StoryDetail';
 import CreateStory from './components/CreateStory/CreateStory';
 import ShowMyStories from './components/MyStories/MyStories';
+import LandingPage from './components/LandingPage/LandingPage';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,7 +56,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <LandingPage />
         </Route>
       </Switch>
     </BrowserRouter >
