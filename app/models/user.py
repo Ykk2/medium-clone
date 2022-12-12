@@ -32,8 +32,6 @@ class User(db.Model, UserMixin):
         backref=db.backref("following",lazy="dynamic"),
         lazy="dynamic",
     )
-    # followerId = db.relationship("Follow", back_populates="User")
-    # followedId = db.relationship("Follow", back_populates="User")
 
 
 
