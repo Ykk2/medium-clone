@@ -24,7 +24,7 @@ const deleteResponse = response => {
 // switched to res instead of response for our fetch calls
 
 export const getResponses = storyId => async dispatch => {
-    const res = await csrfFetch('/api/stories/${storyId}/response')
+    const res = await csrfFetch(`/api/stories/${storyId}/response`)
     if (res.ok) {
         const responses = await res.json()
         dispatch(loadResponses(responses))
@@ -33,7 +33,7 @@ export const getResponses = storyId => async dispatch => {
 }
 
 export const addingResponse = (response, id) => async dispatch => {
-    const res = await csrfFetch('/api/spots/${id}/reviews', {
+    const res = await csrfFetch(`/api/spots/${id}/reviews`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(response)
     })
     if (res.ok) {
@@ -44,7 +44,7 @@ export const addingResponse = (response, id) => async dispatch => {
 }
 
 export const deletingResponse = id => async dispatch => {
-    const res = await csrfFetch('/api/reviews/${id}', { method: 'DELETE' })
+    const res = await csrfFetch(`/api/reviews/${id}`, { method: 'DELETE' })
     if (res.ok) {
         const response = await res.json()
         dispatch(deleteResponse(response))

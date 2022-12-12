@@ -24,11 +24,11 @@ class User(db.Model, UserMixin):
     responses = db.relationship("Response", back_populates="users")
     storyClaps = db.relationship("StoryClap", back_populates="users")
     responseClaps = db.relationship("ResponseClap", back_populates="users")
-    follows = db.relationship(
+    followers = db.relationship(
         "User",
         secondary="follows",
-        primaryjoin=(id == follows.c.followedId),
-        secondaryjoin=(id == follows.c.followerId),
+        primaryjoin=(id == follows.c.followerId),
+        secondaryjoin=(id == follows.c.followedId),
         backref=db.backref("following",lazy="dynamic"),
         lazy="dynamic"
     )

@@ -1,38 +1,43 @@
+// import React, { useState } from 'react';
+// import { NavLink } from 'react-router-dom';
+// import { Modal } from '../context/Modal';
+// import LoginForm from '../components/LoginFormModal';
+// import SignupForm from '../components/SignupFormModal';
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+// function NavBar() {
+//   const [showModal, setShowModal] = useState(false)
+//   const [login, setLogin] = useState(true)
 
-const NavBar = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
-    </nav>
-  );
-}
+//   return (
+//     <div>
+//       <div>
+//         <NavLink exact to="/"></NavLink>
+//       </div>
+//       <div>
+//         <button onClick={() => {
+//           setLogin(true)
+//           setShowModal(true)
+//         }}>Sign In</button>
+//         {login && showModal && (
+//           <Modal onClose={() => setShowModal(false)}>
+//             <LoginForm setShowModal={setShowModal} />
+//           </Modal>
+//         )}
+//       </div>
+//       <div>
+//         <button onClick={() => {
+//           setLogin(false)
+//           setShowModal(true)
+//         }}>Get started</button>
+//         {!login && showModal && (
+//           <Modal onClose={() => setShowModal(false)}>
+//             <SignupForm setShowModal={setShowModal} />
+//           </Modal>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
 
-export default NavBar;
+
+// export default NavBar;

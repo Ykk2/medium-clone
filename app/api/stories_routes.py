@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
-from ..models import db, Story, User, follows
-from ..forms import StoryForm
+from sqlalchemy.sql import func, select
+from ..models import db, Story, User, follows, StoryClap
+from ..forms import StoryForm, StoryClapForm
+from flask_login import login_required, current_user
 story_route = Blueprint("stories", __name__)
 
 
@@ -31,11 +33,10 @@ def get_all_stories():
     return jsonify({'Stories': response})
 
 
-
 # GET ALL STORIES MADE BY USER ROUTE
-#
 
-@story_route.route('/<int:personId>')
+@story_route.route('/user/<int:personId>')
+@login_required
 # CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
 def get_stories_by_user(personId):
     stories = Story.query.filter_by(userId = personId).all()
@@ -62,35 +63,47 @@ def get_stories_by_user(personId):
 
 # GET ALL STORIES BY WHO USER IS FOLLOWING
 
-@story_route.route('/<int:userId>/following')
+@story_route.route('/user/<int:userId>/following')
+# @login_required
 def get_stories_by_follow(userId):
-    user = User.query.get(userId)
-
-    following = user.follows
-    print(following == 5, "*********************************")
-    return "hello"
-    # allFollows = user.query.all(followed.id == user.id)
-    # followingList = []
-    # for followed in followingList:
-    #     pass
-
-'''
-    Andrew = user.query.get(userId)
-    AndrewsFollows = Follows.query.filter(follower.id == userId).all()
-    PeopleAndrewFollows = []
-    for AndrewsFollowed in AndrewsFollows:
-        PeopleAndrewFollows.append(user.query.get(AndrewsFollowed.id == userId))
 
     response = []
-    for person in PeopleAndrewFollows:
-        story = response.append(Story.query.filter(Story.user.id == person.id))
 
-'''
-# get all followedIds -> query for stories that match the
+    user = User.query.get(userId)
+
+    following_users = user.following.all()
+
+    # follow2 = user.followers.all()
+
+    following_user_ids = [user.to_dict()['id'] for user in following_users]
+
+    for id in following_user_ids:
+        following_user = User.query.get(id).to_dict()
+        following_user_stories = Story.query.filter_by(userId = id)
+        following_user["stories"] = [story.to_dict() for story in following_user_stories]
+        response.append(following_user)
+
+    return {"Stories": response}
+
+
+# GET STORY BY ID
+
+@story_route.route('/<int:storyId>')
+# @login_required
+def get_story(storyId):
+    story = Story.query.get(storyId).to_dict()
+    claps = StoryClap.query.filter_by(storyId = storyId).all()
+    story['totalClaps'] = len(claps)
+    userInfo = User.query.get(story["userId"])
+    user = userInfo.to_dict()
+    story['storyUser'] = user
+    return jsonify(story)
+
 
 # CREATE NEW STORY
 
 @story_route.route('/', methods=['POST'])
+@login_required
 def create_story():
     form = StoryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -99,10 +112,8 @@ def create_story():
             title  = form.data["title"],
             story = form.data["story"],
             image = form.data["image"],
-            userId = form.data["userId"]
-            # tag = form.data["tag"]
+            userId = current_user.id
         )
-
     if form.errors:
         print(form.errors)
         return "Invalid data"
@@ -110,11 +121,12 @@ def create_story():
     db.session.add(new_story)
     db.session.commit()
     #REVIST THIS LATER, NEED TO FIGURE OUT PATH
-    return redirect('/<int:storyId>')
+    return new_story.to_dict()
 
 
 # UPDATE A STORY
 @story_route.route('/<int:storyId>', methods=['PUT'])
+@login_required
 def update_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     form = StoryForm()
@@ -125,7 +137,6 @@ def update_story(storyId):
         setattr(story, "title", form.data["title"])
         setattr(story, "story", form.data["story"])
         setattr(story, "image", form.data["image"])
-        setattr(story, "userId", form.data["userId"])
 
         # tag = form.data["tag"]
 
@@ -142,10 +153,36 @@ def update_story(storyId):
 # DELETE A STORY
 
 @story_route.route('/<int:storyId>', methods=['DELETE'])
+@login_required
 def delete_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     if not story:
-        return ('No From Found!')
+        return ('No Story Found.')
     else:
         db.session.delete(story)
         return {"message": "Successfully Deleted!", "statusCode": 200}
+
+# CREATE A CLAP FOR STORY
+
+@story_route.route('/claps/<int:storyId>', methods=['POST'])
+@login_required
+def create_story_clap(storyId):
+    # story = Story.query.get(storyId)
+    form = StoryClapForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_clap = StoryClap(
+            userId = form.data["userId"],
+         storyId = storyId
+        )
+    if form.errors:
+        return "Invalid data."
+    db.session.add(new_clap)
+    db.session.commit()
+    return new_clap.to_dict()
+
+
+
+# HELLO RICHARD
+
+# NOT DONE !!
