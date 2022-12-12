@@ -32,6 +32,15 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+        <Route path='/stories' exact={true}>
+          <ShowAllStories />
+        </Route>
+        <Route path='/stories/new' exact={true}>
+          <CreateStory />
+        </Route>
+        <Route path='/stories/:storyId' exact={true}>
+          <GetStoryDetail />
+        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
