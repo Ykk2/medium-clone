@@ -3,7 +3,8 @@ from __future__ import with_statement
 import logging
 from logging.config import fileConfig
 
-from flask import current_app
+from sqlalchemy import engine_from_config
+from sqlalchemy import pool
 
 from alembic import context
 
@@ -12,6 +13,7 @@ from alembic import context
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -26,16 +28,12 @@ logger = logging.getLogger('alembic.env')
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-<<<<<<< HEAD
-=======
 from flask import current_app
 
 
->>>>>>> newStoriesFix
 config.set_main_option(
     'sqlalchemy.url',
-    str(current_app.extensions['migrate'].db.get_engine().url).replace(
-        '%', '%%'))
+    str(current_app.extensions['migrate'].db.engine.url).replace('%', '%%'))
 target_metadata = current_app.extensions['migrate'].db.metadata
 
 # other values from the config, defined by the needs of env.py,
@@ -83,7 +81,11 @@ def run_migrations_online():
                 directives[:] = []
                 logger.info('No changes in schema detected.')
 
-    connectable = current_app.extensions['migrate'].db.get_engine()
+    connectable = engine_from_config(
+        config.get_section(config.config_ini_section),
+        prefix='sqlalchemy.',
+        poolclass=pool.NullPool,
+    )
 
     with connectable.connect() as connection:
         context.configure(
@@ -92,10 +94,15 @@ def run_migrations_online():
             process_revision_directives=process_revision_directives,
             **current_app.extensions['migrate'].configure_args
         )
+        # Create a schema (only in production)
+        if environment == "production":
+            connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
+        # Set search path to your schema (only in production)
         with context.begin_transaction():
+            if environment == "production":
+                context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
-
 
 if context.is_offline_mode():
     run_migrations_offline()

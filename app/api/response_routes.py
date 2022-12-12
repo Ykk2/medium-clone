@@ -13,12 +13,19 @@ def get_response(storyId):
     result = []
     responses = Response.query.filter_by(storyId = storyId).all()
     print('*********************************************', responses)
+
     for response in responses:
+        # print("4545454545454 response = ", response.to_dict())
+        # print("userId = ", response.to_dict()["userId"])
         res = response.to_dict()
         claps = ResponseClap.query.filter_by(responseId = res["id"]).all()
+        users = User.query.filter_by(id = res['userId']).first()
         res['totalClaps'] = len(claps)
-        result.append(res)
+        res['user'] = users.to_dict()
 
+        result.append(res)
+        print("RESULT IS HERE ~~~~~~> ", result)
+        
     return jsonify(result)
 
 
