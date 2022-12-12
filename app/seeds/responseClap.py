@@ -1,6 +1,6 @@
 from app.models import db, ResponseClap, environment, SCHEMA
 
-def seed_ResponseClaps():
+def seed_responseClaps():
     responseClap1 = ResponseClap(
         id='1',
         userId='5',

@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .follow import seed_follower, undo_follows, follows
 from .response import seed_response, undo_responses
-from .responseClap import seed_ResponseClaps, undo_responseClaps
+from .responseClap import seed_responseClaps, undo_responseClaps
 from .story import seed_stories, undo_stories
 from .storyClap import seed_storyClaps, undo_storyClaps
 from app.models.db import db, environment, SCHEMA
@@ -29,7 +29,7 @@ def seed():
     seed_users()
     seed_stories()
     seed_response()
-    seed_ResponseClaps()
+    seed_responseClaps()
     seed_storyClaps()
     seed_follower()
     # Add other seed functions here
