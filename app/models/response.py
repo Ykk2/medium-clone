@@ -12,7 +12,7 @@ class Response(db.Model):
 
     stories = db.relationship("Story", back_populates="responses")
     users = db.relationship("User", back_populates="responses")
-    responseClaps = db.relationship("ResponseClap", back_populates="responses")
+    responseClaps = db.relationship("ResponseClap", back_populates="responses",cascade="all, delete")
     def to_dict(self):
         return {
             "id": self.id,
