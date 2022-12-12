@@ -159,7 +159,9 @@ def delete_story(storyId):
     if not story:
         return ('No Story Found.')
     else:
+        print('**************************************************', story)
         db.session.delete(story)
+        db.session.commit()
         return {"message": "Successfully Deleted!", "statusCode": 200}
 
 # CREATE A CLAP FOR STORY
