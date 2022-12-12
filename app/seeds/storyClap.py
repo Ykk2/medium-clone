@@ -3,7 +3,7 @@ from app.models import db, StoryClap, environment, SCHEMA
 
 def seed_storyClaps():
     for storyClaps in range(1, 200):
-        for index in range(1, 15):
+        for index in range(1, 9):
             db.session.add(StoryClap(userId = index, storyId = index))
             db.session.commit()
 
