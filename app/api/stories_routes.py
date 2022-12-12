@@ -159,10 +159,6 @@ def delete_story(storyId):
     if not story:
         return ('No Story Found.')
     else:
-<<<<<<< HEAD
-        print('**************************************************', story)
-=======
->>>>>>> newStoriesFix
         db.session.delete(story)
         db.session.commit()
         return {"message": "Successfully Deleted!", "statusCode": 200}
