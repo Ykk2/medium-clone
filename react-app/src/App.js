@@ -14,7 +14,6 @@ import CreateStory from './components/CreateStory/CreateStory';
 import ShowMyStories from './components/MyStories/MyStories';
 import LandingPage from './components/LandingPage/LandingPage';
 
-
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -48,6 +47,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/stories/user/:userId/mine' exact={true}>
+          <ShowMyStories />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
