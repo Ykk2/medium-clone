@@ -6,27 +6,28 @@ import { Modal } from '../../context/Modal'
 import LoginForm from '../LoginFormModal/LoginForm'
 import SignUpForm from '../SignupFormModal/SignUpForm'
 import './navigation.css'
+import { combineReducers } from 'redux'
+import Yoursvg from "../../assets/icons/diamond-store-svgrepo-com.svg"
+
 
 function NavBar({ loaded }) {
 
     const sessionUser = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false)
     const [login, setLogin] = useState(true)
-    const [loggedIn, setLoggedIn] = useState(false)
+
     return (
         <div className="navBar">
             <div className='logo' >
-                <NavLink exact to='/'>
-                    Logo goes here
+                <NavLink exact to={sessionUser ? '/stories' : '/'}>
+                    <img src={"../../assets/icons/diamond-store-svgrepo-com.svg"}></img>
                 </NavLink>
             </div>
             <div >
-                {loggedIn && loaded ?
-
+                {sessionUser ?
                     <ProfileButton
                         user={sessionUser}
                         setLogin={setLogin}
-                        setLoggedIn={setLoggedIn}
                     />
                     :
                     <div className='navBar-right'>
@@ -47,8 +48,8 @@ function NavBar({ loaded }) {
                 {
                     showModal &&
                     <Modal onClose={() => setShowModal(false)}>
-                        {login ? <LoginForm setShowModal={setShowModal} setLoggedIn={setLoggedIn} /> :
-                            <SignUpForm setShowModal={setShowModal} setLoggedIn={setLoggedIn} />}
+                        {login ? <LoginForm setShowModal={setShowModal}  /> :
+                            <SignUpForm setShowModal={setShowModal}/>}
                     </Modal>
                 }
             </div>

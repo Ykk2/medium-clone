@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 
-function ProfileButton({ setLogin, setLoggedIn }) {
+function ProfileButton({ setLogin }) {
 
   const dispatch = useDispatch()
   const [showMenu, setShowMenu] = useState(false)
@@ -32,7 +32,7 @@ function ProfileButton({ setLogin, setLoggedIn }) {
     e.preventDefault()
     dispatch(sessionActions.logout())
     setLogin(false)
-    setLoggedIn(false)
+
     history.push('/')
   }
 
