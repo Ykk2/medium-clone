@@ -1,21 +1,55 @@
 .navBar {
-    border: 3px red solid;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 8vh;
+    background-color:rgb(255,192,23);
+    border-bottom: 1px solid black;
+    height: 9%;
+    min-width: 100vw;
+    position:fixed;
+    top: 0;
+    z-index: 99;
 }
 
 .navBar-right {
 
     margin-right: 20vw;
     display:flex;
+    min-height: 10vh;
+    align-items: center;
 
 }
 
-.logo {
+.navBar-left {
     margin-left: 20vw;
+}
+
+.navBar-left-inner {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.navBar-left-inner > img {
+    padding-left: 10px;
+}
+
+.navBar-left-inner > p {
+    font-family: Charter-Regular;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 0;
+    color: black;
+    font-weight: bolder;
+}
+
+.logo {
+    height:100%;
+    width: 100%;
+    background-color: transparent;
+    padding-top: 4%;
+    padding-right: 8px;
 }
 
 .get-started {
@@ -24,11 +58,20 @@
     text-decoration: none;
     color: white;
     background-color: black;
+    font-family: Helvetica;
+    font-size: 14px;
+    height: 38px;
+    width: 105px;
+}
 
+.sign-in {
+    font-family: Helvetica;
+    padding-top: 4px;
+    padding-bottom: 0;
+    padding-right: 20px;
 }
 
 button {
     background-color: transparent;
     border: none;
-
 }

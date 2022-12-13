@@ -6,8 +6,8 @@ import { Modal } from '../../context/Modal'
 import LoginForm from '../LoginFormModal/LoginForm'
 import SignUpForm from '../SignupFormModal/SignUpForm'
 import './navigation.css'
-import { combineReducers } from 'redux'
-import Yoursvg from "../../assets/icons/diamond-store-svgrepo-com.svg"
+
+
 
 
 function NavBar({ loaded }) {
@@ -18,9 +18,15 @@ function NavBar({ loaded }) {
 
     return (
         <div className="navBar">
-            <div className='logo' >
-                <NavLink exact to={sessionUser ? '/stories' : '/'}>
-                    <img src={"../../assets/icons/diamond-store-svgrepo-com.svg"}></img>
+            <div className="banner">
+                <p>Stay Curious.</p>
+                <p>Discover stories, thinking, and expertise</p>
+                <p>from writers on any topic.</p>
+            </div>
+            <div className='navBar-left' >
+                <NavLink className="navBar-left-inner" exact to={sessionUser ? '/stories' : '/'}>
+                    <img className="logo" src={require('./diamond-store-svgrepo-com.svg').default} alt='svgImage'/>
+                    <p className="logo-title">Hard</p>
                 </NavLink>
             </div>
             <div >
@@ -31,11 +37,11 @@ function NavBar({ loaded }) {
                     />
                     :
                     <div className='navBar-right'>
-                        <div className='sign-in'>
-                            <button onClick={() => {
+                        <div>
+                            <button className='sign-in' onClick={() => {
                                 setLogin(true)
                                 setShowModal(true)
-                            }}>Sign in</button>
+                            }}>Sign In</button>
                         </div>
                         <div >
                             <button className='get-started' onClick={() => {
