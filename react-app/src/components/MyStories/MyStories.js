@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
-import { deletingStory } from "../../store/story";
+import { deletingStory, edittingStory } from "../../store/story";
 import { getMyStories } from "../../store/story";
 import './MyStories.css'
 const ShowMyStories = () => {
@@ -21,27 +21,43 @@ const ShowMyStories = () => {
 
     // if (!getStories.length) return null;
     return (
-        <div className="myStoriesContainer">
-            <div className="header">Your Stories</div>
-            {getStories?.map(story => (
-                < div className="story-image" >
-                    <NavLink to={`/stories/${story.storyId}`}>
-                        <h1>{story?.User.firstName} {story?.User.lastName}</h1>
-                        <h3>{story?.Title}</h3>
-                        <p>{story?.Story}</p>
-                        <img src={story.image} alt={story.name}></img>
-                    </NavLink>
-                    <button
-                        onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(deletingStory(story.storyId))
-                        }}
+        <div className="allMyContainer">
+            <div className="myStoriesContainer">
+                <div className="headerContainer">
+                    <div className="header">Your Stories</div>
+                    <button className="addStoryBtn">
+                        <NavLink to={`/stories/new`}>
+                            Write a Story
+                        </NavLink>
+                    </button>
 
-                    >DELETE THIS STORY</button>
                 </div>
-            ))
-            }
-        </div >
+                {getStories?.map(story => (
+                    < div className="story-card" >
+                        <NavLink to={`/stories/${story.storyId}`}>
+                            <div className="storyTitle">{story?.Title}</div>
+                            <div className="storyBody">{story?.Story}</div>
+                        </NavLink>
+                        <button
+                            className="deleteBtn"
+                            onClick={async (e) => {
+                                e.preventDefault()
+                                await dispatch(deletingStory(story.storyId))
+                            }}
+
+                        >DELETE THIS STORY</button>
+                        <button
+                            className="editBtn"
+                            onClick={async (e) => {
+                                e.preventDefault()
+                                await dispatch(edittingStory(story.storyId))
+                            }}>
+                            EDIT THIS STORY
+                        </button>
+                    </div>
+                ))
+                }
+            </div ></div>
     )
 }
 
