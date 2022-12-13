@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
 import { deletingStory } from "../../store/story";
 import { getMyStories } from "../../store/story";
-
+import './MyStories.css'
 const ShowMyStories = () => {
 
     const getStories = useSelector(state => {
@@ -21,7 +21,8 @@ const ShowMyStories = () => {
 
     // if (!getStories.length) return null;
     return (
-        <div>
+        <div className="myStoriesContainer">
+            <div className="header">Your Stories</div>
             {getStories?.map(story => (
                 < div className="story-image" >
                     <NavLink to={`/stories/${story.storyId}`}>
