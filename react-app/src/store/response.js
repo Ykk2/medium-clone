@@ -34,11 +34,13 @@ export const getResponses = storyId => async dispatch => {
 }
 
 export const addingResponse = (response, id) => async dispatch => {
-    const res = await csrfFetch(`/api/spots/${id}/reviews`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(response)
+    // console.log("THIS IS RES ")
+    const res = await csrfFetch(`/api/responses/${id}`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({response})
     })
     if (res.ok) {
         const response = await res.json()
+        console.log("ADDINGRESPONSE THUNK === ", response)
         dispatch(addResponse(response))
         return response
     }

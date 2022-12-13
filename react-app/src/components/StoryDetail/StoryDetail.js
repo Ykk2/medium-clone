@@ -74,6 +74,7 @@ const StoryDetail = ({ storyDetails }) => {
             </div>
             <h1>{storyDetails.title}</h1>
             <p>{storyDetails.story}</p>
+            <div></div>
         </div>
     )
 }
