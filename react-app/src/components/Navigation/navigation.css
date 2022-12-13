@@ -14,7 +14,7 @@
 
 .navBar-right {
 
-    margin-right: 20vw;
+    margin-right: 8vw;
     display:flex;
     min-height: 10vh;
     align-items: center;
@@ -22,7 +22,7 @@
 }
 
 .navBar-left {
-    margin-left: 20vw;
+    margin-left: 8vw;
 }
 
 .navBar-left-inner {
