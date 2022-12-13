@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-
+import './SignUpForm.css'
 
 function SignupForm({ setShowModal }) {
   const dispatch = useDispatch();
@@ -35,46 +35,47 @@ function SignupForm({ setShowModal }) {
 
   return (
     <form className="sign-up-form" onSubmit={handleSubmit}>
+      <h1>Join Medium.</h1>
       <ul className="sign-up-errors">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Email
-        <input
+        <input id="signup-form-input"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
           required
         />
       </label>
       <label>
-        Username
-        <input
+        <input id="signup-form-input"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
           required
         />
       </label>
       <label>
-        Password
-        <input
+        <input id="signup-form-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
           required
         />
       </label>
       <label>
-        Confirm Password
-        <input
+        <input id="signup-form-input"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm Password"
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button class="signup-button" type="submit">Sign Up</button>
     </form>
   );
 }
