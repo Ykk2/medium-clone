@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
-
+import './profileButton.css'
 
 function ProfileButton({ setLogin }) {
 
@@ -37,12 +37,12 @@ function ProfileButton({ setLogin }) {
   }
 
   return (
-    <div onClick={openMenu}>
-      <p>profile icon goes here</p>
+    <div className="profile-icon" onClick={openMenu}>
+      <img className="profile-logo" src={require('./user_account.svg').default} alt='svgImage' />
       {showMenu &&
-        <div>
-          <div>Stories goes here</div>
-          <div>user goes here</div>
+        <div className="profile-dropdown">
+          <div>Stories</div>
+          <div>Current User</div>
           <button className="logout" onClick={logout}>Log Out</button>
         </div>
       }

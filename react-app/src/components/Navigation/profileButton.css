@@ -1,0 +1,23 @@
+.profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-color: 1px solid black;
+    border-radius: 2px;
+    background-color: rgb(238, 238, 238);
+    height: 30vh;
+    width: 21vh;
+    right: 3.8vw;
+    position: absolute;
+    cursor: pointer;
+}
+
+.profile-icon {
+    width: 20vh;
+    left: 92vw;
+    cursor: pointer;
+}
+
+.logout {
+    cursor: pointer;
+}
