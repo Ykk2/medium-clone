@@ -12,7 +12,7 @@ function NavBar({ loaded }) {
     const sessionUser = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false)
     const [login, setLogin] = useState(true)
-    const [loggedIn, setLoggedIn] = useState(false)
+
     return (
         <div className="navBar">
             <div className='logo' >
@@ -21,12 +21,10 @@ function NavBar({ loaded }) {
                 </NavLink>
             </div>
             <div >
-                {loggedIn && loaded ?
-
+                {sessionUser ?
                     <ProfileButton
                         user={sessionUser}
                         setLogin={setLogin}
-                        setLoggedIn={setLoggedIn}
                     />
                     :
                     <div className='navBar-right'>
@@ -47,8 +45,8 @@ function NavBar({ loaded }) {
                 {
                     showModal &&
                     <Modal onClose={() => setShowModal(false)}>
-                        {login ? <LoginForm setShowModal={setShowModal} setLoggedIn={setLoggedIn} /> :
-                            <SignUpForm setShowModal={setShowModal} setLoggedIn={setLoggedIn} />}
+                        {login ? <LoginForm setShowModal={setShowModal}  /> :
+                            <SignUpForm setShowModal={setShowModal}/>}
                     </Modal>
                 }
             </div>

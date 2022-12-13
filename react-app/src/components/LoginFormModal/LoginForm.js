@@ -23,7 +23,7 @@ function LoginForm({setShowModal, setLoggedIn}) {
         if (data && data.errors) setErrors(data.errors);
 
       }
-    ).then(()=> setLoggedIn(true));
+    );
   };
 
   const handleDemoUserSubmit = (e) => {
@@ -39,7 +39,7 @@ function LoginForm({setShowModal, setLoggedIn}) {
         if (data && data.errors) return setErrors(data.errors)
 
       }
-    ).then(()=> setLoggedIn(true));
+    );
   };
 
   return (
