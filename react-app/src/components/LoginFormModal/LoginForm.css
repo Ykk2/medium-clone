@@ -1,0 +1,38 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65vh;
+    height: 65vh;
+    opacity: 0.9;
+}
+
+#login-input {
+    border-radius: 20px;
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-color: rgb(23, 23, 23);
+}
+
+.LoginButton {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.DemoUserButton {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+}
