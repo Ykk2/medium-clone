@@ -7,4 +7,7 @@ function EditResponse() {
     const dispatch = useDispatch();
     const history = useHistory();
     const updateThisResponse = useSelector(state => state.response.oneStory)
+    const { id } = useParams();
+    const [response, setResponse] = useState("");
+    const [errors, setErrors] = useState([])
 }
