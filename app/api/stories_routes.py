@@ -35,13 +35,13 @@ def get_all_stories():
 
 # GET ALL STORIES MADE BY USER ROUTE
 
-@story_route.route('/user/<int:personId>')
-@login_required
+@story_route.route('/user/<int:userId>/mine')
+# @login_required
 # CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
-def get_stories_by_user(personId):
-    stories = Story.query.filter_by(userId = personId).all()
+def get_stories_by_user(userId):
+    stories = Story.query.filter_by(userId = current_user.id).all()
     response = []
-    user = User.query.filter_by(id = personId).first()
+    user = User.query.filter_by(id = userId).first()
     for story in stories:
         response.append({"Story": {
             "UserId": story.userId,
