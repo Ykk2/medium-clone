@@ -1,0 +1,87 @@
+.allStoriesContainer {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createStoryBtn {
+    height: 60px;
+    align-self: flex-start;
+    margin-left: 0px;
+    justify-self: flex-start;
+}
+
+.left {
+    flex-direction: column;
+    justify-content: center;
+    width: 60%
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.storyImage {
+    height: 110px;
+    width: 110px;
+}
+
+.mainContain {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.storyCard {
+    margin-left: -300px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    height: 230px;
+    margin-bottom: 10px;
+    border-bottom: 0.1px solid lightgray;
+    border-right: 0.1px solid lightgray;
+}
+
+.authorName {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 50px;
+    font-size: 20px;
+}
+
+.title {
+    margin-top: -10px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold
+}
+
+.storyTitle {
+    height: 50px;
+    font-size: 1px
+}
+
+.body {
+    height: 95px;
+}
+
+.storyBody {
+    margin-top: -10px;
+    height: 100px;
+    text-overflow: ellipse;
+    overflow: hidden;
+    font-size: 18px;
+}
+
+a:visited {}
+
+a {
+    text-decoration: none
+}

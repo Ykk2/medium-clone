@@ -18,11 +18,6 @@ function NavBar({ loaded }) {
 
     return (
         <div className="navBar">
-            <div className="banner">
-                <p>Stay Curious.</p>
-                <p>Discover stories, thinking, and expertise</p>
-                <p>from writers on any topic.</p>
-            </div>
             <div className='navBar-left' >
                 <NavLink className="navBar-left-inner" exact to={sessionUser ? '/stories' : '/'}>
                     <img className="logo" src={require('./diamond-store-svgrepo-com.svg').default} alt='svgImage'/>

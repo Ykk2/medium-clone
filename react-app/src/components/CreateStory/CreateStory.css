@@ -1,0 +1,62 @@
+.story-form {
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.publishBtn {
+    background-color: green;
+    z-index: 999;
+    align-self: flex-end;
+    margin-right: 20px;
+    color: white;
+    border-radius: 5px;
+    height: 40px
+}
+
+.allContainer {
+    border: 5px solid orange;
+}
+
+.titleInput {
+    margin-top: 40px;
+    border: none;
+    width: 600px;
+    height: 60px;
+    font-size: 40px
+}
+
+.storyInput {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 5px;
+    width: 600px;
+    height: 600px;
+    font-size: 21px;
+    vertical-align: top;
+    box-sizing: border-box
+}
+
+
+.imageInput {
+    border: none;
+    width: 600px;
+    height: 50px;
+    margin-bottom: 10px;
+
+}
+
+input:focus {
+    outline: none
+}
+
+.errors {
+    width: 600px
+}
