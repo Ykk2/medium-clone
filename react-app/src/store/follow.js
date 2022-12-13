@@ -23,8 +23,8 @@ const deleteFollow = follow => {
 }
 
 // Need to fix api routes for fetch + params
-export const gettingFollows = () => async dispatch => {
-    const response = await csrfFetch('/api/follows')
+export const gettingFollows = (id) => async dispatch => {
+    const response = await fetch(`/api/stories/follows/${id}`)
     if (response.ok) {
         const follows = await response.json()
         dispatch(getFollows(follows))
@@ -53,8 +53,8 @@ export default function reducer(state = { oneFollow: {}, allFollows: {} }, actio
     switch (action.type) {
         case LOAD_FOLLOWS: {
             const newState = { oneFollow: {}, allFollows: {} }
-            action.follows.Follow.forEach(e => {
-                newState.allFollows[e.id] = e
+            action.follows.Followers.forEach(e => {
+                newState.allFollows[e] = e
             })
             return newState
         }

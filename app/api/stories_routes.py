@@ -85,6 +85,17 @@ def get_stories_by_follow(userId):
 
     return {"Stories": response}
 
+#GET LIST OF FOLLOWERS
+@story_route.route('/follows/<int:userId>')
+def get_list_followers(userId):
+    user = User.query.get(userId)
+    response = []
+
+    following_users = user.following.all()
+    followers_user_ids = [user.to_dict()['id'] for user in following_users]
+
+    return jsonify({'Followers' : followers_user_ids})
+
 
 # GET STORY BY ID
 
