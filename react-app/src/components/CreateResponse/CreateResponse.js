@@ -31,11 +31,11 @@ const CreateResponse = () => {
             const formValues = {
                 response, storyId
             }
-            const newResponse = await dispatch(addingResponse(formValues, currentUser))
+            const newResponse = await dispatch(addingResponse(formValues))
             // console.log("LOOK HERE YOU PLEASE ==== ")
-            if (newResponse) {
-                await history.push(`/stories/${storyId}`)
-            }
+            // if (newResponse) {
+            //     await history.push(`/stories/${storyId}`)
+            // }
         }
     }
     return (

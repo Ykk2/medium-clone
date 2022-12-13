@@ -31,20 +31,23 @@ def get_response(storyId):
 
 # CREATE NEW RESPONSE FOR A STORY
 
-@response_route.route('/<int:storyId>', methods=['POST'])
+@response_route.route('/<int:storyId>/responses', methods=['POST'])
+@login_required
 def create_response(storyId):
-    print("HIT ME DADDY")
+    print("********HIT HERE PLEASE*******")
     form = ResponseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     form['userId'].data = current_user.id
     form['storyId'].data = storyId
+    print("LOOK HERE!!!!!!!!!!!!!!!!! " , form['userId'].data)
+    print(form['storyId'].data)
     if form.validate_on_submit():
         new_response = Response(
             body = form.data['body'],
             userId = current_user.id,
             storyId = storyId
         )
-    print("******(*&(*&*(&( = ", form.errors)
+    # print("******(*&(*&*(&( = ", form.errors)
     if form.errors:
         return "Invalid data"
     db.session.add(new_response)

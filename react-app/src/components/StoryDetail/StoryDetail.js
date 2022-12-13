@@ -43,14 +43,14 @@ const StoryDetail = ({ storyDetails }) => {
 
     const doIFollow = followers => {
         for (let e in followers) {
-            if (e == currentUser.id) return true
+            if (e == currentUser?.id) return true
         }
         return false
     }
     const iFollow = doIFollow(followers)
 
-    console.log('LET ME FINISH PLEASE', followersList[0])
-    console.log('THE LAST CHECK', !iFollow, storyDetails.storyUser.id != currentUser.id)
+    // console.log('LET ME FINISH PLEASE', followersList[0])
+    // console.log('THE LAST CHECK', !iFollow, storyDetails.storyUser.id != currentUser.id)
     return (
         <div>
             <h6>{storyDetails.storyUser.firstName} {storyDetails.storyUser.lastName}</h6>
@@ -63,7 +63,7 @@ const StoryDetail = ({ storyDetails }) => {
             </button>
             <h3>{storyDetails.storyUser.bio}</h3>
             <h3>{followerCount}  followers</h3>
-            {(storyDetails.storyUser.id != currentUser.id) &&
+            {(storyDetails.storyUser.id != currentUser?.id) &&
                 (!iFollow) &&
                 <button>
                     INSERT FOLLOW BUTTON HERE

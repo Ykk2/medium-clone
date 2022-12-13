@@ -1,4 +1,4 @@
-import CreateResponse from '../components/CreateResponse/CreateResponse'
+// import CreateResponse from '../components/CreateResponse/CreateResponse'
 import { csrfFetch } from './csrf'
 const LOAD_RESPONSE = 'response/LOAD_RESPONSES'
 const ADD_RESPONSE = 'response/ADD_RESPONSE'
@@ -12,7 +12,7 @@ const loadResponses = responses => {
 
 const addResponse = response => {
     return {
-        type: LOAD_RESPONSE, response
+        type: ADD_RESPONSE, response
     }
 }
 
@@ -35,14 +35,22 @@ export const getResponses = storyId => async dispatch => {
 }
 
 export const addingResponse = (responseObj) => async dispatch => {
-    const { response , userId, storyId } = responseObj
-    // console.log("THIS IS RES ")
-    const res = await csrfFetch(`/api/responses/${storyId}`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(responseObj)
+
+    const {response, storyId} = responseObj
+    console.log("STORYID ========= ", storyId)
+    console.log("response ======== ", response)
+    // console.log("responseOBJ ======== ", responseObj)
+
+    const res = await csrfFetch(`/api/responses/${storyId}/responses`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({"body": response, "storyId" : storyId })
+
     })
+    console.log("this is res ===== ", res)
     if (res.ok) {
         const response = await res.json()
-        console.log("ADDINGRESPONSE THUNK === ", response)
+        // console.log("ADDINGRESPONSE THUNK === ", response)
         // response.user = user
         dispatch(addResponse(response))
         return response
@@ -50,7 +58,7 @@ export const addingResponse = (responseObj) => async dispatch => {
 }
 
 export const deletingResponse = id => async dispatch => {
-    const res = await csrfFetch(`/api/reviews/${id}`, { method: 'DELETE' })
+    const res = await csrfFetch(`/api/responses/${id}`, { method: 'DELETE' })
     if (res.ok) {
         const response = await res.json()
         dispatch(deleteResponse(response))
@@ -73,7 +81,7 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         }
         case ADD_RESPONSE: {
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
-            newState.allResponses = action.response
+            newState.oneResponse = action.response
             return newState
         }
         case DELETE_RESPONSE: {
