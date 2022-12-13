@@ -2,6 +2,7 @@
 import { csrfFetch } from './csrf'
 const LOAD_RESPONSE = 'response/LOAD_RESPONSES'
 const ADD_RESPONSE = 'response/ADD_RESPONSE'
+const EDIT_RESPONSE = 'response/EDIT_RESPONSE'
 const DELETE_RESPONSE = 'response/DELETE_RESPONSE'
 
 const loadResponses = responses => {
@@ -13,6 +14,12 @@ const loadResponses = responses => {
 const addResponse = response => {
     return {
         type: ADD_RESPONSE, response
+    }
+}
+
+const editResponse = response => {
+    return {
+        type: EDIT_RESPONSE, response
     }
 }
 
@@ -57,6 +64,20 @@ export const addingResponse = (responseObj) => async (dispatch) => {
     }
 }
 
+export const editingResponse = (payload) => async (dispatch) => {
+    const { response, id } = payload;
+    const responseFetch = await fetch(`/api/responses/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type" : "application/json"},
+        body: JSON.stringify(payload)
+    })
+    if (responseFetch.ok) {
+        const editedResponse = await response.json();
+        dispatch(editResponse(editedResponse))
+        return editedResponse;
+    }
+}
+
 export const deletingResponse = id => async dispatch => {
     const res = await csrfFetch(`/api/responses/${id}`, { method: 'DELETE' })
     if (res.ok) {
@@ -84,6 +105,12 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
             newState.allResponses[action.response.id] = action.response
             // newState.oneResponse = action.response
             return newState
+        }
+
+        case EDIT_RESPONSE: {
+            const newState = { ...state, oneResponse: {...state.oneResponse}, allResponses : { ...state.allResponses}}
+            newState.oneResponse[action.response.id] = action.response.id
+            console.log("EDIT_RESPONSE newSTATE ====== ", newState.oneResponse[action.response.id])
         }
         case DELETE_RESPONSE: {
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
