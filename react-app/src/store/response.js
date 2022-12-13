@@ -1,3 +1,4 @@
+import CreateResponse from '../components/CreateResponse/CreateResponse'
 import { csrfFetch } from './csrf'
 const LOAD_RESPONSE = 'response/LOAD_RESPONSES'
 const ADD_RESPONSE = 'response/ADD_RESPONSE'
@@ -33,14 +34,16 @@ export const getResponses = storyId => async dispatch => {
     }
 }
 
-export const addingResponse = (response, id) => async dispatch => {
+export const addingResponse = (responseObj) => async dispatch => {
+    const { response , userId, storyId } = responseObj
     // console.log("THIS IS RES ")
-    const res = await csrfFetch(`/api/responses/${id}`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({response})
+    const res = await csrfFetch(`/api/responses/${storyId}`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(responseObj)
     })
     if (res.ok) {
         const response = await res.json()
         console.log("ADDINGRESPONSE THUNK === ", response)
+        // response.user = user
         dispatch(addResponse(response))
         return response
     }
@@ -70,7 +73,7 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         }
         case ADD_RESPONSE: {
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
-            newState.oneResponse = action.response
+            newState.allResponses = action.response
             return newState
         }
         case DELETE_RESPONSE: {

@@ -29,10 +29,10 @@ const CreateResponse = () => {
         e.preventDefault();
         if (!errors.length) {
             const formValues = {
-                response
+                response, storyId
             }
             const newResponse = await dispatch(addingResponse(formValues, currentUser))
-            console.log("LOOK HERE YOU PLEASE ==== ")
+            // console.log("LOOK HERE YOU PLEASE ==== ")
             if (newResponse) {
                 await history.push(`/stories/${storyId}`)
             }
