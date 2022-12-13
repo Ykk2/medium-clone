@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, Blueprint, redirect, request
 from ..models import db, Story, User, Response, ResponseClap
 from ..forms import ResponseForm, ResponseClapForm
-from flask_login import login_required
+from flask_login import login_required, current_user
 response_route = Blueprint("responses", __name__)
 
 
@@ -25,28 +25,41 @@ def get_response(storyId):
 
         result.append(res)
         print("RESULT IS HERE ~~~~~~> ", result)
-        
+
     return jsonify(result)
 
 
 # CREATE NEW RESPONSE FOR A STORY
 
-@response_route.route('/stories/<int:storyId>', methods=['POST'])
-def create_response():
+@response_route.route('/<int:storyId>/responses', methods=['POST'])
+@login_required
+def create_response(storyId):
+    print("********HIT HERE PLEASE*******")
     form = ResponseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # form['userId'].data = current_user.id
+    # form['storyId'].data = storyId
+    # print("LOOK HERE!!!!!!!!!!!!!!!!! " , form['userId'].data)
+    # print(form['storyId'].data)
+    # res = {}
+    users = User.query.filter_by(id = current_user.id).first()
+    # res['user'] = users.to_dict()
+
     if form.validate_on_submit():
         new_response = Response(
             body = form.data['body'],
-            userId = form.data['userId'],
-            storyId = form.data['storyId']
+            userId = current_user.id,
+            storyId = storyId
         )
+    # print("******(*&(*&*(&( = ", form.errors)
     if form.errors:
         return "Invalid data"
     db.session.add(new_response)
     db.session.commit()
     #ALWAYS REDIRECT IN THE FRONT END
-    return new_response.to_dict()
+    res = new_response.to_dict()
+    res['user'] = users.to_dict()
+    return res
 
 #DELETE A RESPONSE
 
