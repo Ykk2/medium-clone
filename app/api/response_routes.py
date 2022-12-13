@@ -37,10 +37,14 @@ def create_response(storyId):
     print("********HIT HERE PLEASE*******")
     form = ResponseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    form['userId'].data = current_user.id
-    form['storyId'].data = storyId
-    print("LOOK HERE!!!!!!!!!!!!!!!!! " , form['userId'].data)
-    print(form['storyId'].data)
+    # form['userId'].data = current_user.id
+    # form['storyId'].data = storyId
+    # print("LOOK HERE!!!!!!!!!!!!!!!!! " , form['userId'].data)
+    # print(form['storyId'].data)
+    # res = {}
+    users = User.query.filter_by(id = current_user.id).first()
+    # res['user'] = users.to_dict()
+
     if form.validate_on_submit():
         new_response = Response(
             body = form.data['body'],
@@ -53,7 +57,9 @@ def create_response(storyId):
     db.session.add(new_response)
     db.session.commit()
     #ALWAYS REDIRECT IN THE FRONT END
-    return new_response.to_dict()
+    res = new_response.to_dict()
+    res['user'] = users.to_dict()
+    return res
 
 #DELETE A RESPONSE
 

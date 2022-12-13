@@ -34,14 +34,14 @@ export const getResponses = storyId => async dispatch => {
     }
 }
 
-export const addingResponse = (responseObj) => async dispatch => {
+export const addingResponse = (responseObj) => async (dispatch) => {
 
     const {response, storyId} = responseObj
     console.log("STORYID ========= ", storyId)
     console.log("response ======== ", response)
     // console.log("responseOBJ ======== ", responseObj)
 
-    const res = await csrfFetch(`/api/responses/${storyId}/responses`, {
+    const res = await fetch(`/api/responses/${storyId}/responses`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({"body": response, "storyId" : storyId })
@@ -49,11 +49,11 @@ export const addingResponse = (responseObj) => async dispatch => {
     })
     console.log("this is res ===== ", res)
     if (res.ok) {
-        const response = await res.json()
+        const createResponse = await res.json()
         // console.log("ADDINGRESPONSE THUNK === ", response)
         // response.user = user
-        dispatch(addResponse(response))
-        return response
+        dispatch(addResponse(createResponse))
+        return createResponse
     }
 }
 
@@ -81,7 +81,8 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         }
         case ADD_RESPONSE: {
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
-            newState.oneResponse = action.response
+            newState.allResponses[action.response.id] = action.response
+            // newState.oneResponse = action.response
             return newState
         }
         case DELETE_RESPONSE: {

@@ -28,23 +28,24 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     useEffect(() => {
 
         dispatch(getResponses(storyDetails.id))
-    }, [dispatch, storyDetails.id])
-
+    }, [dispatch, storyDetails.id, currentUser])
+    console.log("STORYRESPONSE ======= ", storyResponse)
     return (
         <div>
             <ul>
                 {storyResponse.map((resp) => (
                     <li>
-                        {resp.user.firstName} {resp.user.lastName}
+                        {console.log("RESP ========== ", resp)}
+                        {resp.user?.firstName} {resp.user?.lastName}
                         <li>
                             {resp.body}
                         </li>
-                        {(currentUser && (currentUser.id === resp.user.id) &&
+                        {/* {(currentUser && (currentUser.id === resp.user.id) &&
                             <button onclick={async (e) => {
                                 e.preventDefault()
                                 await dispatch(deletingResponse(value))
                                 // await history.push(`/stories/${storyDetails.id}`)
-                            }}>Delete Response</button>)}
+                            }}>Delete Response</button>)} */}
 
                     </li>
                 ))}
