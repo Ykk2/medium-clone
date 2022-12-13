@@ -61,6 +61,8 @@
     width: 60%;
     margin: auto;
     margin-top: 2%;
+    row-gap: 2ch;
+
 }
 
 .trending-story-wrapper {
@@ -74,6 +76,8 @@
     color: black;
     font-family: Helvetica;
     font-size: 13px;
+    font-weight: 450;
+    padding-bottom: 6px;
 }
 
 .storytitle {
@@ -81,7 +85,8 @@
     text-decoration: none;
     color: black;
     font-family: Helvetica;
-    font-weight: bold
+    font-weight: bold;
+    padding-bottom: 8px;
 }
 
 .storydate {
@@ -90,6 +95,7 @@
     color: rgb(149, 149, 149);
     font-family: Helvetica;
     font-size: 12px;
+    padding-bottom: 8px;
 }
 
 .trending-number {
@@ -103,4 +109,47 @@
 .trending-story {
     display: flex;
     flex-direction: column;
+}
+
+.trending-stories-wrapper {
+    border-bottom: 1px solid rgb(217, 217, 217);
+    padding-bottom: 2%;
+}
+
+.remaining-stories-wrapper {
+    padding-top: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.remaining-stories-divider {
+    display:flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.remaining-story {
+    width: 40vw;
+    min-height: 10vh;
+    max-height: 10vh;
+}
+
+.remaining-stories-left {
+    height: 100%;
+    width: 70%;
+}
+
+.remaining-stories-right {
+    overflow: hidden;
+    width: 11vh;
+    height: 100%;
+}
+
+.remaining-stories-img-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
