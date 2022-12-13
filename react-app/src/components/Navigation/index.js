@@ -6,6 +6,9 @@ import { Modal } from '../../context/Modal'
 import LoginForm from '../LoginFormModal/LoginForm'
 import SignUpForm from '../SignupFormModal/SignUpForm'
 import './navigation.css'
+import { combineReducers } from 'redux'
+import Yoursvg from "../../assets/icons/diamond-store-svgrepo-com.svg"
+
 
 function NavBar({ loaded }) {
 
@@ -16,8 +19,8 @@ function NavBar({ loaded }) {
     return (
         <div className="navBar">
             <div className='logo' >
-                <NavLink exact to='/'>
-                    Logo goes here
+                <NavLink exact to={sessionUser ? '/stories' : '/'}>
+                    <img src={"../../assets/icons/diamond-store-svgrepo-com.svg"}></img>
                 </NavLink>
             </div>
             <div >
