@@ -5,28 +5,29 @@ import { deletingStory } from "../../store/story";
 import { getMyStories } from "../../store/story";
 
 const ShowMyStories = () => {
+
     const getStories = useSelector(state => {
-        console.log('THIS IS MY STATE YOOOOOO', state)
         return Object.values(state.story.allStories)
     })
     // const currentUser = useSelector(state => state.session.user)
+    console.log("getStories", getStories)
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
+    console.log("Current User from Component", currentUser)
     useEffect(() => {
-        dispatch(getMyStories(currentUser.id))
-    }, [dispatch])
-    console.log('THIS IS MY CURRENT USER', getStories)
+        dispatch(getMyStories(currentUser?.id))
+    }, [dispatch, currentUser])
+
 
     // if (!getStories.length) return null;
     return (
         <div>
-
-            {getStories.map(story => (
+            {getStories?.map(story => (
                 < div className="story-image" >
                     <NavLink to={`/stories/${story.storyId}`}>
-                        <h6>{story.Story.User.firstName} {story.Story.User.lastName}</h6>
-                        <h3>{story.title}</h3>
-                        <p>{story.story}</p>
+                        <h1>{story?.User.firstName} {story?.User.lastName}</h1>
+                        <h3>{story?.Title}</h3>
+                        <p>{story?.Story}</p>
                         <img src={story.image} alt={story.name}></img>
                     </NavLink>
                     <button

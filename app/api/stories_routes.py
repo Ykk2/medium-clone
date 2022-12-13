@@ -43,8 +43,8 @@ def get_stories_by_user(userId):
     response = []
     user = User.query.filter_by(id = userId).first()
     for story in stories:
-        response.append({"Story": {
-            "UserId": story.userId,
+        response.append({
+            "storyId": story.id,
             "Story": story.story,
             "Tag": story.tag,
             "Title": story.title,
@@ -56,8 +56,8 @@ def get_stories_by_user(userId):
                 "firstName": user.first_name,
                 "lastName": user.last_name
             }
-        }})
-
+        })
+    print(response)
     return jsonify({"Stories": response})
 
 
