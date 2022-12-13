@@ -28,7 +28,7 @@ export const getResponses = storyId => async dispatch => {
     const res = await fetch(`/api/responses/${storyId}`)
     if (res.ok) {
         const responses = await res.json()
-        // console.log("XXXXXXXXXXXXXXXXXXXXXXXX responses = ", responses)
+        console.log("XXXXXXXXXXXXXXXXXXXXXXXX responses = ", responses)
         dispatch(loadResponses(responses))
         return responses
     }
@@ -37,8 +37,8 @@ export const getResponses = storyId => async dispatch => {
 export const addingResponse = (responseObj) => async (dispatch) => {
 
     const {response, storyId} = responseObj
-    console.log("STORYID ========= ", storyId)
-    console.log("response ======== ", response)
+    // console.log("STORYID ========= ", storyId)
+    // console.log("response ======== ", response)
     // console.log("responseOBJ ======== ", responseObj)
 
     const res = await fetch(`/api/responses/${storyId}/responses`, {
@@ -73,7 +73,7 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
             const newState = { oneResponse: {}, allResponses: {} }
             action.responses.forEach(e => {
                 // console.log("eeeeeeeeeeeeeeeee = ", e)
-                newState.allResponses[e.storyId] = e
+                newState.allResponses[e.id] = e
                 // console.log("NEW STATE IN REDUCER =====, ", newState.allResponses[e.storyId])
             })
             // console.log('THIS IS THE REDUCER', newState)
