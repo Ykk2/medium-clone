@@ -51,7 +51,7 @@ function LandingPage() {
                             <div className="trending-number">0{trendingStories.indexOf(story) + 1}</div>
                             <div className="trending-story" key={story.id}>
                                 <NavLink to={`/stories/${story.storyId}`}>
-                                    <p className="userinfo">{story.User.firstName} {story.User.lastName}</p>
+                                    <p className="userinfo"> <i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
                                     <p className="storytitle">{story.Title}</p>
                                     <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(20)} min read &nbsp;
                                         <span id="star-emoji">✨</span>
