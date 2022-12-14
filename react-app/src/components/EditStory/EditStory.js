@@ -3,35 +3,50 @@ import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
 import { edittingStory } from '../../store/story';
 import './EditStory.css'
+import { getOneStory } from '../../store/story';
 
 // NEED TO IMPORT EDIT STORY THUNK
 
 function EditStory() {
     const sessionUser = useSelector(state => state.session.user)
-    const updatedThisStory = useSelector(state => state.story.singleStory)
+    const updatedThisStory = useSelector(state => state.story.oneStory)
+
+
     const { storyId } = useParams()
     const dispatch = useDispatch();
     const history = useHistory();
-    const [story, setStory] = useState("")
-    const [title, setTitle] = useState("")
-    const [image, setImage] = useState("")
+    const [story, setStory] = useState(updatedThisStory.story)
+    const [title, setTitle] = useState(updatedThisStory.title)
+    const [image, setImage] = useState(updatedThisStory.image)
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const validationErrors = [];
         if (!title || title.length > 50) validationErrors.push("Title of your story may not be empty and must be less than 50 characters long.")
-        if (!story || story.length > 255) validationErrors.push("Your story cannot be empty and it must be less than 255 characters long.")
-        if (!image.match(/\.(gif|png|jpeg|jpg)$/)) validationErrors.push("The photo's URL must end in .gif, .png, .jpeg, or .jpg");
+        if (!story || story.length > 10000) validationErrors.push("Your story cannot be empty and it must be less than 10000 characters long.")
+        if (!image?.match(/\.(gif|png|jpeg|jpg)$/)) validationErrors.push("The photo's URL must end in .gif, .png, .jpeg, or .jpg");
         setErrors(validationErrors)
     }, [story, title, image])
 
-    function handleSubmit() {
+
+    useEffect(() => {
+        dispatch(getOneStory(storyId))
+    }, [dispatch, storyId])
+
+    useEffect(() => {
+        console.log('THIS IS MY STORY?', updatedThisStory.story)
+        setTitle(updatedThisStory.title)
+        setStory(updatedThisStory.story)
+        setImage(updatedThisStory.image)
+    }, [updatedThisStory])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const formValues = {
             title, story, image
         }
-        // NEED EDIT STORY THUNK
-        // const isUpdated = await dispatch(editStoryThunk(formValues))
-        // if (isUpdated) await history.push(`/story/${storyId}`)
+        const edittedStory = await dispatch(edittingStory(formValues, updatedThisStory.id))
+        if (edittedStory) history.push('/profile')
     }
 
     return (

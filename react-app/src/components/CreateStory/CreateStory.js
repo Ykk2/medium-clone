@@ -43,11 +43,6 @@ const CreateStory = () => {
         <div
             className='allContainer'>
             <form className='story-form' onSubmit={handleSubmit}>
-                <button type='submit'
-                    className='publishBtn'
-                    disabled={errors.length > 0}>
-                    Publish
-                </button>
                 <label>
                     {/* Title */}
                     <input
@@ -76,6 +71,11 @@ const CreateStory = () => {
                         placeholder="Image URL for your story"
                         onChange={(e) => setImage(e.target.value)} />
                 </label>
+                <button type='submit'
+                    className='publishBtn'
+                    disabled={errors.length > 0}>
+                    Publish
+                </button>
                 <ul className='errors'>
                     {errors.map(error => (
                         <li key={error}>{error}</li>

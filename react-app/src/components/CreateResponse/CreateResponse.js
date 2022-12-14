@@ -32,7 +32,7 @@ const CreateResponse = () => {
                 response, storyId
             }
             const newResponse = await dispatch(addingResponse(formValues))
-            
+
             if (newResponse) {
                 await history.push(`/stories/${storyId}`)
             }
@@ -42,22 +42,24 @@ const CreateResponse = () => {
         <div>
             {/* {currentUser && } */}
             <form onSubmit={handleSubmit}>
-            <h6>Leave a comment on this story</h6>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <div>
-                <label>
-                    <input
-                    type="text"
-                    placeholder="Write a comment here..."
-                    value={response}
-                    onChange={(e) => setResponse(e.target.value)}
-                    required />
+                <div className="createResponseHead">Leave a comment on this story</div>
+                <ul className="createResponseErrors">
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+                <div>
+                    <label>
+                        <input
+                            type="text"
+                            placeholder="Write a comment here..."
+                            value={response}
+                            onChange={(e) => setResponse(e.target.value)}
+                            required />
 
-                </label>
-                <button type="submit">Create Response</button>
-            </div>
+                    </label>
+                    <button
+                        className="create-response-submit"
+                        type="submit">Create Response</button>
+                </div>
             </form>
         </div>
     )

@@ -142,7 +142,6 @@ def update_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     form = StoryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
 
         setattr(story, "title", form.data["title"])
@@ -150,7 +149,6 @@ def update_story(storyId):
         setattr(story, "image", form.data["image"])
 
         # tag = form.data["tag"]
-
     if form.errors:
         print(form.errors)
         return "Invalid data"
