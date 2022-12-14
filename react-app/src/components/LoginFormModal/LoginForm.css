@@ -8,6 +8,7 @@
     opacity: 0.9;
     min-width: 450px;
     min-width: 425px;
+    font-family: Helvetica;
 }
 
 #login-input {
@@ -17,6 +18,7 @@
     margin-top: 10px;
     padding-left: 10px;
     border-color: rgb(23, 23, 23);
+    font-family: Helvetica;
 }
 
 .LoginButton {
@@ -27,6 +29,7 @@
     color: white;
     margin-top: 10px;
     cursor: pointer;
+    font-family: Helvetica;
 }
 
 .DemoUserButton {
@@ -37,4 +40,5 @@
     color: white;
     margin-top: 10px;
     cursor: pointer;
+    font-family: Helvetica;
 }
