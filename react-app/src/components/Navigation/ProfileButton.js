@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import './profileButton.css'
 
 function ProfileButton({ setLogin }) {
-
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch()
   const [showMenu, setShowMenu] = useState(false)
   const history = useHistory()
@@ -38,12 +38,27 @@ function ProfileButton({ setLogin }) {
 
   return (
     <div className="profile-icon" onClick={openMenu}>
-      <img className="profile-logo" src={require('./user_account.svg').default} alt='svgImage' />
+      <i style={{ fontSize: '35px', color: "rgb(29, 29, 29)" }} class="fa-regular fa-user" />
+      {/* <img className="profile-logo" src={require('./user_account.svg').default} alt='svgImage' /> */}
       {showMenu &&
         <div className="profile-dropdown">
-          <div>Stories</div>
-          <div>Current User</div>
-          <button className="logout" onClick={logout}>Log Out</button>
+          <div className="dropdownItems">
+            <div>
+              <div id="profileUserEmail">
+                {sessionUser.email}
+              </div>
+            </div>
+          </div>
+          <div className="dropdownItems">
+            <NavLink id="profileItems" to="/profile">
+              <i style={{ fontSize: "30px" }} class="fa-solid fa-book" />
+            </NavLink>
+            <NavLink id="profileItems" to="/profile">Stories</NavLink>
+          </div>
+          <div className="dropdownItems">
+            <i id="logout" onClick={logout} style={{ fontSize: '30px' }} class="fa-solid fa-right-to-bracket" />
+            <button id="logout" style={{ fontFamily: 'Helvetica' }} onClick={logout}>Log Out</button>
+          </div>
         </div>
       }
     </div>

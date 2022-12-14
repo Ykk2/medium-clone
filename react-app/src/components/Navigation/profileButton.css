@@ -3,21 +3,66 @@
     flex-direction: column;
     justify-content: space-around;
     border-color: 1px solid black;
-    border-radius: 2px;
+    border-radius: 5px;
     background-color: rgb(238, 238, 238);
-    height: 30vh;
+    height: 200px;
     width: 21vh;
-    right: 3.8vw;
+    right: -5px;
+    margin-top: 15px;
+    border: 1px solid rgb(206, 206, 206);
     position: absolute;
-    cursor: pointer;
 }
 
 .profile-icon {
-    width: 20vh;
-    left: 92vw;
+    position: relative;
+    right: 15vw;
     cursor: pointer;
 }
 
-.logout {
+#logout {
     cursor: pointer;
+    color: grey;
+}
+
+#logout:hover {
+    color: black;
+    color: rgb(29, 29, 29);
+}
+
+#profileItems {
+    color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 33%;
+    font-family: Helvetica;
+}
+
+#profileItems:hover {
+    color: black;
+}
+
+#profileUserEmail {
+    color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 33%;
+    font-family: Helvetica;
+    cursor: auto;
+}
+
+.dropdownItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(68, 68, 68);
+}
+
+#profileUserEmail {
+    display: flex;
+    align-items: flex-start;
+    padding-right: 0px;
+    justify-content: right;
 }
