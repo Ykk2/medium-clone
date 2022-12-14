@@ -1,15 +1,24 @@
 .banner-wrapper {
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    /* width: 100%; */
     justify-content: space-between;
     background-color: rgb(255, 192, 23);
     border-bottom: 1px solid black;
+    margin-bottom: 40px;
+    min-width: 100vw;
+    /* padding: 0 2rem 0 5rem; */
 }
 
 .banner-animation {
     padding-top: 3%;
+    /* padding-right: 10%; */
     height: 100%;
+    /* width: 100%; */
+    margin-top: 1%;
+    margin-right: 0;
+    /* left: 20px; */
+    /* z-index: 1; */
 }
 
 .banner {
@@ -17,15 +26,19 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    padding-left: 8%;
+    margin-left: 5%;
+    padding-left: 10%;
+
 
 }
 
 
 #first {
     font-family: Charter-Bold;
-    font-size: 6vw;
-    margin-bottom: 0
+    font-size: 80px;
+    margin-bottom: 0;
+    z-index: 2;
+    /* min-width: 600px; */
 }
 
 #second {
@@ -50,7 +63,8 @@
     border-radius: 40px;
     background-color: black;
     color: white;
-    font-size: 1.6vw
+    font-size: 1vw;
+    margin-bottom: 10%;
 }
 
 img.trending-on-hard {
@@ -66,10 +80,13 @@ p.trending-on-hard-text {
     font-weight: 900;
     font-family: Helvetica;
     vertical-align: center;
+    /* margin-top: 100px; */
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    left: 20%;
+    margin: auto;
+    width: 60%;
+
 
 }
 
@@ -93,6 +110,7 @@ p.trending-on-hard-text {
 }
 
 .userinfo {
+    display: flex;
     margin: 0;
     text-decoration: none;
     color: black;
@@ -100,6 +118,9 @@ p.trending-on-hard-text {
     font-size: 13px;
     font-weight: 700;
     padding-bottom: 6px;
+    align-items: center;
+    /* line-height: 5px; */
+    /* border: 1px black solid; */
 }
 
 .storytitle {
@@ -151,8 +172,11 @@ p.trending-on-hard-text {
     flex-direction: column;
     align-items: space-between;
     height: 100px;
-    width: 40vw;
-    margin: auto;
+    /* width: 40vw; */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+
 }
 
 .remaining-stories-divider {
@@ -162,11 +186,12 @@ p.trending-on-hard-text {
     justify-content: space-between;
     overflow: hidden;
     padding-bottom: 20px;
+    min-width: 50%;
 }
 
 #remaining-stories-left {
     height: 100%;
-    width: 70%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
