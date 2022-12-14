@@ -5,7 +5,9 @@ import { getResponses } from '../../store/response';
 import { getOneStory } from '../../store/story';
 import { deletingResponse } from '../../store/response';
 import CreateResponse from '../CreateResponse/CreateResponse';
+
 import './Responses.css'
+import EditResponse from '../EditResponse/EditResponse';
 
 export const GetResponsesByStory = ({ storyDetails }) => {
     const history = useHistory();
@@ -27,12 +29,15 @@ export const GetResponsesByStory = ({ storyDetails }) => {
                         <li>
                             {resp.body}
                         </li>
-
+                        <li>
+                        <EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
+                        </li>
                     </li>
                 ))}
             </ul>
             <div>
                 <CreateResponse key={storyDetails.id} storyDetails={storyDetails} />
+
             </div>
         </div>
     )
