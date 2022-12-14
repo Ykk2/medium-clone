@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 100vw;
     justify-content: space-between;
-    background-color:rgb(255,192,23);
+    background-color: rgb(255, 192, 23);
     border-bottom: 1px solid black;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .banner {
-    display:flex;
+    display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
@@ -53,6 +53,26 @@
     font-size: 1.6vw
 }
 
+img.trending-on-hard {
+    height: 1.5rem;
+    width: 1.5rem;
+    position: relative;
+    top: 5px;
+
+}
+
+p.trending-on-hard-text {
+    font-size: 16px;
+    font-weight: 900;
+    font-family: Helvetica;
+    vertical-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    left: 20%;
+
+}
+
 .trending-stories {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -65,6 +85,8 @@
 
 }
 
+
+
 .trending-story-wrapper {
     display: flex;
     flex-direction: row;
@@ -76,7 +98,7 @@
     color: black;
     font-family: Helvetica;
     font-size: 13px;
-    font-weight: 450;
+    font-weight: 700;
     padding-bottom: 6px;
 }
 
@@ -85,8 +107,15 @@
     text-decoration: none;
     color: black;
     font-family: Helvetica;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 24px;
     padding-bottom: 8px;
+}
+
+.storytext {
+    font-size: 16px;
+    font-family: Helvetica;
+    color: grey
 }
 
 .storydate {
@@ -94,14 +123,14 @@
     text-decoration: none;
     color: rgb(149, 149, 149);
     font-family: Helvetica;
-    font-size: 12px;
+    font-size: 13px;
     padding-bottom: 8px;
 }
 
 .trending-number {
     font-family: Helvetica;
     font-weight: 700;
-    color: rgb(230,230,230);
+    color: rgb(230, 230, 230);
     font-size: 28px;
     padding-right: 10px;
 }
@@ -127,7 +156,7 @@
 }
 
 .remaining-stories-divider {
-    display:flex;
+    display: flex;
     flex-direction: row;
     height: 170px;
     justify-content: space-between;
@@ -137,23 +166,22 @@
 
 #remaining-stories-left {
     height: 100%;
-    width: 60%;
-    display:flex;
+    width: 70%;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
 }
 
 .remaining-stories-right {
-    width: 100px;
+    width: 200px;
     height: 100px;
 }
 
-.remaining-stories-right > img {
+.remaining-stories-right>img {
     width: 200px;
     height: 170px;
     margin: 0;
     padding: 0;
     object-fit: fill;
-
 }

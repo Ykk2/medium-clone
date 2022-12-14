@@ -2,6 +2,8 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllStories } from "../../store/story"
 import { NavLink } from "react-router-dom"
+import trendingImage from './trending resize.png'
+
 
 import './LandingPage.css'
 
@@ -19,7 +21,11 @@ function LandingPage() {
 
     const dateConverter = (date) => {
         const newDate = new Date(date)
-        return `${newDate.toLocaleString('en-US', {month: 'short'})} ${newDate.getDate()}`
+        return `${newDate.toLocaleString('en-US', { month: 'short' })} ${newDate.getDate()}`
+    }
+
+    function getRandomInt(max) {
+        return Math.ceil(Math.random() * max);
     }
 
     return (
@@ -31,18 +37,25 @@ function LandingPage() {
                     <p id='third'>from writers on any topic.</p>
                     <button id="start-reading">Start reading</button>
                 </div>
-                <img className="banner-animation" src={require('./chrome-capture-2022-11-12.gif').default}/>
+                <img className="banner-animation" src={require('./chrome-capture-2022-11-12.gif').default} />
             </div>
             <div className="trending-stories-wrapper">
+                <p className="trending-on-hard-text">
+                    <img className="trending-on-hard" src={trendingImage}
+                    />
+                    &nbsp; TRENDING STORIES ON HARD
+                </p>
                 <div className="trending-stories">
                     {trendingStories.map(story => (
                         <div className="trending-story-wrapper">
                             <div className="trending-number">0{trendingStories.indexOf(story) + 1}</div>
                             <div className="trending-story" key={story.id}>
                                 <NavLink to={`/stories/${story.storyId}`}>
-                                        <p className="userinfo">{story.User.firstName} {story.User.lastName}</p>
-                                        <p className="storytitle">{story.Title}</p>
-                                        <p className="storydate">{dateConverter(story.createdAt)}</p>
+                                    <p className="userinfo">{story.User.firstName} {story.User.lastName}</p>
+                                    <p className="storytitle">{story.Title}</p>
+                                    <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(20)} min read &nbsp;
+                                        <span id="star-emoji">✨</span>
+                                    </p>
                                 </NavLink>
                             </div>
                         </div>
@@ -52,20 +65,23 @@ function LandingPage() {
             <div className="remaining-stories-wrapper">
                 {remainingStories.map(story => (
 
-                        <div className="remaining-story" key={story.id}>
-                            <NavLink to={`/stories/${story.storyId}`}>
-                                <div className="remaining-stories-divider">
-                                    <div id="remaining-stories-left">
-                                        <p className="userinfo">{story.User.firstName} {story.User.lastName}</p>
-                                        <p className="storytitle">{story.Title}</p>
-                                        <p className="storydate">{dateConverter(story.createdAt)}</p>
-                                    </div>
-                                    <div className="remaining-stories-right">
-                                        <img src={story.Image}/>
-                                    </div>
+                    <div className="remaining-story" key={story.id}>
+                        <NavLink to={`/stories/${story.storyId}`}>
+                            <div className="remaining-stories-divider">
+                                <div id="remaining-stories-left">
+                                    <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
+                                    <p className="storytitle">{story.Title}</p>
+                                    <p className="storytext">{story.story.slice(0, 130)} ...</p>
+                                    <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(21)} min read &nbsp;
+                                        <span id="star-emoji">✨</span>
+                                    </p>
                                 </div>
-                            </NavLink>
-                        </div>
+                                <div className="remaining-stories-right">
+                                    <img src={story.Image} />
+                                </div>
+                            </div>
+                        </NavLink>
+                    </div>
 
                 ))}
             </div>
