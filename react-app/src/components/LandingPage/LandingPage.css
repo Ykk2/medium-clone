@@ -1,16 +1,18 @@
 .banner-wrapper {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
     justify-content: space-between;
     background-color: rgb(255, 192, 23);
     border-bottom: 1px solid black;
     margin-bottom: 40px;
+    min-width: 100vw;
     /* padding: 0 2rem 0 5rem; */
 }
 
 .banner-animation {
     padding-top: 3%;
+    /* padding-right: 10%; */
     height: 100%;
     /* width: 100%; */
     margin-top: 1%;
@@ -25,6 +27,7 @@
     justify-content: center;
     flex-direction: column;
     margin-left: 5%;
+    padding-left: 10%;
 
 
 }
@@ -32,7 +35,7 @@
 
 #first {
     font-family: Charter-Bold;
-    font-size: 106px;
+    font-size: 80px;
     margin-bottom: 0;
     z-index: 2;
     /* min-width: 600px; */
@@ -60,7 +63,7 @@
     border-radius: 40px;
     background-color: black;
     color: white;
-    font-size: 1.6vw;
+    font-size: 1vw;
     margin-bottom: 10%;
 }
 
@@ -107,6 +110,7 @@ p.trending-on-hard-text {
 }
 
 .userinfo {
+    display: flex;
     margin: 0;
     text-decoration: none;
     color: black;
@@ -114,6 +118,9 @@ p.trending-on-hard-text {
     font-size: 13px;
     font-weight: 700;
     padding-bottom: 6px;
+    align-items: center;
+    /* line-height: 5px; */
+    /* border: 1px black solid; */
 }
 
 .storytitle {
