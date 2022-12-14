@@ -15,6 +15,9 @@ def get_all_stories():
     for story in stories:
 
         storyUser = User.query.filter_by(id=story.userId).first()
+
+        totalFollowers = len(storyUser.following.all())
+
         response.append({
             "UserId": story.userId,
             "storyId": story.id,
@@ -27,7 +30,8 @@ def get_all_stories():
             "User": {
                 "id": storyUser.id,
                 "firstName": storyUser.first_name,
-                "lastName": storyUser.last_name
+                "lastName": storyUser.last_name,
+                "totalFollowers": totalFollowers
             }
         })
     return jsonify({'Stories': response})
@@ -42,6 +46,7 @@ def get_stories_by_user(userId):
     stories = Story.query.filter_by(userId = current_user.id).all()
     response = []
     user = User.query.filter_by(id = userId).first()
+
     for story in stories:
         response.append({
             "storyId": story.id,
@@ -85,16 +90,7 @@ def get_stories_by_follow(userId):
 
     return {"Stories": response}
 
-#GET LIST OF FOLLOWERS
-@story_route.route('/follows/<int:userId>')
-def get_list_followers(userId):
-    user = User.query.get(userId)
-    response = []
 
-    following_users = user.following.all()
-    followers_user_ids = [user.to_dict()['id'] for user in following_users]
-
-    return jsonify({'Followers' : followers_user_ids})
 
 
 # GET STORY BY ID
@@ -104,9 +100,12 @@ def get_list_followers(userId):
 def get_story(storyId):
     story = Story.query.get(storyId).to_dict()
     claps = StoryClap.query.filter_by(storyId = storyId).all()
+
     story['totalClaps'] = len(claps)
     userInfo = User.query.get(story["userId"])
+    totalFollowers = len(userInfo.following.all())
     user = userInfo.to_dict()
+    user['totalFollowers'] = totalFollowers
     story['storyUser'] = user
     return jsonify(story)
 

@@ -8,14 +8,14 @@ function EditResponse({ responseId }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const updateThisResponse = useSelector(state => {
-        console.log("STATE ======== ", state)
+
         return state.response.allResponses
     })
     const { id } = useParams();
     const [response, setResponse] = useState("");
     const [errors, setErrors] = useState([])
 
-    console.log("updateTHISRESPONSE ====== ", updateThisResponse)
+
 
     useEffect(() => {
         const validationErrors = []
@@ -31,10 +31,12 @@ function EditResponse({ responseId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!errors.length) {
             const payload = {
                 "body": response, responseId
             }
+
             await dispatch(editingResponse(payload))
             setResponse("")
             // if (isUpdated) {
@@ -64,7 +66,7 @@ function EditResponse({ responseId }) {
                     <button onClick={async (e) => {
                         e.preventDefault()
                         await dispatch(deletingResponse(responseId))
-                        // console.log("RESPONSEID ======== ", responseId)
+
                     }}>
                         Delete Response
                     </button>

@@ -2,33 +2,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import './StoryDetail.css'
 import { getOneStory, deletingStory, addLike } from '../../store/story';
-import { useEffect } from 'react';
-import { gettingFollows } from '../../store/follow';
-import './StoryDetail.css'
+import { useEffect, useState } from 'react';
+import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow';
+
+
 const StoryDetail = ({ storyDetails }) => {
+
     const dispatch = useDispatch();
     const history = useHistory();
     const storyImage = storyDetails.image;
     const currentUser = useSelector(state => state.session.user)
+    const followers = useSelector(state => state.follow.Followers)
+    const followerCount = useSelector(state => state.follow.totalFollowers)
+    const followersList = Object.values(followers)
+
+
     useEffect(() => {
-        dispatch(getOneStory(storyDetails.id)).then(() => {
-            dispatch(gettingFollows(storyDetails.userId))
-        })
-
+        dispatch(getOneStory(storyDetails.id))
+            .then(() => {
+                dispatch(gettingFollows(storyDetails.userId))
+            })
     }, [dispatch])
-    // if (!storyImage) return null;
-    const followers = useSelector(state => state.follow.allFollows)
-    // DELETE STORY TO BE IMPLEMENTED LATER
-    const followerCount = Object.keys(followers).length
-    // const handleDelete = async (e)=> {
-    //     e.preventDefault();
 
-    //     await history.push('/');
-    //     await dispatch(deleteStory(storyDetails.id))
-    // }
-    // useEffect(() => {
-
-    // }, [storyDetails.totalClaps])
 
     const increaseClap = (e) => {
         e.preventDefault()
@@ -36,21 +31,33 @@ const StoryDetail = ({ storyDetails }) => {
             dispatch(getOneStory(storyDetails.id))
         })
     }
-    // if (storyDetails.storyUser.bio == null) {
-    //     storyDetails.storyUser.bio = 'testing'
-    // }
-    const followersList = Object.values(followers)
 
     const doIFollow = followers => {
-        for (let e in followers) {
-            if (e == currentUser?.id) return true
+        for (let follower in followers) {
+            if (follower.id == storyDetails.userId) return true
         }
         return false
     }
+
     const iFollow = doIFollow(followers)
 
-    // console.log('LET ME FINISH PLEASE', followersList[0])
-    // console.log('THE LAST CHECK', !iFollow, storyDetails.storyUser.id != currentUser.id)
+    const [following, setFollowing] = useState(iFollow)
+
+    const handleFollowClick = (e) => {
+        e.preventDefault()
+        dispatch(addingFollow(storyDetails.userId))
+        dispatch(gettingFollows(storyDetails.userId))
+        setFollowing(true)
+    }
+
+    const handleRemoveFollowClick = (e) => {
+        e.preventDefault()
+        dispatch(deletingFollow(storyDetails.userId))
+        dispatch(gettingFollows(storyDetails.userId))
+        setFollowing(false)
+    }
+
+
     return (
         <div className='therealbiggestcontain'>
             <div className='biggestContainer'>
