@@ -10,7 +10,7 @@ function LoginForm({ setShowModal, setLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
+  const [errorsShow, setErrorsShown] = useState(false);
 
   useEffect(() => {
     const validation = []
@@ -22,21 +22,22 @@ function LoginForm({ setShowModal, setLoggedIn }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
+    setErrorsShown(true)
 
-    return dispatch(sessionActions.login({ email, password }))
-      .then(() => setShowModal(false))
-      .catch(
-        async (res) => {
+    if (!errors.length) {
+      return dispatch(sessionActions.login({ email, password }))
+        .then(() => setShowModal(false))
+        .catch(
+          async (res) => {
 
-          const data = await res.json();
+            const data = await res.json();
 
-          if (data && data.errors) setErrors(data.errors);
+            if (data && data.errors) setErrors(data.errors);
 
-        }
-      );
-  };
-
+          }
+        );
+    };
+  }
   const handleDemoUserSubmit = (e) => {
 
     e.preventDefault()
@@ -57,9 +58,10 @@ function LoginForm({ setShowModal, setLoggedIn }) {
     <form class="login-form" onSubmit={handleSubmit}>
       <h1 className="login-header">Welcome Back.</h1>
       <ul className="login-errors">
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
+        {errorsShow &&
+          errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
       </ul>
       <label>
         <input id="login-input"
