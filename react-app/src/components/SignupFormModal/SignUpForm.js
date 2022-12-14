@@ -15,6 +15,8 @@ function SignupForm({ setShowModal }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+  if (sessionUser) return <Redirect to="/stories" />;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
