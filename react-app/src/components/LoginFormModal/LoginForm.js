@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom"
 import './LoginForm.css'
 
 function LoginForm({ setShowModal, setLoggedIn }) {
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+
+  useEffect(() => {
+    const validation = []
+    if (!email.includes('@')) validation.push("Invalid email.")
+    setErrors(validation)
+  }, [email])
+
+  if (sessionUser) return <Redirect to="/stories" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +67,7 @@ function LoginForm({ setShowModal, setLoggedIn }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          placeholder="Username or Email"
+          placeholder="Email"
         />
       </label>
       <label>
