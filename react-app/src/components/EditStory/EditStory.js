@@ -35,41 +35,51 @@ function EditStory() {
     }
 
     return (
-        <form className='story-form' onSubmit={handleSubmit}>
-            <h2>Tell your story</h2>
-            <ul className='errors'>
-                {errors.map(error => (
-                    <li key={error}>{error}</li>
-                ))}
-            </ul>
-            <label>
-                {/* Title */}
-                <input
-                    type="text"
-                    placeholder='Title'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required />
-            </label>
-            <label>
-                <input
-                    type="text"
-                    placeholder="Tell your story..."
-                    onChange={(e) => setStory(e.target.value)}
-                    required />
-            </label>
-            <label>
-                <input
-                    type="text"
-                    value={image}
-                    placeholder="Image URL for your story"
-                    onChange={(e) => setImage(e.target.value)} />
-            </label>
-            <button type='submit' disabled={errors.length > 0}>
-                Publish Changes
-            </button>
 
-        </form>
+        <div
+            className='allContainer'>
+            <form className='story-form' onSubmit={handleSubmit}>
+
+                <label>
+                    {/* Title */}
+                    <input
+                        type="text"
+                        placeholder='Title'
+                        className='titleInput'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required />
+                </label>
+                <label>
+                    {/* Story */}
+                    <input
+                        type="text"
+                        className='storyInput'
+                        placeholder="Tell your story..."
+                        onChange={(e) => setStory(e.target.value)}
+                        required />
+                </label>
+                <label>
+                    {/* Image */}
+                    <input
+                        type="text"
+                        className='imageInput'
+                        value={image}
+                        placeholder="Image URL for your story"
+                        onChange={(e) => setImage(e.target.value)} />
+                </label>
+                <button type='submit'
+                    className='publishBtn'
+                    disabled={errors.length > 0}>
+                    Publish
+                </button>
+                <ul className='errors'>
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            </form>
+        </div>
     )
 }
 
