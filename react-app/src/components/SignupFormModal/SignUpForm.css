@@ -6,6 +6,8 @@
     width: 60vh;
     height: 60vh;
     opacity: 0.9;
+    min-width: 450px;
+    min-width: 425px;
 }
 
 #signup-form-input {
