@@ -24,14 +24,14 @@ export const GetResponsesByStory = ({ storyDetails }) => {
             <ul>
                 {storyResponse?.map((resp) => (
                     <li>
-                        {console.log("RESP ========== ", resp)}
+
                         {resp.user?.firstName} {resp.user?.lastName}
                         <li>
                             {resp.body}
                         </li>
                         <li>
                             <EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
-                           
+
                         </li>
                     </li>
                 ))}

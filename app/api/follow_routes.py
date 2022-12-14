@@ -29,8 +29,8 @@ def get_list_followers(userId):
 def add_follower(userId):
 
     # form['csrf_token'].data = request.cookies['csrf_token']
-    followed_user = User.query.get(current_user.id)
-    following_user = User.query.get(userId)
+    following_user = User.query.get(current_user.id)
+    followed_user = User.query.get(userId)
 
     if followed_user.following.filter(follows.c.followerId == following_user.id).count() > 0:
         return { "error": "User is already following this user"}
@@ -50,8 +50,8 @@ def add_follower(userId):
 @follow_route.route('/<int:userId>', methods=['DELETE'])
 # @login_required
 def delete_follower(userId):
-    followed_user = User.query.get(current_user.id)
-    following_user = User.query.get(userId)
+    following_user = User.query.get(current_user.id)
+    followed_user = User.query.get(userId)
 
     if followed_user.following.filter(follows.c.followerId == following_user.id).count() <= 0:
         return { "error": "User does not follow this user yet"}

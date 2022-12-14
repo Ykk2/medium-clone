@@ -64,7 +64,7 @@ export default function reducer(state = { Followers: {}, totalFollowers: 0 }, ac
             const newState = { Followers: {...state.Followers}, totalFollowers: 0}
             action.followers.Followers.forEach(follower => {
                 newState.Followers[follower.id] = follower
-                console.log(action)
+
                 newState.totalFollowers = action.followers.totalFollowers
             })
             return newState
@@ -73,8 +73,8 @@ export default function reducer(state = { Followers: {}, totalFollowers: 0 }, ac
             const newState = { Followers: { ...state.Followers }, totalFollowers: 0 }
 
             newState.Followers[action.follower.follower.id] = action.follower.follower
-            console.log(action.follower.totalFollowers)
-            newState.totalFollowers = action.followers.totalFollowers
+
+            newState.totalFollowers = action.follower.totalFollowers
             return newState
         }
         case DELETE_FOLLOW: {
