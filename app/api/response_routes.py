@@ -78,19 +78,21 @@ def delete_response(responseId):
 def update_response(responseId):
 
     response = Response.query.filter_by(id = responseId).first()
-
+    users = User.query.filter_by(id = current_user.id).first()
     form = ResponseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         setattr(response, 'body', form.data['body'])
 
+    print("WHAT ARE THE FORM ERRORS: ", form.errors)
     if form.errors:
         return "Invalid Data"
 
     db.session.commit()
-
-    return response.to_dict()
+    res = response.to_dict()
+    res['user'] = users.to_dict()
+    return res
 
 # CREATE A CLAP FOR RESPONSE
 

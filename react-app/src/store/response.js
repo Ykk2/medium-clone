@@ -43,7 +43,7 @@ export const getResponses = storyId => async dispatch => {
 
 export const addingResponse = (responseObj) => async (dispatch) => {
 
-    const {response, storyId} = responseObj
+    const { response, storyId } = responseObj
     // console.log("STORYID ========= ", storyId)
     // console.log("response ======== ", response)
     // console.log("responseOBJ ======== ", responseObj)
@@ -51,7 +51,7 @@ export const addingResponse = (responseObj) => async (dispatch) => {
     const res = await fetch(`/api/responses/${storyId}/responses`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({"body": response, "storyId" : storyId })
+        body: JSON.stringify({ "body": response, "storyId": storyId })
 
     })
     console.log("this is res ===== ", res)
@@ -65,15 +65,17 @@ export const addingResponse = (responseObj) => async (dispatch) => {
 }
 
 export const editingResponse = (payload) => async (dispatch) => {
-    const { response, id } = payload;
-    const responseFetch = await fetch(`/api/responses/${id}`, {
+    const { body, responseId } = payload;
+    const responseFetch = await fetch(`/api/responses/${responseId}`, {
         method: "PUT",
-        headers: {"Content-Type" : "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     })
     if (responseFetch.ok) {
-        const editedResponse = await response.json();
+        const editedResponse = await responseFetch.json();
+        console.log("EDITEDRESPONSE*(******** = ", editedResponse)
         dispatch(editResponse(editedResponse))
+
         return editedResponse;
     }
 }
@@ -108,9 +110,12 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         }
 
         case EDIT_RESPONSE: {
-            const newState = { ...state, oneResponse: {...state.oneResponse}, allResponses : { ...state.allResponses}}
-            newState.oneResponse[action.response.id] = action.response.id
+            console.log("HI MOM ============")
+            const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
+            newState.allResponses[action.response.id] = action.response
+            newState.oneResponse = action.response
             console.log("EDIT_RESPONSE newSTATE ====== ", newState.oneResponse[action.response.id])
+            return newState
         }
         case DELETE_RESPONSE: {
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
