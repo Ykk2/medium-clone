@@ -6,13 +6,14 @@
     background-color: rgb(255, 192, 23);
     border-bottom: 1px solid black;
     margin-bottom: 40px;
+    /* padding: 0 2rem 0 5rem; */
 }
 
 .banner-animation {
     padding-top: 3%;
     height: 100%;
     /* width: 100%; */
-    margin-top: 5%;
+    margin-top: 1%;
     margin-right: 0;
     /* left: 20px; */
     /* z-index: 1; */
