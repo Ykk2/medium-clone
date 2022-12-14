@@ -67,6 +67,7 @@ export const addingStory = (story) => async dispatch => {
 }
 
 export const edittingStory = (story, id) => async dispatch => {
+    console.log('THIS IS MY EDITTING STORY STORY', story, id)
     const response = await csrfFetch(`/api/spots/${id}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
     })

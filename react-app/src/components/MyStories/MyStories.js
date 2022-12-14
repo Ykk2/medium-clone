@@ -46,14 +46,10 @@ const ShowMyStories = () => {
                             }}
 
                         >DELETE THIS STORY</button>
-                        <button
-                            className="editBtn"
-                            onClick={async (e) => {
-                                e.preventDefault()
-                                await dispatch(edittingStory(story.storyId))
-                            }}>
-                            EDIT THIS STORY
-                        </button>
+                        <NavLink to={`/stories/${story.storyId}/edit`}>
+                            <button className="editBtn">
+                                EDIT THIS STORY
+                            </button></NavLink>
                     </div>
                 ))
                 }
