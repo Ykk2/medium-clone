@@ -93,3 +93,11 @@ button {
 * {
     text-decoration: none;
 }
+
+html {
+    width: 100vw;
+}
+
+#root {
+    width: 100vw;
+}

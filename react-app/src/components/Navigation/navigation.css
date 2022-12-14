@@ -6,7 +6,7 @@
     background-color: rgb(255, 192, 23);
     border-bottom: 1px solid black;
     height: 9%;
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 4vw;
     position: fixed;
     top: 0;
