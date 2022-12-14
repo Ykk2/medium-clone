@@ -4,68 +4,84 @@ const LOAD_FOLLOWS = '/follows/LOAD_FOLLOWS'
 const ADD_FOLLOW = '/follows/ADD_FOLLOW'
 const DELETE_FOLLOW = '/follows/DELETE_FOLLOW'
 
-const getFollows = follows => {
+const getFollows = followers => {
     return {
-        type: LOAD_FOLLOWS, follows
+        type: LOAD_FOLLOWS, followers
     }
 }
 
-const addFollow = follow => {
+const addFollow = follower => {
     return {
-        type: ADD_FOLLOW, follow
+        type: ADD_FOLLOW, follower
     }
 }
 
-const deleteFollow = follow => {
+const deleteFollow = userId => {
     return {
-        type: DELETE_FOLLOW, follow
+        type: DELETE_FOLLOW, userId
     }
 }
 
 // Need to fix api routes for fetch + params
-export const gettingFollows = (id) => async dispatch => {
-    const response = await fetch(`/api/stories/follows/${id}`)
+export const gettingFollows = (userId) => async dispatch => {
+    const response = await fetch(`/api/follows/${userId}`)
     if (response.ok) {
-        const follows = await response.json()
-        dispatch(getFollows(follows))
-        return follows
+        const followers = await response.json()
+        dispatch(getFollows(followers))
+        return followers
     }
 }
 
-export const addingFollow = () => async dispatch => {
-    const response = await csrfFetch('/api/follows')
-    if (response.ok) {
-        const follow = await response.json()
-        dispatch(addFollow(follow))
-        return follow
+export const addingFollow = (userId) => async dispatch => {
+    const response = await fetch(`/api/follows/${userId}`, {
+
+        method: "POST"
+    })
+
+    if (!response.error) {
+        const follower = await response.json()
+        dispatch(addFollow(follower))
+        return follower
     }
 }
 
-export const deletingFollow = () => async dispatch => {
-    const response = await csrfFetch('/api/follows')
-    if (response.ok) {
-        const follow = await response.json()
-        dispatch(deleteFollow(follow))
+export const deletingFollow = (userId) => async dispatch => {
+    const response = await fetch(`/api/follows/${userId}`, {
+
+        method: 'DELETE'
+    })
+
+    if (!response.error) {
+        const follower = await response.json()
+        dispatch(deleteFollow(userId))
+        return follower
     }
 }
 
-export default function reducer(state = { oneFollow: {}, allFollows: {} }, action) {
+export default function reducer(state = { Followers: {}, totalFollowers: 0 }, action) {
     switch (action.type) {
         case LOAD_FOLLOWS: {
-            const newState = { oneFollow: {}, allFollows: {} }
-            action.follows.Followers.forEach(e => {
-                newState.allFollows[e] = e
+            const newState = { Followers: {...state.Followers}, totalFollowers: 0}
+            action.followers.Followers.forEach(follower => {
+                newState.Followers[follower.id] = follower
+                console.log(action)
+                newState.totalFollowers = action.followers.totalFollowers
             })
             return newState
         }
         case ADD_FOLLOW: {
-            const newState = { ...state, oneFollow: { ...state.oneFollow }, allFollows: { ...state.allFollows } }
-            newState.oneFollow = action.follow
+            const newState = { Followers: { ...state.Followers }, totalFollowers: 0 }
+
+            newState.Followers[action.follower.follower.id] = action.follower.follower
+            console.log(action.follower.totalFollowers)
+            newState.totalFollowers = action.followers.totalFollowers
             return newState
         }
         case DELETE_FOLLOW: {
-            const newState = { ...state, oneFollow: { ...state.oneFollow }, allFollows: { ...state.allFollows } }
-            delete newState.allFollows[action.follow.id]
+            const newState = { Followers: {...state.Followers}, totalFollowers: state.totalFollowers }
+
+            delete newState.Followers[action.userId]
+            newState.totalFollowers--
             return newState
         }
         default: return state

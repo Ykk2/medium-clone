@@ -14,6 +14,7 @@ import CreateStory from './components/CreateStory/CreateStory';
 import ShowMyStories from './components/MyStories/MyStories';
 import LandingPage from './components/LandingPage/LandingPage';
 import EditStory from './components/EditStory/EditStory';
+import Follows from './components/MyStories/Follows'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +32,9 @@ function App() {
     <BrowserRouter>
       <NavBar loaded={loaded} setLoaded={setLoaded} />
       <Switch>
+        <Route path='/testingfollows' exact={true} >
+          <Follows />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
