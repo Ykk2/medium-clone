@@ -1,31 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom"
 import './LoginForm.css'
 
 function LoginForm({ setShowModal, setLoggedIn }) {
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [errorsShow, setErrorsShown] = useState(false);
+
+  useEffect(() => {
+    const validation = []
+    if (!email.includes('@')) validation.push("Invalid email.")
+    setErrors(validation)
+  }, [email])
+
+  if (sessionUser) return <Redirect to="/stories" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
+    setErrorsShown(true)
 
-    return dispatch(sessionActions.login({ email, password }))
-      .then(() => setShowModal(false))
-      .catch(
-        async (res) => {
+    if (!errors.length) {
+      return dispatch(sessionActions.login({ email, password }))
+        .then(() => setShowModal(false))
+        .catch(
+          async (res) => {
 
-          const data = await res.json();
+            const data = await res.json();
 
-          if (data && data.errors) setErrors(data.errors);
+            if (data && data.errors) setErrors(data.errors);
 
-        }
-      );
-  };
-
+          }
+        );
+    };
+  }
   const handleDemoUserSubmit = (e) => {
 
     e.preventDefault()
@@ -46,9 +58,10 @@ function LoginForm({ setShowModal, setLoggedIn }) {
     <form class="login-form" onSubmit={handleSubmit}>
       <h1 className="login-header">Welcome Back.</h1>
       <ul className="login-errors">
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
+        {errorsShow &&
+          errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
       </ul>
       <label>
         <input id="login-input"
@@ -56,7 +69,7 @@ function LoginForm({ setShowModal, setLoggedIn }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          placeholder="Username or Email"
+          placeholder="Email"
         />
       </label>
       <label>

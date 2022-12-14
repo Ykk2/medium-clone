@@ -9,11 +9,9 @@ const ShowMyStories = () => {
     const getStories = useSelector(state => {
         return Object.values(state.story.allStories)
     })
-    // const currentUser = useSelector(state => state.session.user)
-    console.log("getStories", getStories)
+
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
-    console.log("Current User from Component", currentUser)
     useEffect(() => {
         dispatch(getMyStories(currentUser?.id))
     }, [dispatch, currentUser])
@@ -35,6 +33,7 @@ const ShowMyStories = () => {
                 {getStories?.map(story => (
                     < div className="story-card" >
                         <NavLink to={`/stories/${story.storyId}`}>
+                            <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
                             <div className="storyTitle">{story?.Title}</div>
                             <div className="storyBody">{story?.Story}</div>
                         </NavLink>
@@ -45,10 +44,10 @@ const ShowMyStories = () => {
                                 await dispatch(deletingStory(story.storyId))
                             }}
 
-                        >DELETE THIS STORY</button>
+                        >Delete Story</button>
                         <NavLink to={`/stories/${story.storyId}/edit`}>
                             <button className="editBtn">
-                                EDIT THIS STORY
+                                Edit Story
                             </button></NavLink>
                     </div>
                 ))

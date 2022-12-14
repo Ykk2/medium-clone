@@ -67,9 +67,10 @@ function EditStory() {
                 </label>
                 <label>
                     {/* Story */}
-                    <input
+                    <textarea
                         type="text"
                         className='storyInput'
+                        value={story}
                         placeholder="Tell your story..."
                         onChange={(e) => setStory(e.target.value)}
                         required />
