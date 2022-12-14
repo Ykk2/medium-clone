@@ -51,7 +51,7 @@ function LandingPage() {
             </div>
             <div className="remaining-stories-wrapper">
                 {remainingStories.map(story => (
-                    <div className="remaining-story-wrapper">
+
                         <div className="remaining-story" key={story.id}>
                             <NavLink to={`/stories/${story.storyId}`}>
                                 <div className="remaining-stories-divider">
@@ -66,11 +66,8 @@ function LandingPage() {
                                 </div>
                             </NavLink>
                         </div>
-                    </div>
+
                 ))}
-            </div>
-            <div>
-                    <h1>hello</h1>
             </div>
         </>
     )

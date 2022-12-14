@@ -9,17 +9,15 @@
 
 .publishBtn {
     background-color: green;
-    z-index: 999;
-    align-self: flex-end;
-    margin-right: 20px;
     color: white;
     border-radius: 5px;
-    height: 40px
+    height: 40px;
+    width: 400px;
+    font-size: 30px;
+    margin-top: 20px
 }
 
-.allContainer {
-    border: 5px solid orange;
-}
+.allContainer {}
 
 .titleInput {
     margin-top: 40px;
@@ -35,7 +33,6 @@
     border: none;
     justify-content: flex-start;
     align-items: flex-start;
-
     margin-top: 5px;
     width: 600px;
     height: 600px;
