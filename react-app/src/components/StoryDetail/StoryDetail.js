@@ -69,12 +69,25 @@ const StoryDetail = ({ storyDetails }) => {
                             {storyDetails.storyUser.firstName} {storyDetails.storyUser.lastName}</div>
                         <div className='followContainer'>
                             <div className='authorFollowers'>{followerCount}  followers</div>
-                            {(storyDetails.storyUser.id != currentUser?.id) &&
+                            {/* {(storyDetails.storyUser.id != currentUser?.id) &&
                                 (!iFollow) &&
                                 <button className='followBtn'>
                                     Follow!
                                 </button>
-                            }
+                            } */}
+
+                            {
+                                (storyDetails.storyUser.id !== currentUser?.id) &&
+
+                                (following ?
+                                    <button className='followBtn' onClick={handleRemoveFollowClick}>
+                                        Unfollow
+                                    </button>
+                                    :
+                                    <button className='followBtn' onClick={handleFollowClick}>
+                                        Follow
+                                    </button>
+                                )}
                         </div>
                     </div>
                     <div className='clapsContainer'>
