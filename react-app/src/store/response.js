@@ -80,12 +80,17 @@ export const editingResponse = (payload) => async (dispatch) => {
     }
 }
 
-export const deletingResponse = id => async dispatch => {
-    const res = await csrfFetch(`/api/responses/${id}`, { method: 'DELETE' })
+export const deletingResponse = payload => async dispatch => {
+    // const {body, responseId} = payload
+    console.log("DELETE PAYLOAD ===== ", payload)
+    // console.log("RESPONSE ID OF PAYLOAD ==== ", responseId)
+    const res = await fetch(`/api/responses/${payload}`, {
+        method: 'DELETE'
+    })
     if (res.ok) {
-        const response = await res.json()
-        dispatch(deleteResponse(response))
-        return response
+        // const response = await res.json()
+        dispatch(deleteResponse(payload))
+        // return response
     }
 }
 
@@ -110,11 +115,11 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         }
 
         case EDIT_RESPONSE: {
-            console.log("HI MOM ============")
+            // console.log("HI MOM ============")
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
             newState.allResponses[action.response.id] = action.response
             newState.oneResponse = action.response
-            console.log("EDIT_RESPONSE newSTATE ====== ", newState.oneResponse[action.response.id])
+            // console.log("EDIT_RESPONSE newSTATE ====== ", newState.oneResponse[action.response.id])
             return newState
         }
         case DELETE_RESPONSE: {
