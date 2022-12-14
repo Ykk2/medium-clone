@@ -19,7 +19,7 @@ const ShowAllStories = () => {
             className="allStoriesContainer">
             <NavLink to={`/stories/new`}>
                 <button
-                    className="createStoryBtn">CREATE A STORY</button>
+                    className="createStoryBtn">✍️ Write</button>
             </NavLink>
             {getStories.map(story => (
                 < div className="storyCard" >
@@ -36,9 +36,13 @@ const ShowAllStories = () => {
                                 </div>
                                 <div className="storyBody">
                                     <div className="body">{story.story}</div>
-                                </div></div>
+                                </div>
+                            </div>
                             <div className="right">
-                                <img src={story.Image} alt={story.name} className='storyImage'></img></div></div>
+                                <img src={story.Image} alt={story.name} className='storyImage'>
+                                </img>
+                            </div>
+                        </div>
                     </NavLink>
                 </div>
                 // <AllStories key={story.id} story={story} />
