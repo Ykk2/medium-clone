@@ -39,31 +39,52 @@
     background-color: green;
     height: 40px;
     margin-right: 0px;
+    cursor: pointer;
 }
 
 .story-card {
-    border-top: 1px solid lightgray;
+    /* border-top: 1px solid lightgray; */
     border-bottom: 1px solid lightgray;
     margin-top: 20px;
-    height: 15%;
+    padding-top: 5px;
+    height: 21%;
+    width: 100%;
 }
 
 .storyTitle {
     margin-top: 5px;
     font-size: 20px;
+    color: black;
     font-weight: bold;
 
 }
 
 .storyBody {
-    height: 20%;
+    height: 25%;
     text-overflow: ellipsis;
     overflow: hidden;
-
+    color: black;
 
 }
 
 .deleteBtn {
     margin-top: 20px;
-    margin-left: -5px
+    margin-left: -5px;
+    cursor: pointer;
+    font-family: Helvetica;
+    color: grey;
+}
+
+.editBtn {
+    cursor: pointer;
+    font-family: Helvetica;
+    color: grey;
+}
+
+.deleteBtn:hover {
+    color: black;
+}
+
+.editBtn:hover {
+    color: black;
 }
