@@ -31,12 +31,10 @@ function EditResponse({ responseId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("E DOT TARGET ==== ", e.target)
         if (!errors.length) {
             const payload = {
                 "body": response, responseId
             }
-            console.log("EDITSPOT PAYLOAD ======= ", payload)
             await dispatch(editingResponse(payload))
             setResponse("")
             // if (isUpdated) {
@@ -56,7 +54,7 @@ function EditResponse({ responseId }) {
                     <label>
                         <input
                             type="text"
-                            placeholder="Write a comment here..."
+                            placeholder="Edit your comment here!"
                             value={response}
                             onChange={(e) => setResponse(e.target.value)}
                             required />

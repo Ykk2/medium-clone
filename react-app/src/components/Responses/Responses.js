@@ -20,24 +20,29 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     }, [dispatch, storyDetails.id])
 
     return (
-        <div>
-            <ul>
+        <div className='biggestResponseContainer'>
+            <div className='responsesContainer'>
                 {storyResponse?.map((resp) => (
-                    <li>
-                        {console.log("RESP ========== ", resp)}
-                        {resp.user?.firstName} {resp.user?.lastName}
-                        <li>
+                    <div className='individualResponses'>
+                        <div className='responder'>
+                            <div className='responderProfile'>
+                                <i id='profile-review' className="fas fa-user-circle" />
+                            </div>
+                            <div className='responderName'>
+                                {resp.user?.firstName} {resp.user?.lastName}
+                            </div>
+                        </div>
+                        <div className='responseBody'>
                             {resp.body}
-                        </li>
-                        <li>
-                            <EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
-                           
-                        </li>
-                    </li>
+                        </div>
+                        <div className='responseActions'>
+                            < EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
+                        </div>
+                    </div>
                 ))}
-            </ul>
-            <div>
-                <CreateResponse key={storyDetails.id} storyDetails={storyDetails} />
+                <div className='createResponse'>
+                    <CreateResponse key={storyDetails.id} storyDetails={storyDetails} />
+                </div>
 
             </div>
         </div>
