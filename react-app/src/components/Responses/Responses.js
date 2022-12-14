@@ -30,7 +30,8 @@ export const GetResponsesByStory = ({ storyDetails }) => {
                             {resp.body}
                         </li>
                         <li>
-                        <EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
+                            <EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
+                           
                         </li>
                     </li>
                 ))}

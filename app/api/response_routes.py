@@ -65,11 +65,12 @@ def create_response(storyId):
 
 @response_route.route('/<int:responseId>', methods=['DELETE'])
 def delete_response(responseId):
-    response = Response.query.filter_by(id = responseId)
+    response = Response.query.filter_by(id = responseId).first()
     if not response:
         return ('No Response Found!')
     else:
-        response.session.delete(response)
+        db.session.delete(response)
+        db.session.commit()
         return {"message": "Successfully Deleted!", "statusCode": 200}
 
 #EDIT A RESPONSE
