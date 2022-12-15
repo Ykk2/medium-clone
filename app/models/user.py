@@ -29,9 +29,9 @@ class User(db.Model, UserMixin):
     responseclaps = db.relationship("ResponseClap", back_populates="users",cascade="all, delete")
     followers = db.relationship(
         "User",
-        secondary="follows",
-        primaryjoin=(id == follows.c.followerId),
-        secondaryjoin=(id == follows.c.followedId),
+        secondary=follows,
+        primaryjoin=(follows.c.followerId == id),
+        secondaryjoin=(follows.c.followedId == id),
         backref=db.backref("following",lazy="dynamic"),
         lazy="dynamic",
 

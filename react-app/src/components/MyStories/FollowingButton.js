@@ -6,6 +6,8 @@ import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow
 
 function FollowingButton({followerId}) {
 
+    const currentUser = useSelector(state => state.session.user)
+
     const dispatch = useDispatch()
 
     const [follow, setFollowing] = useState(true)
@@ -18,7 +20,7 @@ function FollowingButton({followerId}) {
 
     const handleRemoveFollowClick = (e) => {
         e.preventDefault()
-        dispatch(deletingFollow(followerId))
+        dispatch(deletingFollow(followerId, followerId))
         setFollowing(false)
     }
 
