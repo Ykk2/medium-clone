@@ -4,7 +4,8 @@ import './StoryDetail.css'
 import { getOneStory, deletingStory, addLike } from '../../store/story';
 import { useEffect } from 'react';
 import { gettingFollows } from '../../store/follow';
-import './StoryDetail.css'
+
+
 const StoryDetail = ({ storyDetails }) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -71,13 +72,14 @@ const StoryDetail = ({ storyDetails }) => {
                         </div>
                     </div>
                     <div className='clapsContainer'>
-                        <div className='totalClaps'>{storyDetails.totalClaps} </div>
+                        <div className='totalClaps'>{storyDetails.totalClaps}</div>
                         <button
                             onClick={increaseClap}
                             className='clapBtn'
                         >
-                            <div className='clapEmoji'>
-                                👏
+                            <div>
+                                <img className='clapEmoji' src={require('./clap.svg').default} alt='svgImage' />
+
                             </div>
                         </button>
                     </div>
