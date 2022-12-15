@@ -1,16 +1,18 @@
 .biggestResponseContainer {
-    width: 100%;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .responsesContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%
+    width: 100%
 }
 
 .individualResponses {

@@ -6,8 +6,8 @@ import { deletingStory, edittingStory } from "../../store/story";
 import { getMyStories } from "../../store/story";
 import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow';
 import Following from './Following'
-
 import './MyStories.css'
+
 const ShowMyStories = () => {
 
 
@@ -62,7 +62,7 @@ const ShowMyStories = () => {
             </div >
             { showModal &&
                 <Modal onClose={() => setShowModal(false)}>
-                    <Following setShowModal={setShowModal} userId={currentUser.id}/>
+                    <Following userId={currentUser.id}/>
                 </Modal>
             }
         </div>
