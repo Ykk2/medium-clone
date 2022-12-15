@@ -8,6 +8,7 @@ def user_exists(form, field):
     # Checking if user exists
     email = field.data
     user = User.query.filter(User.email == email).first()
+    print(user.to_dict(),'user from backend python')
     if user:
         raise ValidationError('Email address is already in use.')
 

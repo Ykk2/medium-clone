@@ -1,5 +1,5 @@
 // frontend/src/components/SignupFormPage/index.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -14,12 +14,20 @@ function SignupForm({ setShowModal }) {
   const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [errorsShow, setErrorsShown] = useState(false);
+
+  useEffect(() => {
+    const validation = []
+    if (!email.includes('@')) validation.push("Invalid email.")
+    setErrors(validation)
+  }, [email])
 
   if (sessionUser) return <Redirect to="/stories" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
+    setErrorsShown(true)
+    if (!errors.length && password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signUp(username, email, password))
         .then(() => setShowModal(false))
@@ -38,7 +46,8 @@ function SignupForm({ setShowModal }) {
     <form className="sign-up-form" onSubmit={handleSubmit}>
       <h1>Join Medium.</h1>
       <ul className="sign-up-errors">
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errorsShow &&
+          errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
         <input id="signup-form-input"
