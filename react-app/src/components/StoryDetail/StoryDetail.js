@@ -4,7 +4,7 @@ import './StoryDetail.css'
 import { getOneStory, deletingStory, addLike } from '../../store/story';
 import { useEffect, useState } from 'react';
 import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow';
-
+import { useParams } from "react-router-dom";
 
 const StoryDetail = ({ storyDetails }) => {
 
@@ -14,16 +14,31 @@ const StoryDetail = ({ storyDetails }) => {
     const currentUser = useSelector(state => state.session.user)
     const followers = useSelector(state => state.follow.Followers)
     const followerCount = useSelector(state => state.follow.totalFollowers)
+    const { storyId } = useParams();
     const followersList = Object.values(followers)
 
+    const [following, setFollowing] = useState()
+    console.log("initial following", following)
 
     useEffect(() => {
         dispatch(getOneStory(storyDetails.id))
-            .then(() => {
-                dispatch(gettingFollows(storyDetails.userId))
-            })
-    }, [dispatch])
+        .then(() => {
+            dispatch(gettingFollows(storyDetails.userId))
+        })
 
+    }, [dispatch, storyId])
+
+    useEffect(() => {
+        for (let follower in followers) {
+            let num = Number(follower)
+            if (num === currentUser.id) {
+                return setFollowing(true)
+            }
+            else {
+                setFollowing(false)
+            }
+        }
+    }, [followers, dispatch])
 
     const increaseClap = (e) => {
         e.preventDefault()
@@ -32,29 +47,20 @@ const StoryDetail = ({ storyDetails }) => {
         })
     }
 
-    const doIFollow = followers => {
-        for (let follower in followers) {
-            if (follower.id == storyDetails.userId) return true
-        }
-        return false
-    }
-
-    const iFollow = doIFollow(followers)
-
-    const [following, setFollowing] = useState(iFollow)
-
     const handleFollowClick = (e) => {
         e.preventDefault()
         dispatch(addingFollow(storyDetails.userId))
-        dispatch(gettingFollows(storyDetails.userId))
+
         setFollowing(true)
+
     }
 
     const handleRemoveFollowClick = (e) => {
         e.preventDefault()
-        dispatch(deletingFollow(storyDetails.userId))
-        dispatch(gettingFollows(storyDetails.userId))
+        dispatch(deletingFollow(storyDetails.userId, currentUser.id))
+
         setFollowing(false)
+
     }
 
 

@@ -5,19 +5,27 @@ from flask_login import login_required, current_user
 
 follow_route = Blueprint("follows", __name__)
 
-
-#GET LIST OF FOLLOWERS
-@follow_route.route('/<int:userId>')
+# GET LIST OF PEOPLE THE I FOLLOW
+@follow_route.route('/<int:userId>/follower')
 # @login_required
-def get_list_followers(userId):
+def get_list_follower(userId):
+    user = User.query.get(userId)
+
+    following_users_query = user.followers.all()
+    following_users = [user.to_dict() for user in following_users_query]
+
+    return {'Followers' : following_users}
+
+# GET LIST OF PEOPLE THAT IS FOLLOWING THE USER
+@follow_route.route('/<int:userId>/following')
+# @login_required
+def get_list_following(userId):
     user = User.query.get(userId)
 
     following_users_query = user.following.all()
 
     following_users = [user.to_dict() for user in following_users_query]
-
     total_followers = len(following_users)
-
     return {'Followers' : following_users, "totalFollowers": total_followers}
 
 
@@ -52,9 +60,9 @@ def add_follower(userId):
 def delete_follower(userId):
     following_user = User.query.get(current_user.id)
     followed_user = User.query.get(userId)
-
     if followed_user.following.filter(follows.c.followerId == following_user.id).count() <= 0:
         return { "error": "User does not follow this user yet"}
+
     followed_user.following.remove(following_user)
     db.session.commit()
 
