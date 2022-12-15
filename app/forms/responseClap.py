@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired
 
 class ResponseClapForm(FlaskForm):
     userId = IntegerField("userId",[DataRequired()])
-    # responseId = IntegerField("responseId",[DataRequired()])
+    responseId = IntegerField("responseId",[DataRequired()])
     submit = SubmitField("Submit")
