@@ -12,7 +12,13 @@
     justify-self: flex-start;
     font-size: 30px;
     width: 200px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    color: grey;
+    cursor: pointer;
+}
+
+.createStoryBtn:hover {
+    color: black;
 }
 
 .left {
@@ -74,15 +80,19 @@
 }
 
 .body {
-    height: 240px;
+    height: 230px;
+    font-family: Helvetica;
+    white-space: pre-wrap;
 }
 
 .storyBody {
+    white-space: pre-wrap;
     margin-top: -10px;
     height: 400px;
     text-overflow: ellipse;
     overflow: hidden;
     font-size: 18px;
+    font-family: Helvetica;
 }
 
 a:visited {}
