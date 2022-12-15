@@ -11,7 +11,11 @@ import EditResponse from '../EditResponse/EditResponse';
 
 
 export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
+    const currentUser = useSelector(state => state.session.user)
 
+
+    console.log('THIS IS MY CURRENT USER HERE', resp)
+    // resp.userId, currentUser.id
     const history = useHistory();
     const dispatch = useDispatch();
     const singleResponse = useSelector(state => {
@@ -68,9 +72,11 @@ export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
 
                 </button>
             </div>
-            <div className='responseActions'>
-                < EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
-            </div>
+            {
+                currentUser.id === resp.userId &&
+                <div className='responseActions'>
+                    < EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
+                </div>}
         </div>
 
     )
