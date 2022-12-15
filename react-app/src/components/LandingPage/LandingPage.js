@@ -71,7 +71,7 @@ function LandingPage() {
                                 <div id="remaining-stories-left">
                                     <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
                                     <p className="storytitle">{story.Title}</p>
-                                    <p className="storytext">{story.story.slice(0, 130)} ...</p>
+                                    <p className="storytext">{story.story.slice(0, 110)} ...</p>
                                     <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(21)} min read &nbsp;
                                         <span id="star-emoji">✨</span>
                                     </p>
