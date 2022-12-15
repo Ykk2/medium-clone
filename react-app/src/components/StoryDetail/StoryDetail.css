@@ -57,7 +57,12 @@
     border-radius: 25%;
     background-color: gray;
     color: white;
-    width: 40%
+    width: 40%;
+    cursor: pointer;
+}
+
+.followBtn:hover {
+    color: black;
 }
 
 .clapsContainer {
@@ -90,6 +95,7 @@
     flex-direction: row;
     width: 10%;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 

@@ -35,7 +35,7 @@ const ShowMyStories = () => {
                             Write a Story
                         </NavLink>
                     </button>
-                    <button onClick={() => setShowModal(true)}>Following</button>
+                    <button className="following-button" onClick={() => setShowModal(true)}><i class="fa-solid fa-users" /> &nbsp;Following</button>
                 </div>
                 {getStories?.map(story => (
                     < div className="story-card" >
@@ -60,9 +60,9 @@ const ShowMyStories = () => {
                 ))
                 }
             </div >
-            { showModal &&
+            {showModal &&
                 <Modal onClose={() => setShowModal(false)}>
-                    <Following userId={currentUser.id}/>
+                    <Following setShowModal={setShowModal} userId={currentUser.id} />
                 </Modal>
             }
         </div>
