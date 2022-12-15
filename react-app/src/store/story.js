@@ -116,7 +116,7 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
         case LOAD_ALL_STORIES: {
             const newState = { oneStory: {}, allStories: {} }
             action.stories.Stories.forEach(e => {
-                console.log('THIS IS AN EEEEEEEEEEEEEEEEEEE', e)
+
                 newState.allStories[e.storyId] = e
             })
             // newState.allStories = action.stories

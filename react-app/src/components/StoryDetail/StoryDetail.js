@@ -18,7 +18,7 @@ const StoryDetail = ({ storyDetails }) => {
     const followersList = Object.values(followers)
 
     const [following, setFollowing] = useState()
-
+    console.log("initial following", following)
 
     useEffect(() => {
         dispatch(getOneStory(storyDetails.id))
@@ -30,9 +30,9 @@ const StoryDetail = ({ storyDetails }) => {
 
     useEffect(() => {
         for (let follower in followers) {
-            if (follower == currentUser.id) {
-                console.log("in useEffect", follower, currentUser.id)
-                setFollowing(true)
+            let num = Number(follower)
+            if (num === currentUser.id) {
+                return setFollowing(true)
             }
             else {
                 setFollowing(false)
@@ -52,15 +52,15 @@ const StoryDetail = ({ storyDetails }) => {
         dispatch(addingFollow(storyDetails.userId))
 
         setFollowing(true)
+
     }
 
     const handleRemoveFollowClick = (e) => {
         e.preventDefault()
         dispatch(deletingFollow(storyDetails.userId, currentUser.id))
 
-        console.log("deleting")
         setFollowing(false)
-        console.log("after deleting")
+
     }
 
 

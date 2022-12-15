@@ -14,8 +14,7 @@ def get_list_follower(userId):
     following_users_query = user.followers.all()
     following_users = [user.to_dict() for user in following_users_query]
 
-    print("*****************************", following_users)
-    return {'Followings' : following_users}
+    return {'Followers' : following_users}
 
 # GET LIST OF PEOPLE THAT IS FOLLOWING THE USER
 @follow_route.route('/<int:userId>/following')
