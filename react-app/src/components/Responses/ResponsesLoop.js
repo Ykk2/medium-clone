@@ -26,12 +26,19 @@ export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
     const increaseResponseClap = (e) => {
         e.preventDefault()
         dispatch(clapResponse(resp.storyId, resp.id))
-        dispatch(getResponses(resp.storyId))
+            .then(() => {
+                dispatch(getResponses(resp.storyId, resp.id))
+            })
+
         // .then(() =>
         //  {
         //     dispatch(getOneResponse(resp.storyId, resp.id))
         // })
     }
+    const moreThanNoClaps = () => {
+        return resp.totalClaps > 0
+    }
+
     return (
         <div className='individualResponses'>
             <div className='responder'>
@@ -47,7 +54,12 @@ export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
             </div>
             <div className='responseClapContainer'>
                 <div className='responseTotalClaps'>
-                    {resp.totalClaps}
+
+
+
+                    {
+                        resp.totalClaps > 0 &&
+                        resp.totalClaps}
                 </div>
                 <button
                     onClick={increaseResponseClap}
