@@ -20,7 +20,6 @@ const GetStoryDetail = () => {
     return isLoaded && (
         <div>
             <StoryDetail key={storyDetails.storyId} storyDetails={storyDetails} />
-            <GetResponsesByStory storyDetails={storyDetails} />
         </div>
     )
 }

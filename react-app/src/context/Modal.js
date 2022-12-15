@@ -26,11 +26,11 @@ export function ModalProvider({ children }) {
 export function Modal({ onClose, children }) {
     const modalNode = useContext(ModalContext);
     if (!modalNode) return null;
-
+    console.log("coming from moda", children.props.portalClassName)
     return ReactDOM.createPortal(
         <div id="modal">
-            <div id="modal-background" onClick={onClose} />
-            <div id="modal-content" >
+            <div id={children.props.portalClassName ? "ResponseModal":"modal-background"} onClick={onClose} />
+            <div id={children.props.portalClassName ? "ResponseModalContent":"modal-content"} >
                 {children}
             </div>
         </div>,

@@ -38,12 +38,13 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     return  storyResponse && (
         <div className='biggestResponseContainer'>
             <div className='responsesContainer'>
-                {storyResponse?.map((resp) => (
-                    <ResponseLoop key={resp.id} resp={resp} storyResponse={storyResponse} storyDetails={storyDetails} />
-                ))}
                 <div className='createResponse'>
                     <CreateResponse key={storyDetails.id} storyDetails={storyDetails} />
                 </div>
+
+                {storyResponse?.map((resp) => (
+                    <ResponseLoop key={resp.id} resp={resp} storyResponse={storyResponse} storyDetails={storyDetails} />
+                ))}
 
             </div>
         </div>

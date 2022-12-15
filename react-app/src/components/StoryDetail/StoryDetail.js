@@ -1,24 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import './StoryDetail.css'
+import { Modal } from '../../context/Modal'
 import { getOneStory, deletingStory, addLike } from '../../store/story';
 import { useEffect, useState } from 'react';
 import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow';
 import { useParams } from "react-router-dom";
+import ResponseModal from "./ResponseModal"
+import './StoryDetail.css'
 
 const StoryDetail = ({ storyDetails }) => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
-    const storyImage = storyDetails.image;
+    // const history = useHistory();
+    // const storyImage = storyDetails.image;
     const currentUser = useSelector(state => state.session.user)
     const followers = useSelector(state => state.follow.Followers)
     const followerCount = useSelector(state => state.follow.totalFollowers)
     const { storyId } = useParams();
-    const followersList = Object.values(followers)
+    // const followersList = Object.values(followers)
 
     const [following, setFollowing] = useState()
-    console.log("initial following", following)
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
         dispatch(getOneStory(storyDetails.id))
@@ -63,7 +65,6 @@ const StoryDetail = ({ storyDetails }) => {
 
     }
 
-
     return (
         <div className='therealbiggestcontain'>
             <div className='biggestContainer'>
@@ -107,6 +108,9 @@ const StoryDetail = ({ storyDetails }) => {
 
                             </div>
                         </button>
+                        <button onClick={() => setShowModal(true)}> Response Logo
+
+                        </button>
                     </div>
                 </div>
                 <div className='story-content'>
@@ -114,6 +118,12 @@ const StoryDetail = ({ storyDetails }) => {
                     <img src={storyDetails.image} alt={storyDetails.title} className='soloStoryImg'></img>
                     <div className='storyDetailStory'>{storyDetails.story}</div>
                 </div>
+                {
+                    showModal &&
+                    <Modal onClose={() => setShowModal(false)}>
+                        <ResponseModal storyDetails={storyDetails} portalClassName="ResponseModal"/>
+                    </Modal>
+                }
             </div>
         </div>
     )
