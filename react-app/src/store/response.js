@@ -4,6 +4,7 @@ const LOAD_RESPONSE = 'response/LOAD_RESPONSES'
 const ADD_RESPONSE = 'response/ADD_RESPONSE'
 const EDIT_RESPONSE = 'response/EDIT_RESPONSE'
 const DELETE_RESPONSE = 'response/DELETE_RESPONSE'
+const LOAD_ONE_RESPONSE = '/response/LOAD_ONE_RESPONSE'
 
 const loadResponses = responses => {
     return {
@@ -29,13 +30,18 @@ const deleteResponse = response => {
     }
 }
 
+const loadOneResponse = response => {
+    return {
+        type: LOAD_ONE_RESPONSE, response
+    }
+}
+
 // switched to res instead of response for our fetch calls
 
 export const getResponses = storyId => async dispatch => {
     const res = await fetch(`/api/responses/${storyId}`)
     if (res.ok) {
         const responses = await res.json()
-        console.log("XXXXXXXXXXXXXXXXXXXXXXXX responses = ", responses)
         dispatch(loadResponses(responses))
         return responses
     }
@@ -81,16 +87,30 @@ export const editingResponse = (payload) => async (dispatch) => {
 }
 
 export const deletingResponse = payload => async dispatch => {
-    // const {body, responseId} = payload
-    console.log("DELETE PAYLOAD ===== ", payload)
-    // console.log("RESPONSE ID OF PAYLOAD ==== ", responseId)
     const res = await fetch(`/api/responses/${payload}`, {
         method: 'DELETE'
     })
     if (res.ok) {
-        // const response = await res.json()
         dispatch(deleteResponse(payload))
-        // return response
+    }
+}
+
+export const clapResponse = (id, responseId) => async dispatch => {
+    const response = await fetch(`/api/responses/claps/${responseId}`, {
+        method: 'POST', body: { id: id, reponseId: responseId }
+    })
+    if (response.ok) {
+        return
+    }
+}
+
+export const getOneResponse = (storyId, responseId) => async dispatch => {
+    const res = await fetch(`/api/responses/${storyId}/${responseId}`)
+    
+    if (res.ok) {
+        const response = await res.json()
+        dispatch(loadOneResponse(response))
+        return response
     }
 }
 
@@ -100,11 +120,13 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         case LOAD_RESPONSE: {
             const newState = { oneResponse: {}, allResponses: {} }
             action.responses.forEach(e => {
-                // console.log("eeeeeeeeeeeeeeeee = ", e)
                 newState.allResponses[e.id] = e
-                // console.log("NEW STATE IN REDUCER =====, ", newState.allResponses[e.storyId])
             })
-            // console.log('THIS IS THE REDUCER', newState)
+            return newState
+        }
+        case LOAD_ONE_RESPONSE: {
+            const newState = { ...state, oneResponse: {}, allResponses: { ...state.allResponses } }
+            newState.oneResponse = action.response
             return newState
         }
         case ADD_RESPONSE: {
