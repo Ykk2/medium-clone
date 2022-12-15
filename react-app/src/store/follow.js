@@ -44,6 +44,7 @@ export const gettingFollows = (userId) => async dispatch => {
 export const gettingFollowings = (userId) => async dispatch => {
     console.log("I'm in the thunk")
     const response = await fetch(`/api/follows/${userId}/follower`)
+
     if (response.ok) {
         const followings = await response.json()
         dispatch(getFollowings(followings))
@@ -81,7 +82,7 @@ export const deletingFollow = (userId, currentUserId) => async dispatch => {
 export default function reducer(state = { Followers: {}, Followings: {}, totalFollowers: 0 }, action) {
     switch (action.type) {
         case LOAD_FOLLOWERS: {
-
+            console.log("in reducer now", action)
             const newState = { Followers: {}, Followings: {}, totalFollowers: 0}
             action.followers.Followers.forEach(follower => {
                 newState.Followers[follower.id] = follower
@@ -91,11 +92,12 @@ export default function reducer(state = { Followers: {}, Followings: {}, totalFo
             return newState
         }
         case LOAD_FOLLOWINGS: {
-            console.log("in reducer now", action)
+
             const newState = { Followers: {}, Followings: {}, totalFollowers: 0 }
             action.followings.Followings.forEach(following => {
                 newState.Followings[following.id] = following
             })
+            console.log("in reducer now", action.followings.Followings)
             return newState
         }
 
