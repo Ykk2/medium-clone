@@ -9,18 +9,21 @@ import './Responses.css'
 import EditResponse from '../EditResponse/EditResponse';
 import { ResponseLoop } from './ResponsesLoop';
 
+
 export const GetResponsesByStory = ({ storyDetails }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const storyResponse = useSelector(state => Object.values(state.response.allResponses))
+    // const singleResponse = useSelector(state => state.response.allResponses)
 
     const currentUser = useSelector(state => state.session.user)
+    console.log("storyDetails ===== ", storyDetails)
 
     useEffect(() => {
 
-        dispatch(getResponses(storyDetails.id))
+        dispatch(getResponses(storyDetails?.id))
 
-    }, [dispatch, storyDetails.id])
+    }, [dispatch, storyDetails?.id])
 
     // useEffect(() => {
     //     dispatch(getOneResponse(1))
@@ -28,7 +31,11 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     // const storyId = storyResponse[0].storyId
     // console.log('I NEED THIS ONE', storyId)
 
-    return (
+    // useEffect(() => {
+    //     dispatch(getOneResponse(storyDetails.storyId, storyDetails.id))
+    // }, [storyDetails.storyId, storyDetails.id,  singleResponse, dispatch])
+
+    return  storyResponse && (
         <div className='biggestResponseContainer'>
             <div className='responsesContainer'>
                 {storyResponse?.map((resp) => (

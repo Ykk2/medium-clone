@@ -106,6 +106,7 @@ export const clapResponse = (id, responseId) => async dispatch => {
 
 export const getOneResponse = (storyId, responseId) => async dispatch => {
     const res = await fetch(`/api/responses/${storyId}/${responseId}`)
+    
     if (res.ok) {
         const response = await res.json()
         dispatch(loadOneResponse(response))

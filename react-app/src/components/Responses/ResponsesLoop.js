@@ -20,11 +20,13 @@ export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
 
     useEffect(() => {
         dispatch(getOneResponse(resp.storyId, resp.id))
-    }, [dispatch, resp])
+
+    }, [dispatch, resp.storyId, resp.id])
 
     const increaseResponseClap = (e) => {
         e.preventDefault()
         dispatch(clapResponse(resp.storyId, resp.id))
+        dispatch(getResponses(resp.storyId))
         // .then(() =>
         //  {
         //     dispatch(getOneResponse(resp.storyId, resp.id))
