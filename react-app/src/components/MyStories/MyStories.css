@@ -92,3 +92,61 @@
 .editBtn:hover {
     color: black;
 }
+
+.following-button {
+    font-size: 20px;
+    color: rgb(43, 43, 43);
+    font-family: Helvetica;
+    cursor: pointer;
+}
+
+.following-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 1);
+    min-width: 450px;
+    min-width: 425px;
+    overflow: hidden;
+}
+
+.single-modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Helvetica;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.following-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.following-unfollow-button {
+    color: white;
+    background-color: rgb(149, 149, 149);
+    border-radius: 20px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+}
+
+.following-unfollow-button:hover {
+    color: rgb(38, 38, 38);
+}
+
+.follow-unfollow-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
