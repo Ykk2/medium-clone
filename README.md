@@ -35,9 +35,9 @@ Medium clone that attempts to imitate the functionalities of the original site.
 
 ## Wiki Links:
 
-# [Features List](https://github.com/Ykk2/medium-clone/wiki/Features-List)
-# [API Documentation](https://github.com/Ykk2/medium-clone/wiki/API-Documentation)
-# [DB Schema](https://github.com/Ykk2/medium-clone/wiki/Schema-Table)
+### [Features List](https://github.com/Ykk2/medium-clone/wiki/Features-List)
+### [API Documentation](https://github.com/Ykk2/medium-clone/wiki/API-Documentation)
+### [DB Schema](https://github.com/Ykk2/medium-clone/wiki/Schema-Table)
 	
 ## Getting started
 
