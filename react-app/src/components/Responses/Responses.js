@@ -35,7 +35,7 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     //     dispatch(getOneResponse(storyDetails.storyId, storyDetails.id))
     // }, [storyDetails.storyId, storyDetails.id,  singleResponse, dispatch])
 
-    return  storyResponse && (
+    return storyResponse && (
         <div className='biggestResponseContainer'>
             <div className='responsesContainer'>
                 <div className='createResponse'>
