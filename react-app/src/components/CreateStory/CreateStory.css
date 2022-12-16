@@ -57,6 +57,10 @@ input:focus {
     outline: none
 }
 
+textarea:focus {
+    outline: none
+}
+
 .errors {
     width: 600px
 }
