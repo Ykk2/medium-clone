@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getResponses, getOneResponse } from '../../store/response';
 import { clapResponse } from '../../store/response';
 
@@ -7,9 +7,8 @@ import './Responses.css'
 import EditResponse from '../EditResponse/EditResponse';
 
 
-export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
-
-    const history = useHistory();
+export const ResponseLoop = ({ resp, storyDetails }) => {
+    const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -63,7 +62,7 @@ export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
                 </button>
             </div>
             {
-                currentUser.id === resp.userId &&
+                currentUser?.id === resp.userId &&
                 <div className='responseActions'>
                     < EditResponse key={storyDetails.id} storyDetails={storyDetails} responseId={resp.id} />
                 </div>}
