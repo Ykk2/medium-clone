@@ -76,7 +76,7 @@ Medium clone that attempts to imitate the functionalities of the original site.
   
 ## Project Contributors
 
-Please feel free to reach out to any of us regarding this project. 
+Please feel free to reach out to any of us regarding this project. <br><br> 
 <code>
 <a href="https://www.linkedin.com/in/andrewkimcode/">
 <img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Andrew Kim
