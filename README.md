@@ -35,49 +35,43 @@ Medium clone that attempts to imitate the functionalities of the original site.
 
 ## Wiki Links:
 
-<a href='https://github.com/Ykk2/medium-clone/wiki/Features-List'>Features List</a> 
-<a href='https://github.com/Ykk2/medium-clone/wiki/API-Documentation'>API Documentation</a> 
-<a href='https://github.com/Ykk2/medium-clone/wiki/Schema-Table'>DB Schema</a> 
-
-
+# [Features List](https://github.com/Ykk2/medium-clone/wiki/Features-List)
+# [API Documentation](https://github.com/Ykk2/medium-clone/wiki/API-Documentation)
+# [DB Schema](https://github.com/Ykk2/medium-clone/wiki/Schema-Table)
+	
 ## Getting started
 
 1. Clone this repository (only this branch)
 
-2. Install dependencies
+2. Install backend dependencies by running the following commands at the root directory.
 
       ```bash
       pipenv install -r requirements.txt
       ```
+      
+      ```bash
+      pipenv run flask run
+      ```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+3. Install frontend dependencies by running the following commands at the 'react-app' directory.
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+      ```bash
+      npm install
+      ```
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+4. Type below command at the root directory.
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+      ```bash
+      pipenv run flask run
+      ```
 
-   ```bash
-   pipenv shell
-   ```
+5. After the backend server starts, run the following command at the react-app-directory.
 
-   ```bash
-   flask db upgrade
-   ```
+      ```bash
+      npm start
+      ```
 
-   ```bash
-   flask seed all
-   ```
+6. Hopefully your browser loads the project.....
 
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
+  
 
