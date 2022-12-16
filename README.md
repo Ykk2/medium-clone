@@ -82,9 +82,9 @@ Please feel free to reach out to any of us regarding this project.
 <img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Harro2
 </a>
 </code>
-<code>
+
 <a href="www.linkedin.com/in/richardkwon2">
 <img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />HArro2
 </a>
-</code>
+
 
