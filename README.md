@@ -78,13 +78,23 @@ Medium clone that attempts to imitate the functionalities of the original site.
 
 Please feel free to reach out to any of us regarding this project. 
 <code>
-<a href="www.linkedin.com/in/richardkwon2">
-<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Harro2
+<a href="https://www.linkedin.com/in/andrewkimcode/">
+<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Andrew Kim
 </a>
 </code>
-
-<a href="www.linkedin.com/in/richardkwon2">
-<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />HArro2
+<code>
+<a href="https://www.linkedin.com/in/david-liaw-55a510251/">
+<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />David Liaw
 </a>
-
+</code>
+<code>
+<a href="https://www.linkedin.com/in/jeff-eydt-a5b86b9b/">
+<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Jeff Eydt
+</a>
+</code>
+<code>
+<a href="www.linkedin.com/in/richardkwon2">
+<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Richard Kwon
+</a>
+</code>
 
