@@ -1,0 +1,102 @@
+.allStoriesContainer {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createStoryBtn {
+    height: 60px;
+    align-self: flex-start;
+    margin-left: 0px;
+    justify-self: flex-start;
+    font-size: 30px;
+    width: 200px;
+    margin-bottom: 20px;
+    color: grey;
+    cursor: pointer;
+}
+
+.createStoryBtn:hover {
+    color: black;
+}
+
+.left {
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 220px
+}
+
+.storyImage {
+    margin-bottom: 20px;
+    margin-left: 80px;
+    height: 120px;
+    width: 200px;
+}
+
+.mainContain {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.storyCard {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    margin-bottom: 10px;
+    border-bottom: 0.1px solid lightgray;
+    border-right: 0.1px solid lightgray;
+}
+
+.authorName {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 50px;
+    font-size: 20px;
+}
+
+.title {
+    margin-top: -10px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold
+}
+
+.storyTitle {
+    height: 50px;
+    font-size: 1px
+}
+
+.body {
+    height: 230px;
+    font-family: Helvetica;
+    white-space: pre-wrap;
+}
+
+.storyBody {
+    white-space: pre-wrap;
+    margin-top: -10px;
+    height: 400px;
+    text-overflow: ellipse;
+    overflow: hidden;
+    font-size: 18px;
+    font-family: Helvetica;
+}
+
+a:visited {}
+
+a {
+    text-decoration: none
+}

@@ -1,11 +1,103 @@
 /* TODO Add site wide styles */
+@font-face {
+    font-family:"Charter-Bold";
+    src: local("bold"),
+    url("./assets/fonts/Charter\ Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family:"Charter-Bold-Italic";
+    src: local("bold-italic"),
+    url("./assets/fonts/Charter\ Bold\ Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family:"Charter-Italic";
+    src: local("italic"),
+    url("./assets/fonts/Charter\ Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family:"Charter-Regular";
+    src: local("regular"),
+    url("./assets/fonts/Charter\ Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Fenit1";
+    src: local("1"),
+    url("./assets/fonts/FeENit2.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Fenit2";
+    src: local("2"),
+    url("./assets/fonts/FeENrm2.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Fenit3";
+    src: local("3"),
+    url("./assets/fonts/FeENsc2.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "kievit";
+    src: local("kievit"),
+    url("./assets/fonts/FF\ kievit.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "Merrisweather-Italic";
+    src: local('italic'),
+    url("./assets/fonts/MerriweatherSans-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "Merrisweather-Bold";
+    src: local('bold'),
+    url("./assets/fonts/MerriweatherSans-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Taviraj-Regular";
+    src: local('regular'),
+    url("./assets/fonts/Taviraj-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Taviraj-Italic';
+    src: local('italic'),
+    url("./assets/fonts/Taviraj-BlackItalic.ttf") format("truetype");
+}
+
+
+* {
+    font-family: Charter;
+}
+
 body {
     margin: 0;
     padding: 0;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 button {
     text-decoration: none;
     outline: none;
+}
+
+* {
+    text-decoration: none;
+}
+
+html {
+    width: 100vw;
+}
+
+#root {
+    width: 100vw;
 }

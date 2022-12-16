@@ -1,0 +1,154 @@
+.therealbiggestcontain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4vw;
+}
+
+
+.biggestContainer {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.topBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
+    height: 100px;
+}
+
+.authorInfo {
+    width: 30%;
+}
+
+.soloAuthorName {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: bold;
+    height: 70%;
+}
+
+.followContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20px
+}
+
+.fa-user-circle {
+    font-size: 32px
+}
+
+.authorFollows {
+    width: 10%
+}
+
+.followBtn {
+    border-radius: 25%;
+    background-color: gray;
+    color: white;
+    width: 40%;
+    cursor: pointer;
+}
+
+.followBtn:hover {
+    color: black;
+}
+
+.clapsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    height: 100%;
+    align-self: flex-end
+}
+
+.totalClaps {
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    margin-right: 0px;
+}
+
+.clapEmoji {
+    padding-top: 4px;
+    padding-left: 5px;
+    color: black;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+
+.clapBtn {
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+
+
+.story-content {
+    margin-top: 30px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Helvetica;
+}
+
+.storyDetailTitle {
+    width: 100%;
+    font-size: 32px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: Helvetica;
+}
+
+.soloStoryImg {
+    margin-top: 30px;
+    height: 420.69px;
+    width: 98%
+}
+
+.storyDetailStory {
+    white-space: pre-wrap;
+    font-family: Helvetica;
+    margin-top: 30px;
+    width: 98%;
+    font-size: 24px;
+    line-height: 40px;
+}
+
+.responseEmoji {
+    padding-top: 4px;
+    padding-left: 5px;
+    color: black;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+
+}
+
+.storyDetailsRightSide {
+    display: flex;
+    flex-direction: column;
+    width: 200px
+}
+
+.bootyhole {
+    width: 20%;
+    align-self: flex-end
+}

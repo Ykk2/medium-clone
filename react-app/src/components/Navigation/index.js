@@ -7,34 +7,36 @@ import LoginForm from '../LoginFormModal/LoginForm'
 import SignUpForm from '../SignupFormModal/SignUpForm'
 import './navigation.css'
 
+
+
+
 function NavBar({ loaded }) {
 
     const sessionUser = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false)
     const [login, setLogin] = useState(true)
-    const [loggedIn, setLoggedIn] = useState(false)
+
     return (
         <div className="navBar">
-            <div className='logo' >
-                <NavLink exact to='/'>
-                    Logo goes here
+            <div className='navBar-left' >
+                <NavLink className="navBar-left-inner" exact to={sessionUser ? '/stories' : '/'}>
+                    <img className="logo" src={require('./diamond-store-svgrepo-com.svg').default} alt='svgImage'/>
+                    <p className="logo-title">Hard</p>
                 </NavLink>
             </div>
             <div >
-                {loggedIn && loaded ?
-
+                {sessionUser ?
                     <ProfileButton
                         user={sessionUser}
                         setLogin={setLogin}
-                        setLoggedIn={setLoggedIn}
                     />
                     :
                     <div className='navBar-right'>
-                        <div className='sign-in'>
-                            <button onClick={() => {
+                        <div>
+                            <button className='sign-in' onClick={() => {
                                 setLogin(true)
                                 setShowModal(true)
-                            }}>Sign in</button>
+                            }}>Sign In</button>
                         </div>
                         <div >
                             <button className='get-started' onClick={() => {
@@ -47,8 +49,8 @@ function NavBar({ loaded }) {
                 {
                     showModal &&
                     <Modal onClose={() => setShowModal(false)}>
-                        {login ? <LoginForm setShowModal={setShowModal} setLoggedIn={setLoggedIn} /> :
-                            <SignUpForm setShowModal={setShowModal} setLoggedIn={setLoggedIn} />}
+                        {login ? <LoginForm setShowModal={setShowModal}  /> :
+                            <SignUpForm setShowModal={setShowModal}/>}
                     </Modal>
                 }
             </div>

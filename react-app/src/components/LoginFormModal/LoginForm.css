@@ -1,0 +1,44 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vh;
+    height: 60vh;
+    opacity: 0.9;
+    min-width: 450px;
+    min-width: 425px;
+    font-family: Helvetica;
+}
+
+#login-input {
+    border-radius: 20px;
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-color: rgb(23, 23, 23);
+    font-family: Helvetica;
+}
+
+.LoginButton {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: Helvetica;
+}
+
+.DemoUserButton {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: Helvetica;
+}

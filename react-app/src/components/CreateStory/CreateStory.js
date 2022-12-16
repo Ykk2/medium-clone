@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { addingStory } from '../../store/story';
@@ -7,7 +7,7 @@ import { addingStory } from '../../store/story';
 import './CreateStory.css'
 
 const CreateStory = () => {
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
     const [story, setStory] = useState("");
@@ -39,43 +39,50 @@ const CreateStory = () => {
     }
 
     return (
-        <form className='story-form' onSubmit={handleSubmit}>
-            <h2>Tell your story</h2>
-            <ul className='errors'>
-                {errors.map(error => (
-                    <li key={error}>{error}</li>
-                ))}
-            </ul>
-            <label>
-                {/* Title */}
-                <input
-                    type="text"
-                    placeholder='Title'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required />
-            </label>
-            <label>
-                {/* Story */}
-                <input
-                    type="text"
-                    placeholder="Tell your story..."
-                    onChange={(e) => setStory(e.target.value)}
-                    required />
-            </label>
-            <label>
-                {/* Image */}
-                <input
-                    type="text"
-                    value={image}
-                    placeholder="Image URL for your story"
-                    onChange={(e) => setImage(e.target.value)} />
-            </label>
-            <button type='submit' disabled={errors.length > 0}>
-                Publish
-            </button>
 
-        </form>
+        <div
+            className='allContainer'>
+            <form className='story-form' onSubmit={handleSubmit}>
+                <label>
+                    {/* Title */}
+                    <input
+                        type="text"
+                        placeholder='Title'
+                        className='titleInput'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required />
+                </label>
+                <label>
+                    {/* Story */}
+                    <textarea
+                        type="text"
+                        className='storyInput'
+                        placeholder="Tell your story..."
+                        onChange={(e) => setStory(e.target.value)}
+                        required />
+                </label>
+                <label>
+                    {/* Image */}
+                    <input
+                        type="text"
+                        className='imageInput'
+                        value={image}
+                        placeholder="Image URL for your story"
+                        onChange={(e) => setImage(e.target.value)} />
+                </label>
+                <button type='submit'
+                    className='publishBtn'
+                    disabled={errors.length > 0}>
+                    Publish
+                </button>
+                <ul className='errors'>
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            </form>
+        </div>
     )
 }
 

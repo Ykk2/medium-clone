@@ -65,7 +65,7 @@ If she’d be asked, “Tell me about that incident in that cave,” she is most
 She doesn’t know that the girl in the story that she narrates to everyone is herself. She tries often to remember how does she knows of this story but all her efforts go in vain. Her friend is just a good story to her. She loved reading stories. She is a story herself now.
 
 ''',
-        tag='Xan',title='title3',image='https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Xan',title='Xan is a character from my another story',image='https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
 
     story4 = Story(
@@ -94,7 +94,7 @@ That her grandson has sent the message.
 That’s what is written on the stone. There’s no alien message engraved on it. It’s a poem. But that’s not the problem. The problem is I am Dorothy Solem.
 
  ''',
-        tag='Writing on the stone',title='title4',image='https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Writing on the stone',title='Writing on the stone',image='https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
 
     story5 = Story(
@@ -151,7 +151,7 @@ If you’ll make it, you’ll learn it. If you don’t, you won’t.
 I shouldn’t be afraid to show up just because I am different.
 And, the lava must flow.
  ''',
-        tag='Volcano',title='title5',image='https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?cs=srgb&dl=pexels-pixabay-235621.jpg&fm=jpg'
+        tag='Volcano',title='Volcano',image='https://images.pexels.com/photos/813872/pexels-photo-813872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     )
     story6 = Story(
         id='6', userId='5',story=''' Bilal was alone at home on a Saturday evening, and on such occasions, he preferred watching porn. He bolted his room from inside and turned his laptop on. Plugging in his earphones, he played porn on the internet. After a while, his eyes fell on a sparkling, glittering ad that seemed to dance on the right side of the screen. The ad had one huge word — UNBOX — written over it. And below the huge word, had, “Imran recommends this to Bilal” written.
@@ -177,7 +177,7 @@ A thank you message popped up on the screen, “Thank you for watching. We wish 
 He tapped. And another message greeted, “Have a great day!”
 
 Bilal called Imran only to realize that Imran had never heard of the Unbox app. He was left with a knowledge of future that he wished he didn’t know. ''',
-        tag='Unbox',title='title5',image='https://images.pexels.com/photos/327131/pexels-photo-327131.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Unbox',title='Unbox',image='https://images.pexels.com/photos/327131/pexels-photo-327131.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story7 = Story(
         id='7', userId='2',story=''' Steve was among those who took pride in being called busy. He was a salesman, single and smart. He was among those who wake up early in the morning, go to workout, go to work jumping from one meeting to another, come back home by dusk, spend time with the pet and go to sleep by nine o’clock.
@@ -213,7 +213,7 @@ On one such night, as his eyes were drooping, his phone rang.
 “It doesn’t. I miss you, friend.”
 
  ''',
-        tag='Time to move fast',title='title5',image='https://images.pexels.com/photos/226400/pexels-photo-226400.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Time to move fast',title='Time to move fast',image='https://images.pexels.com/photos/226400/pexels-photo-226400.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story8 = Story(
         id='8', userId='3',story=''' Not many people know about my admiration for pancakes. I love them. I love when maple syrup flows over it, and I use my fork and knife to cut a piece, dip in the maple syrup and put it in my mouth to savor the taste. It’s not like I have pancakes day in and day out. I love having them when I’m having them.
@@ -239,7 +239,7 @@ My brother looked in my eyes and said, “We’ll come back again tomorrow.”
 I added, “We’ll come back every day until we get to have the pancakes.”
 
 We went out the door with an agenda on our minds. Tomorrow, we’ll run for the pancakes again. Until we get some. ''',
-        tag='Running for pancakes',title='title5',image='https://images.pexels.com/photos/326168/pexels-photo-326168.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Running for pancakes',title='Running for pancakes',image='https://images.pexels.com/photos/326168/pexels-photo-326168.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story9 = Story(
         id='9', userId='4',story=''' “LARA, SIT DOWN,” the teacher was yelling at the top of his voice. “I NEED YOU TO SHUT YOUR MOUTH AND TAKE YOUR SEAT RIGHT NOW.”
@@ -265,7 +265,7 @@ The teacher looked stupefied. She said, “Yes, squirrels, for example. They don
 “But I wonder something, miss,” Lara replied, and everyone realized what sort of question followed the phrase, “I wonder who taught squirrels to collect nuts. If a baby is born as winter approach, they could have seen their mothers collecting nuts. But I wonder about the baby squirrels who are born in summer. Before the winter arrives, their mother leaves them on their own. Who teaches them then?”
 
 And within a few minutes, she found herself out of the class, strolling in the garden. Like always, she stood under the tree and pretended to talk to squirrels. Perhaps, she was asking them the same question. ''',
-        tag='Question',title='title5',image='https://images.pexels.com/photos/3151907/pexels-photo-3151907.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Question',title='Question',image='https://images.pexels.com/photos/3151907/pexels-photo-3151907.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story10 = Story(
         id='10', userId='8',story=''' Everyone knew Mrs. Stella lived alone in a tiny log house at the end of the road and yet they found her cheerful every time they ran into her. Sometimes they stopped her and asked the secret of her happiness, to which she always replied, “My friends.”
@@ -313,7 +313,7 @@ Mrs. Stella smiled at him. Holding his shoulders and moving in various direction
 Joey’s face bore an even more confused expression. He tried to comprehend what he just heard. Unable to find a relevant answer, he remarked, “I don’t think your friends will play with me,” and ran outside the building leaving Mrs. Stella alone among her friends.
 
  ''',
-        tag='Librarian',title='title5',image='https://images.pexels.com/photos/3732527/pexels-photo-3732527.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Librarian',title='Librarian',image='https://images.pexels.com/photos/3732527/pexels-photo-3732527.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story11 = Story(
         id='11', userId='6',story=''' Afterlife isn’t what I thought it’d be. I expected an arching door welcoming me. I expected to be greeted under the bright sun on green grasslands. All this in case I was going to what living beings called The Heaven. In case I was sorted into The Hell, I had a different set of expectations. Blinding darkness all around. Raging fire. And Satan’s roaring laughs. Nope. Afterlife is nothing like I expected.
@@ -349,7 +349,7 @@ Instead, I used the only language I knew. I started crying.
 I still wonder what would have happened if I had pressed the other button.
 
  ''',
-        tag='Give',title='title5',image='https://cdn.pixabay.com/photo/2017/11/14/00/57/christmas-2947257__340.jpg'
+        tag='Give',title='Give',image='https://cdn.pixabay.com/photo/2017/11/14/00/57/christmas-2947257__340.jpg'
     )
     story12 = Story(
         id='12', userId='7',story=''' Iam in jail. A small cell to be more accurate. It’s dark in here. I shouldn’t have been here. What I call ‘heroism’, this world calls a ‘murder’. I just prevented a zombie apocalypse — by killing the first one to turn — my own wife. For a very brief moment right after I pulled the dagger out of her back, I felt like a hero, and then it dawned on me that the very world I saved, will become my enemy thereafter.
@@ -365,7 +365,7 @@ The man in a black suit appeared through the door and congratulated me. He was t
 The next thing I remember is a vague part of the judgment — “This murder is similar to the last twenty-five murders this town has seen. And apparently, all of these men have saved the world from a zombie apocalypse. Like others, put him in a dark cell.”
 
 I don’t think the world needs a hero. Perhaps this world needs an apocalypse. And when it comes, I will be safe in this dark cell. ''',
-        tag='Apocalypse',title='title5',image='https://cdn.pixabay.com/photo/2019/10/07/11/26/winter-landscape-4532412__340.jpg'
+        tag='Apocalypse',title='pocalypse',image='https://cdn.pixabay.com/photo/2019/10/07/11/26/winter-landscape-4532412__340.jpg'
     )
     story13 = Story(
         id='13', userId='6',story=''' “Goooooood Moooooorning!” Vishwas exclaimed in full zeal.
@@ -389,7 +389,7 @@ Vishwas opens the door and stands there like a statue, almost forgetting to welc
 “Namrata! Your husband is so unwelcoming. Didn’t you tell him, we are coming for brunch today?” said a very familiar voice which turned her into statue as well.
 
 The boss had come to visit with his wife, Ana. ''',
-        tag='Expected lies',title='title5',image='https://cdn.pixabay.com/photo/2018/01/04/14/11/viburnum-3060769__340.jpg'
+        tag='Expected lies',title='Expected lies',image='https://cdn.pixabay.com/photo/2018/01/04/14/11/viburnum-3060769__340.jpg'
     )
     story14 = Story(
         id='14', userId='8',story=''' “Hey Namrata, Will it be possible for you to reach home on your own.”
@@ -415,7 +415,7 @@ As I will be late today.” *vishwas over the phone”
 “No Ajay, I need to leave. I am not feeling well.” Namrata takes her bag and leave for her house.
 
 It was a sleepless night for her. The very thought of Vishwa’s affair was killing her. It was like a sudden relaisation that had happened to her. She found herslef in Vishwas’s shoes and the pain was unbearable. ''',
-        tag='Realizations',title='title5',image='https://cdn.pixabay.com/photo/2020/01/05/07/22/winter-4742436__340.jpg'
+        tag='Realizations',title='Realizations',image='https://cdn.pixabay.com/photo/2020/01/05/07/22/winter-4742436__340.jpg'
     )
     story15 = Story(
         id='15', userId='7',story=''' he old man stood up to leave. He folded his hands and said, “Beta, I hope there are no hard feelings for any of us. Please try to sort out things with Sanjay, he is a nice guy and he has been suffering a lot lately.”
@@ -443,7 +443,7 @@ After a while they asked her mother about everything that had happened. Mrs. Mal
 Ria and her mother decided to go back to her father to apologize and clear all the confusion.
 
  ''',
-        tag='Guilt',title='title5',image='https://cdn.pixabay.com/photo/2016/11/18/21/10/wolf-1836875__340.jpg'
+        tag='Guilt',title='Guilt',image='https://cdn.pixabay.com/photo/2016/11/18/21/10/wolf-1836875__340.jpg'
     )
 
 

@@ -1,0 +1,152 @@
+.allMyContainer {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;
+}
+
+.myStoriesContainer {
+    margin-top: 10px;
+    margin-left: -0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    height: 100%;
+}
+
+.headerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px
+}
+
+.header {
+
+    margin-top: 20px;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.addStoryBtn {
+    font-family: Helvetica;
+    border-radius: 50%;
+    margin-top: 20px;
+    width: 15%;
+    color: white;
+    background-color: green;
+    height: 40px;
+    margin-right: 0px;
+    cursor: pointer;
+}
+
+.story-card {
+    /* border-top: 1px solid lightgray; */
+    border-bottom: 1px solid lightgray;
+    margin-top: 20px;
+    padding-top: 5px;
+    height: 21%;
+    width: 100%;
+}
+
+.storyTitle {
+    margin-top: 5px;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+
+}
+
+.storyBody {
+    height: 25%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: black;
+    white-space: pre-wrap;
+    font-family: Helvetica;
+
+}
+
+.deleteBtn {
+    margin-top: 20px;
+    margin-left: -5px;
+    cursor: pointer;
+    font-family: Helvetica;
+    color: grey;
+}
+
+.editBtn {
+    cursor: pointer;
+    font-family: Helvetica;
+    color: grey;
+}
+
+.deleteBtn:hover {
+    color: black;
+}
+
+.editBtn:hover {
+    color: black;
+}
+
+.following-button {
+    font-size: 20px;
+    color: rgb(43, 43, 43);
+    font-family: Helvetica;
+    cursor: pointer;
+}
+
+.following-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 1);
+    min-width: 450px;
+    min-width: 425px;
+    overflow: hidden;
+}
+
+.single-modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Helvetica;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.following-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.following-unfollow-button {
+    color: white;
+    background-color: rgb(149, 149, 149);
+    border-radius: 20px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+}
+
+.following-unfollow-button:hover {
+    color: rgb(38, 38, 38);
+}
+
+.follow-unfollow-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}

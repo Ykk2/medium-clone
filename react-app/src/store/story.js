@@ -1,4 +1,3 @@
-import { csrfFetch } from './csrf'
 const LOAD_ALL_STORIES = '/stories/LOAD_ALL_STORIES'
 const LOAD_ONE_STORY = '/stories/LOAD_ONE_STORY'
 const ADD_STORY = '/stories/ADD_STORY'
@@ -67,8 +66,10 @@ export const addingStory = (story) => async dispatch => {
 }
 
 export const edittingStory = (story, id) => async dispatch => {
-    const response = await csrfFetch(`/api/spots/${id}`, {
-        method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(story)
+    const response = await fetch(`/api/stories/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(story)
     })
     if (response.ok) {
         const story = response.json()
@@ -91,9 +92,20 @@ export const addLike = (id, userId) => async dispatch => {
     const response = await fetch(`/api/stories/claps/${id}`, {
         method: 'POST', body: { userId: userId, storyId: id }
     })
-    console.log('THIS HIT BITCH', response)
     if (response.ok) {
         return
+    }
+}
+
+export const getMyStories = (userId) => async dispatch => {
+    const response = await fetch(`/api/stories/user/${userId}/mine`)
+    console.log('DID THE RESPOSNE WOWKR????', response)
+    if (response.ok) {
+        const stories = await response.json()
+        console.log('ARE THERE ANY STORIES?', stories)
+        dispatch(allStories(stories))
+        return stories
+
     }
 }
 
@@ -103,6 +115,7 @@ export default function reducer(state = { oneStory: {}, allStories: {} }, action
         case LOAD_ALL_STORIES: {
             const newState = { oneStory: {}, allStories: {} }
             action.stories.Stories.forEach(e => {
+
                 newState.allStories[e.storyId] = e
             })
             // newState.allStories = action.stories

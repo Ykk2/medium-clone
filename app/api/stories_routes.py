@@ -15,6 +15,9 @@ def get_all_stories():
     for story in stories:
 
         storyUser = User.query.filter_by(id=story.userId).first()
+
+        totalFollowers = len(storyUser.following.all())
+
         response.append({
             "UserId": story.userId,
             "storyId": story.id,
@@ -27,7 +30,8 @@ def get_all_stories():
             "User": {
                 "id": storyUser.id,
                 "firstName": storyUser.first_name,
-                "lastName": storyUser.last_name
+                "lastName": storyUser.last_name,
+                "totalFollowers": totalFollowers
             }
         })
     return jsonify({'Stories': response})
@@ -35,16 +39,17 @@ def get_all_stories():
 
 # GET ALL STORIES MADE BY USER ROUTE
 
-@story_route.route('/user/<int:personId>')
-@login_required
+@story_route.route('/user/<int:userId>/mine')
+# @login_required
 # CHECK THIS TO MAKE SURE IT DOES NOT CONFLICT WITH NEW STORY ID's
-def get_stories_by_user(personId):
-    stories = Story.query.filter_by(userId = personId).all()
+def get_stories_by_user(userId):
+    stories = Story.query.filter_by(userId = current_user.id).all()
     response = []
-    user = User.query.filter_by(id = personId).first()
+    user = User.query.filter_by(id = userId).first()
+
     for story in stories:
-        response.append({"Story": {
-            "UserId": story.userId,
+        response.append({
+            "storyId": story.id,
             "Story": story.story,
             "Tag": story.tag,
             "Title": story.title,
@@ -56,8 +61,8 @@ def get_stories_by_user(personId):
                 "firstName": user.first_name,
                 "lastName": user.last_name
             }
-        }})
-
+        })
+    print(response)
     return jsonify({"Stories": response})
 
 
@@ -86,6 +91,8 @@ def get_stories_by_follow(userId):
     return {"Stories": response}
 
 
+
+
 # GET STORY BY ID
 
 @story_route.route('/<int:storyId>')
@@ -93,9 +100,12 @@ def get_stories_by_follow(userId):
 def get_story(storyId):
     story = Story.query.get(storyId).to_dict()
     claps = StoryClap.query.filter_by(storyId = storyId).all()
+
     story['totalClaps'] = len(claps)
     userInfo = User.query.get(story["userId"])
+    totalFollowers = len(userInfo.following.all())
     user = userInfo.to_dict()
+    user['totalFollowers'] = totalFollowers
     story['storyUser'] = user
     return jsonify(story)
 
@@ -131,7 +141,6 @@ def update_story(storyId):
     story = Story.query.filter_by(id = storyId).first()
     form = StoryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
 
         setattr(story, "title", form.data["title"])
@@ -139,7 +148,6 @@ def update_story(storyId):
         setattr(story, "image", form.data["image"])
 
         # tag = form.data["tag"]
-
     if form.errors:
         print(form.errors)
         return "Invalid data"

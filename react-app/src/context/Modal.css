@@ -23,3 +23,27 @@
     position: absolute;
     background-color: white;
 }
+
+#ResponseModal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: transparent;
+}
+
+
+
+#ResponseModalContent {
+    position: absolute;
+    top: 0;
+    right: -1250px;
+    transform: translate(-1250px);
+    height: 100%;
+    background-color: white;
+    margin-top: 4vw;
+    border-left: 1px solid rgba(178, 178, 178, 0.7);
+    padding-left: 10px;
+    overflow-y: auto
+}

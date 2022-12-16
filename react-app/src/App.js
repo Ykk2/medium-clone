@@ -13,6 +13,7 @@ import GetStoryDetail from './components/StoryDetail';
 import CreateStory from './components/CreateStory/CreateStory';
 import ShowMyStories from './components/MyStories/MyStories';
 import LandingPage from './components/LandingPage/LandingPage';
+import EditStory from './components/EditStory/EditStory';
 
 
 function App() {
@@ -46,8 +47,14 @@ function App() {
         <Route path='/stories/:storyId' exact={true}>
           <GetStoryDetail />
         </Route>
+        <Route path='/stories/:storyId/edit' exact={true}>
+          <EditStory />
+        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/stories/user/:userId/mine' exact={true}>
+          <ShowMyStories />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
@@ -64,3 +71,6 @@ function App() {
 }
 
 export default App;
+
+
+//Hello everyone
