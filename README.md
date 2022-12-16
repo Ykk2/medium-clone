@@ -74,4 +74,17 @@ Medium clone that attempts to imitate the functionalities of the original site.
 6. Hopefully your browser loads the project.....
 
   
+## Project Contributors
+
+Please feel free to reach out to any of us regarding this project. 
+<code>
+<a href="www.linkedin.com/in/richardkwon2">
+<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />Harro2
+</a>
+</code>
+<code>
+<a href="www.linkedin.com/in/richardkwon2">
+<img height="50" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="CSS" title="CSS" />HArro2
+</a>
+</code>
 
