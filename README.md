@@ -10,9 +10,9 @@ To learn how to develop a fullstack application.
 
 Medium clone that attempts to imitate the functionalities of the original site.
 
-
+<div align="center">
 ![landing-page gif (1)](https://user-images.githubusercontent.com/108952654/208147705-b5b97f82-5bd1-4d14-9a5f-4d2af209749a.gif)
-
+	    </div>
 
 ## Technologies
 
