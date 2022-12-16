@@ -55,7 +55,7 @@ const CreateStory = () => {
                 </label>
                 <label>
                     {/* Story */}
-                    <input
+                    <textarea
                         type="text"
                         className='storyInput'
                         placeholder="Tell your story..."
