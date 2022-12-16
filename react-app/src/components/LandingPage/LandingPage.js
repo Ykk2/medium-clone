@@ -1,9 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllStories } from "../../store/story"
 import { NavLink } from "react-router-dom"
 import trendingImage from './trending resize.png'
-
+import { Modal } from '../../context/Modal'
+import SignUpForm from '../SignupFormModal/SignUpForm'
 
 import './LandingPage.css'
 
@@ -14,6 +15,7 @@ function LandingPage() {
     const trendingStories = allStories.slice(1, 7)
     const remainingStories = allStories.slice(6)
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
         dispatch(getAllStories())
@@ -35,7 +37,7 @@ function LandingPage() {
                     <p id='first'>Stay curious.</p>
                     <p id='second'>Discover stories, thinking, and expertise</p>
                     <p id='third'>from writers on any topic.</p>
-                    <button id="start-reading">Start reading</button>
+                    <button onClick={() => setShowModal(true)} id="start-reading">Start reading</button>
                 </div>
                 <img alt="Banner" className="banner-animation" src={require('./chrome-capture-2022-11-12.gif').default} />
             </div>
@@ -84,6 +86,14 @@ function LandingPage() {
                     </div>
 
                 ))}
+                {
+                    showModal &&
+                    <Modal onClose={() => setShowModal(false)}>
+
+                        <SignUpForm setShowModal={setShowModal} />
+
+                    </Modal>
+                }
             </div>
         </>
     )
