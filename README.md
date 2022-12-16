@@ -1,6 +1,6 @@
 # Medium Clone
 
-Project Link: <a href='https://dashboard.heroku.com/apps/richard-kwon-auth-me'>BnB</a> 
+Project Link: <a href='https://hard.onrender.com/'>Hard</a> 
 
 ## Purpose
 
@@ -8,7 +8,7 @@ To learn how to develop a fullstack application.
 
 ## Description
 
-AirBnB clone that attempts to imitate the functionalities of the original site.
+Medium clone that attempts to imitate the functionalities of the original site.
 
 ## Technologies
 <div align="center">
