@@ -61,9 +61,7 @@
 }
 
 .followBtn:hover {
-    <<<<<<< HEAD color: black;
-    =======color: black;
-    >>>>>>>AndrewLastHopefully
+    color: black;
 }
 
 .clapsContainer {
@@ -96,8 +94,7 @@
     flex-direction: row;
     width: 10%;
     justify-content: space-between;
-    <<<<<<< HEAD cursor: pointer;
-    =======cursor: pointer >>>>>>> AndrewLastHopefully
+    cursor: pointer;
 }
 
 
