@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { deletingFollow, gettingFollowings } from '../../store/follow';
 
@@ -14,7 +13,7 @@ function Following() {
 
     useEffect(() => {
         dispatch(gettingFollowings(sessionUser.id))
-    }, [dispatch, followersList])
+    }, [dispatch, followersList, sessionUser.id])
 
     const handleRemoveFollowClick = async (e, followerId) => {
         e.preventDefault()
@@ -30,7 +29,7 @@ function Following() {
                         <i className="fas fa-user-circle" /> &nbsp;&nbsp;{follower.firstName} {follower.lastName}</div>
                     <div className='follow-unfollow-buttons'>
                         <button className="following-unfollow-button" onClick={(e) => handleRemoveFollowClick(e, follower.id)}>Unfollow</button>&nbsp;&nbsp;
-                        <i style={{ fontSize: '20px' }} class="fa-solid fa-user-minus" />
+                        <i style={{ fontSize: '20px' }} className="fa-solid fa-user-minus" />
                     </div>
                 </div>
             ))}

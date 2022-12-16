@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Modal } from '../../context/Modal'
 import { NavLink } from "react-router-dom";
-import { deletingStory, edittingStory } from "../../store/story";
+import { deletingStory } from "../../store/story";
 import { getMyStories } from "../../store/story";
-import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow';
 import Following from './Following'
 import './MyStories.css'
 
@@ -35,7 +34,7 @@ const ShowMyStories = () => {
                             Write a Story
                         </NavLink>
                     </button>
-                    <button className="following-button" onClick={() => setShowModal(true)}><i class="fa-solid fa-users" /> &nbsp;Following</button>
+                    <button className="following-button" onClick={() => setShowModal(true)}><i className="fa-solid fa-users" /> &nbsp;Following</button>
                 </div>
                 {getStories?.map(story => (
                     < div className="story-card" >
@@ -63,7 +62,7 @@ const ShowMyStories = () => {
             {showModal &&
                 <Modal onClose={() => setShowModal(false)}>
 
-                    <Following setShowModal={setShowModal} userId={currentUser.id} />
+                    <Following userId={currentUser.id} />
 
                 </Modal>
             }

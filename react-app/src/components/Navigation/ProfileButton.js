@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import './profileButton.css'
 
@@ -38,7 +38,7 @@ function ProfileButton({ setLogin }) {
 
   return (
     <div className="profile-icon" onClick={openMenu}>
-      <i style={{ fontSize: '35px', color: "rgb(29, 29, 29)" }} class="fa-regular fa-user" />
+      <i style={{ fontSize: '35px', color: "rgb(29, 29, 29)" }} className="fa-regular fa-user" />
       {/* <img className="profile-logo" src={require('./user_account.svg').default} alt='svgImage' /> */}
       {showMenu &&
         <div className="profile-dropdown">
@@ -51,12 +51,12 @@ function ProfileButton({ setLogin }) {
           </div>
           <div className="dropdownItems">
             <NavLink id="profileItems" to="/profile">
-              <i style={{ fontSize: "30px" }} class="fa-solid fa-book" />
+              <i style={{ fontSize: "30px" }} className="fa-solid fa-book" />
             </NavLink>
             <NavLink id="profileItems" to="/profile">Stories</NavLink>
           </div>
           <div className="dropdownItems">
-            <i id="logout" onClick={logout} style={{ fontSize: '30px' }} class="fa-solid fa-right-to-bracket" />
+            <i id="logout" onClick={logout} style={{ fontSize: '30px' }} className="fa-solid fa-right-to-bracket" />
             <button id="logout" style={{ fontFamily: 'Helvetica' }} onClick={logout}>Log Out</button>
           </div>
         </div>

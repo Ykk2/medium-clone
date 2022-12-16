@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import StoryDetail from "./StoryDetail";
 import { getOneStory } from "../../store/story";
-import { GetResponsesByStory } from "../Responses/Responses";
 import './StoryDetail.css'
 
 const GetStoryDetail = () => {

@@ -28,10 +28,10 @@ const ShowAllStories = () => {
             className="allStoriesContainer">
             <NavLink to={`/stories/new`}>
                 <button
-                    className="createStoryBtn"><i class="fa-regular fa-pen-to-square" />&nbsp;&nbsp;Write</button>
+                    className="createStoryBtn"><i className="fa-regular fa-pen-to-square" />&nbsp;&nbsp;Write</button>
             </NavLink>
             {getStories.map(story => (
-                < div className="storyCard" >
+                < div className="storyCard" key={story.storyId} >
                     <NavLink to={`/stories/${story.storyId}`}>
                         <div className="mainContain">
                             <div className="left">

@@ -151,7 +151,7 @@ If you’ll make it, you’ll learn it. If you don’t, you won’t.
 I shouldn’t be afraid to show up just because I am different.
 And, the lava must flow.
  ''',
-        tag='Volcano',title='Volcano',image='https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?cs=srgb&dl=pexels-pixabay-235621.jpg&fm=jpg'
+        tag='Volcano',title='Volcano',image='https://images.pexels.com/photos/813872/pexels-photo-813872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     )
     story6 = Story(
         id='6', userId='5',story=''' Bilal was alone at home on a Saturday evening, and on such occasions, he preferred watching porn. He bolted his room from inside and turned his laptop on. Plugging in his earphones, he played porn on the internet. After a while, his eyes fell on a sparkling, glittering ad that seemed to dance on the right side of the screen. The ad had one huge word — UNBOX — written over it. And below the huge word, had, “Imran recommends this to Bilal” written.

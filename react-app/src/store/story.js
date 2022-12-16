@@ -1,4 +1,3 @@
-import { csrfFetch } from './csrf'
 const LOAD_ALL_STORIES = '/stories/LOAD_ALL_STORIES'
 const LOAD_ONE_STORY = '/stories/LOAD_ONE_STORY'
 const ADD_STORY = '/stories/ADD_STORY'

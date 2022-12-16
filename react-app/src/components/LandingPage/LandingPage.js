@@ -37,11 +37,11 @@ function LandingPage() {
                     <p id='third'>from writers on any topic.</p>
                     <button id="start-reading">Start reading</button>
                 </div>
-                <img className="banner-animation" src={require('./chrome-capture-2022-11-12.gif').default} />
+                <img alt="Banner" className="banner-animation" src={require('./chrome-capture-2022-11-12.gif').default} />
             </div>
             <div className="trending-stories-wrapper">
                 <p className="trending-on-hard-text">
-                    <img className="trending-on-hard" src={trendingImage}
+                    <img alt="Trending" className="trending-on-hard" src={trendingImage}
                     />
                     &nbsp; TRENDING ON HARD
                 </p>
@@ -77,7 +77,7 @@ function LandingPage() {
                                     </p>
                                 </div>
                                 <div className="remaining-stories-right">
-                                    <img src={story.Image} />
+                                    <img alt="Story-Img" src={story.Image} />
                                 </div>
                             </div>
                         </NavLink>
