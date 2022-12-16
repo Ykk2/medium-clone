@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal'
-import { getOneStory, deletingStory, addLike } from '../../store/story';
+import { getOneStory, addLike } from '../../store/story';
 import { useEffect, useState } from 'react';
 import { gettingFollows, addingFollow, deletingFollow } from '../../store/follow';
 import { useParams } from "react-router-dom";
@@ -23,24 +22,25 @@ const StoryDetail = ({ storyDetails }) => {
     const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
-        dispatch(getOneStory(storyDetails.id))
-        .then(() => {
-            dispatch(gettingFollows(storyDetails.userId))
-        })
+        dispatch(gettingFollows(storyDetails.userId))
+            .then(() => {
+                dispatch(getOneStory(storyDetails.id))
+            })
 
-    }, [dispatch, storyId])
+    }, [dispatch, storyId, storyDetails.id, storyDetails.userId])
 
     useEffect(() => {
+        if (followerCount === 0) return setFollowing(false)
         for (let follower in followers) {
             let num = Number(follower)
-            if (num === currentUser.id) {
+            if (num == currentUser?.id) {
                 return setFollowing(true)
             }
             else {
                 setFollowing(false)
             }
         }
-    }, [followers, dispatch])
+    }, [followers, dispatch, followerCount])
 
     const increaseClap = (e) => {
         e.preventDefault()
@@ -83,7 +83,7 @@ const StoryDetail = ({ storyDetails }) => {
                                 </button>
                             } */}
 
-                            {
+                            {currentUser ?
                                 (storyDetails.storyUser.id !== currentUser?.id) &&
 
                                 (following ?
@@ -94,7 +94,10 @@ const StoryDetail = ({ storyDetails }) => {
                                     <button className='followBtn' onClick={handleFollowClick}>
                                         Follow
                                     </button>
-                                )}
+                                )
+                                :
+                                null
+                            }
                         </div>
                     </div>
                     <div className='clapsContainer'>
@@ -121,7 +124,7 @@ const StoryDetail = ({ storyDetails }) => {
                 {
                     showModal &&
                     <Modal onClose={() => setShowModal(false)}>
-                        <ResponseModal storyDetails={storyDetails} portalClassName="ResponseModal"/>
+                        <ResponseModal storyDetails={storyDetails} portalClassName="ResponseModal" />
                     </Modal>
                 }
             </div>

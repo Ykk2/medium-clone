@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { addingStory } from '../../store/story';
@@ -7,7 +7,7 @@ import { addingStory } from '../../store/story';
 import './CreateStory.css'
 
 const CreateStory = () => {
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
     const [story, setStory] = useState("");

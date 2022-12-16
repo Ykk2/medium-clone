@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import { getResponses, getOneResponse } from '../../store/response';
-import { getOneStory } from '../../store/story';
-import { deletingResponse, clapResponse } from '../../store/response';
+import { getResponses } from '../../store/response';
 import CreateResponse from '../CreateResponse/CreateResponse';
 import './Responses.css'
-import EditResponse from '../EditResponse/EditResponse';
 import { ResponseLoop } from './ResponsesLoop';
 
 
 export const GetResponsesByStory = ({ storyDetails }) => {
-    const history = useHistory();
     const dispatch = useDispatch();
     const storyResponse = useSelector(state => Object.values(state.response.allResponses))
-    // const singleResponse = useSelector(state => state.response.allResponses)
-
-    const currentUser = useSelector(state => state.session.user)
-    console.log("storyDetails ===== ", storyDetails)
 
     useEffect(() => {
 
@@ -35,7 +26,7 @@ export const GetResponsesByStory = ({ storyDetails }) => {
     //     dispatch(getOneResponse(storyDetails.storyId, storyDetails.id))
     // }, [storyDetails.storyId, storyDetails.id,  singleResponse, dispatch])
 
-    return  storyResponse && (
+    return storyResponse && (
         <div className='biggestResponseContainer'>
             <div className='responsesContainer'>
                 <div className='createResponse'>

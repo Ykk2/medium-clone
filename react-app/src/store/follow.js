@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf";
-
 const LOAD_FOLLOWERS = '/follows/LOAD_FOLLOWERS'
 const LOAD_FOLLOWINGS = '/follows/LOAD_FOLLOWINGS'
 const ADD_FOLLOW = '/follows/ADD_FOLLOW'
@@ -11,12 +9,12 @@ const getFollowers = followers => {
     }
 }
 
-const getFollowings = followers => {
+// const getFollowings = followers => {
 
-    return {
-        type: LOAD_FOLLOWERS, followers
-    }
-}
+//     return {
+//         type: LOAD_FOLLOWERS, followers
+//     }
+// }
 
 const addFollow = follower => {
     return {
@@ -83,7 +81,7 @@ export default function reducer(state = { Followers: {}, Followings: {}, totalFo
     switch (action.type) {
         case LOAD_FOLLOWERS: {
 
-            const newState = { Followers: {}, Followings: {}, totalFollowers: 0}
+            const newState = { Followers: {}, Followings: {}, totalFollowers: 0 }
             action.followers.Followers.forEach(follower => {
                 newState.Followers[follower.id] = follower
 
@@ -111,7 +109,7 @@ export default function reducer(state = { Followers: {}, Followings: {}, totalFo
             return newState
         }
         case DELETE_FOLLOW: {
-            const newState = { Followers: {...state.Followers}, totalFollowers: state.totalFollowers }
+            const newState = { Followers: { ...state.Followers }, totalFollowers: state.totalFollowers }
             delete newState.Followers[action.userId]
             newState.totalFollowers--
             return newState

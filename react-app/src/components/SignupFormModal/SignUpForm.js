@@ -18,19 +18,26 @@ function SignupForm({ setShowModal }) {
 
   useEffect(() => {
     const validation = []
-    if (!email.includes('@')) validation.push("Invalid email.")
+    if (!email.includes('@') || !email.includes(".")) validation.push("Invalid email.")
+    if (password !== confirmPassword) validation.push("Passwords must match.")
+    if (password.length < 8) validation.push("Password must be at least 8 characters.")
     setErrors(validation)
-  }, [email])
+  }, [email, confirmPassword])
 
   if (sessionUser) return <Redirect to="/stories" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorsShown(true)
+
     if (!errors.length && password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signUp(username, email, password))
-        .then(() => setShowModal(false))
+        .then((res) => {
+          console.log(res, "THIS IS COMING FROM SIGNUPFORM.JS")
+          if (res == null) return setShowModal(false)
+          if (res) setErrors(res)
+        })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
@@ -38,8 +45,6 @@ function SignupForm({ setShowModal }) {
           }
         });
     }
-
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
@@ -85,7 +90,7 @@ function SignupForm({ setShowModal }) {
           required
         />
       </label>
-      <button class="signup-button" type="submit">Sign Up</button>
+      <button className="signup-button" type="submit">Sign Up</button>
     </form>
   );
 }

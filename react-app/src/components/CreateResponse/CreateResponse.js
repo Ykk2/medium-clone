@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { addingResponse } from "../../store/response";
 
 const CreateResponse = () => {
-    const currentUser = useSelector(state => state.session.user)
-    const currentStory = useSelector(state => state.story.oneStory)
-    const storyResponses = useSelector(state => Object.values(state.response.allResponses))
+    // const currentUser = useSelector(state => state.session.user)
+    // const currentStory = useSelector(state => state.story.oneStory)
+    // const storyResponses = useSelector(state => Object.values(state.response.allResponses))
 
     const { storyId } = useParams();
     const dispatch = useDispatch();

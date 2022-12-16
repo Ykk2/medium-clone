@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { getResponses, getOneResponse } from '../../store/response';
-import { getOneStory } from '../../store/story';
-import { deletingResponse, clapResponse } from '../../store/response';
-import CreateResponse from '../CreateResponse/CreateResponse';
+import { clapResponse } from '../../store/response';
 
 import './Responses.css'
 import EditResponse from '../EditResponse/EditResponse';
 
-
-export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
-
-    const history = useHistory();
+export const ResponseLoop = ({ resp, storyDetails }) => {
     const dispatch = useDispatch();
-    const singleResponse = useSelector(state => {
-        return state.response.oneResponse
-    })
 
     useEffect(() => {
         dispatch(getOneResponse(resp.storyId, resp.id))
@@ -35,9 +26,9 @@ export const ResponseLoop = ({ resp, storyResponse, storyDetails }) => {
         //     dispatch(getOneResponse(resp.storyId, resp.id))
         // })
     }
-    const moreThanNoClaps = () => {
-        return resp.totalClaps > 0
-    }
+    // const moreThanNoClaps = () => {
+    //     return resp.totalClaps > 0
+    // }
 
     return (
         <div className='individualResponses'>

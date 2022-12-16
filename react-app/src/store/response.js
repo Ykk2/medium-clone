@@ -1,5 +1,3 @@
-// import CreateResponse from '../components/CreateResponse/CreateResponse'
-import { csrfFetch } from './csrf'
 const LOAD_RESPONSE = 'response/LOAD_RESPONSES'
 const ADD_RESPONSE = 'response/ADD_RESPONSE'
 const EDIT_RESPONSE = 'response/EDIT_RESPONSE'
@@ -71,7 +69,7 @@ export const addingResponse = (responseObj) => async (dispatch) => {
 }
 
 export const editingResponse = (payload) => async (dispatch) => {
-    const { body, responseId } = payload;
+    const { responseId } = payload;
     const responseFetch = await fetch(`/api/responses/${responseId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -106,7 +104,7 @@ export const clapResponse = (id, responseId) => async dispatch => {
 
 export const getOneResponse = (storyId, responseId) => async dispatch => {
     const res = await fetch(`/api/responses/${storyId}/${responseId}`)
-    
+
     if (res.ok) {
         const response = await res.json()
         dispatch(loadOneResponse(response))

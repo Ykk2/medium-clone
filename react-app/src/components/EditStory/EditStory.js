@@ -8,7 +8,7 @@ import { getOneStory } from '../../store/story';
 // NEED TO IMPORT EDIT STORY THUNK
 
 function EditStory() {
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
     const updatedThisStory = useSelector(state => state.story.oneStory)
 
 

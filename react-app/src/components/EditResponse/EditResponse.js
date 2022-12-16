@@ -1,17 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom';
 import { editingResponse } from '../../store/response';
 import { deletingResponse } from '../../store/response';
 
 function EditResponse({ responseId }) {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const updateThisResponse = useSelector(state => {
-
-        return state.response.allResponses
-    })
-    const { id } = useParams();
+    // const history = useHistory();
+    // const updateThisResponse = useSelector(state => {
+    //     return state.response.allResponses
+    // })
+    // const { id } = useParams();
     const [response, setResponse] = useState("");
     const [errors, setErrors] = useState([])
 

@@ -26,14 +26,16 @@ function LoginForm({ setShowModal, setLoggedIn }) {
 
     if (!errors.length) {
       return dispatch(sessionActions.login({ email, password }))
-        .then(() => setShowModal(false))
+        .then((res) => {
+          if (res == null) return setShowModal(false)
+          if (res.errors) setErrors(res.errors)
+        })
         .catch(
           async (res) => {
-
             const data = await res.json();
-
-            if (data && data.errors) setErrors(data.errors);
-
+            if (data && data.errors) {
+              setErrors(data.errors)
+            }
           }
         );
     };
@@ -45,17 +47,17 @@ function LoginForm({ setShowModal, setLoggedIn }) {
       .then(() => setShowModal(false))
       .catch(
         async (res) => {
-
           const data = await res.json();
-
-          if (data && data.errors) return setErrors(data.errors)
+          if (data && data.errors) {
+            return setErrors(data.errors)
+          }
 
         }
       );
   };
 
   return (
-    <form class="login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <h1 className="login-header">Welcome Back.</h1>
       <ul className="login-errors">
         {errorsShow &&
