@@ -53,7 +53,7 @@ function ProfileButton({ setLogin }) {
             <NavLink id="profileItems" to="/profile">
               <i style={{ fontSize: "30px" }} className="fa-solid fa-book" />
             </NavLink>
-            <NavLink id="profileItems" to="/profile">Stories</NavLink>
+            <NavLink id="profileItems" to="/profile">Profile</NavLink>
           </div>
           <div className="dropdownItems">
             <i id="logout" onClick={logout} style={{ fontSize: '30px' }} className="fa-solid fa-right-to-bracket" />
