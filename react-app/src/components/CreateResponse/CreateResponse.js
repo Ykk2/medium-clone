@@ -36,6 +36,7 @@ const CreateResponse = () => {
             if (newResponse) {
                 await history.push(`/stories/${storyId}`)
             }
+            setResponse('')
         }
     }
     return (

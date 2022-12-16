@@ -40,7 +40,7 @@ const ShowMyStories = () => {
                 {getStories?.map(story => (
                     < div className="story-card" >
                         <NavLink to={`/stories/${story.storyId}`}>
-                            <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
+                            <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User?.firstName} {story.User?.lastName}</p>
                             <div className="storyTitle">{story?.Title}</div>
                             <div className="storyBody">{story?.Story}</div>
                         </NavLink>
