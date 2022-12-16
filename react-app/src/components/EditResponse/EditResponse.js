@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { editingResponse } from '../../store/response';
+import { editingResponse, getOneResponse } from '../../store/response';
 import { deletingResponse } from '../../store/response';
 
-function EditResponse({ responseId }) {
+function EditResponse({ storyDetails, responseId }) {
     const dispatch = useDispatch();
     // const history = useHistory();
     // const updateThisResponse = useSelector(state => {
@@ -12,7 +12,7 @@ function EditResponse({ responseId }) {
     // const { id } = useParams();
     const [response, setResponse] = useState("");
     const [errors, setErrors] = useState([])
-
+    console.log("222222222222222222222 = ", responseId)
 
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function EditResponse({ responseId }) {
         // if (response.length > 255) validationErrors.push("Response must be shorter than 255 characters")
         // if (response.length < 2) validationErrors.push("Response must be longer than 2 characters")
         setErrors(validationErrors)
-    }, [response, responseId])
+    }, [response, storyDetails.id, responseId])
 
     // useEffect(() => {
     //     setResponse(updateThisResponse?.response)
@@ -35,7 +35,9 @@ function EditResponse({ responseId }) {
                 "body": response, responseId
             }
 
-            await dispatch(editingResponse(payload))
+            await dispatch(editingResponse(payload)).then(()=>{
+                dispatch(getOneResponse(storyDetails.id, responseId))
+            })
             setResponse("")
             // if (isUpdated) {
             //     await history.push(`/stories/${storyId}`)

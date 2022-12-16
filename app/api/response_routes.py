@@ -45,6 +45,7 @@ def create_response(storyId):
     db.session.add(new_response)
     db.session.commit()
     res = new_response.to_dict()
+    res['totalClaps'] = 0
     res['user'] = users.to_dict()
     return res
 
@@ -79,6 +80,8 @@ def update_response(responseId):
 
     db.session.commit()
     res = response.to_dict()
+    claps = ResponseClap.query.filter_by(responseId = response.id).all()
+    res['totalClaps'] = len(claps)
     res['user'] = users.to_dict()
     return res
 

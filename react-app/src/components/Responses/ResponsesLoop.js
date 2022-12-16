@@ -11,14 +11,16 @@ export const ResponseLoop = ({ resp, storyDetails }) => {
     const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
 
+
+
     useEffect(() => {
-        dispatch(getOneResponse(resp.storyId, resp.id))
+        dispatch(getOneResponse(resp.storyId, resp.id, resp.totalClaps))
 
     }, [dispatch, resp.storyId, resp.id])
 
     const increaseResponseClap = (e) => {
         e.preventDefault()
-        dispatch(clapResponse(resp.storyId, resp.id))
+        dispatch(clapResponse(resp.storyId, resp.id, resp.totalClaps))
             .then(() => {
                 dispatch(getResponses(resp.storyId, resp.id))
             })
@@ -51,9 +53,10 @@ export const ResponseLoop = ({ resp, storyDetails }) => {
 
 
                     {
-                        resp.totalClaps > 0 &&
+                        resp.totalClaps >= 0 &&
                         resp.totalClaps}
                 </div>
+
                 <button
                     onClick={increaseResponseClap}
                     className='responseClapBtn'>
