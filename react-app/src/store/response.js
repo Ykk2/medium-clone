@@ -3,6 +3,7 @@ const ADD_RESPONSE = 'response/ADD_RESPONSE'
 const EDIT_RESPONSE = 'response/EDIT_RESPONSE'
 const DELETE_RESPONSE = 'response/DELETE_RESPONSE'
 const LOAD_ONE_RESPONSE = '/response/LOAD_ONE_RESPONSE'
+const CLAP_ADD_RESPONSE = 'response/CLAP_ADD_RESPONSE'
 
 const loadResponses = responses => {
     return {
@@ -31,6 +32,12 @@ const deleteResponse = response => {
 const loadOneResponse = response => {
     return {
         type: LOAD_ONE_RESPONSE, response
+    }
+}
+
+const clapResponseAdd = response => {
+    return {
+        type: CLAP_ADD_RESPONSE, response
     }
 }
 
@@ -97,8 +104,13 @@ export const clapResponse = (id, responseId) => async dispatch => {
     const response = await fetch(`/api/responses/claps/${responseId}`, {
         method: 'POST', body: { id: id, reponseId: responseId }
     })
+
     if (response.ok) {
-        return
+        const clapResp = await response.json()
+        console.log("CLAP RESP ===== ", clapResp)
+        dispatch(clapResponseAdd(clapResp))
+
+        return clapResp
     }
 }
 
@@ -145,6 +157,12 @@ export default function reducer(state = { oneResponse: {}, allResponses: {} }, a
         case DELETE_RESPONSE: {
             const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
             delete newState.allResponses[action.response]
+            return newState
+        }
+
+        case CLAP_ADD_RESPONSE:{
+            const newState = { ...state, oneResponse: { ...state.oneResponse }, allResponses: { ...state.allResponses } }
+            newState.oneResponse.totalClaps = action.response.totalClaps
             return newState
         }
         default: return state

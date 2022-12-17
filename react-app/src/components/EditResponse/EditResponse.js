@@ -12,7 +12,7 @@ function EditResponse({ storyDetails, responseId }) {
     // const { id } = useParams();
     const [response, setResponse] = useState("");
     const [errors, setErrors] = useState([])
-    console.log("222222222222222222222 = ", responseId)
+    // console.log("222222222222222222222 = ", responseId)
 
 
     useEffect(() => {

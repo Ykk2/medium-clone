@@ -111,9 +111,24 @@ def create_response_clap(responseId):
             userId = current_user.id,
             responseId = responseId
         )
+    response = Response.query.filter_by(id = responseId).all()
+    claps = ResponseClap.query.filter_by(userId = current_user.id).all()
+    count = 0
+    print("claps =============== ", claps)
+    print(" response =============== ", response)
+    # print("COUNT ========== ", count)
+    # print ("RES ============== ", res)
+    for userClaps in claps:
+        for responseClaps in response:
+            if responseClaps.to_dict()['userId'] == userClaps.to_dict()['userId']:
+                count += 1
+        
 
     if form.errors:
         return "Invalid data."
     db.session.add(new_clap)
     db.session.commit()
-    return new_clap.to_dict()
+    res = new_clap.to_dict()
+    res['currentClaps'] = count
+
+    return res
