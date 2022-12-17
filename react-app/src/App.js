@@ -14,7 +14,7 @@ import CreateStory from './components/CreateStory/CreateStory';
 import ShowMyStories from './components/MyStories/MyStories';
 import LandingPage from './components/LandingPage/LandingPage';
 import EditStory from './components/EditStory/EditStory';
-
+import AboutPage from './components/AboutPage/AboutPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +46,9 @@ function App() {
         </Route>
         <Route path='/stories/:storyId' exact={true}>
           <GetStoryDetail />
+        </Route>
+        <Route path='/about' exact={true}>
+          <AboutPage />
         </Route>
         <Route path='/stories/:storyId/edit' exact={true}>
           <EditStory />

@@ -74,6 +74,20 @@
     cursor: pointer;
 }
 
+.aboutPageBtn {
+    font-family: Helvetica;
+    padding-top: 4px;
+    padding-bottom: 0;
+    padding-right: 20px;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+.aboutPageBtn:visited {
+    color: black
+}
+
 button {
     background-color: transparent;
     border: none;

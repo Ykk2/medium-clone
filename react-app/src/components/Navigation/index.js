@@ -20,7 +20,7 @@ function NavBar({ loaded }) {
         <div className="navBar">
             <div className='navBar-left' >
                 <NavLink className="navBar-left-inner" exact to={sessionUser ? '/stories' : '/'}>
-                    <img className="logo" src={require('./diamond-store-svgrepo-com.svg').default} alt='svgImage'/>
+                    <img className="logo" src={require('./diamond-store-svgrepo-com.svg').default} alt='svgImage' />
                     <p className="logo-title">Hard</p>
                 </NavLink>
             </div>
@@ -32,6 +32,13 @@ function NavBar({ loaded }) {
                     />
                     :
                     <div className='navBar-right'>
+                        <div className='about-page'>
+                            <button className='aboutPageBtn'>
+                                <NavLink to={`/about`}>
+                                    About
+                                </NavLink>
+                            </button>
+                        </div>
                         <div>
                             <button className='sign-in' onClick={() => {
                                 setLogin(true)
@@ -49,8 +56,8 @@ function NavBar({ loaded }) {
                 {
                     showModal &&
                     <Modal onClose={() => setShowModal(false)}>
-                        {login ? <LoginForm setShowModal={setShowModal}  /> :
-                            <SignUpForm setShowModal={setShowModal}/>}
+                        {login ? <LoginForm setShowModal={setShowModal} /> :
+                            <SignUpForm setShowModal={setShowModal} />}
                     </Modal>
                 }
             </div>
