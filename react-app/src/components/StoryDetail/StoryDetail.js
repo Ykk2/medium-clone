@@ -73,15 +73,11 @@ const StoryDetail = ({ storyDetails }) => {
                         <div className='soloAuthorName'>
                             <i id='profile-review' className="fas fa-user-circle" />
                             <div className='authorsFirstandLast'>
-                                {storyDetails.storyUser.firstName} {storyDetails.storyUser.lastName}</div></div>
+                                {storyDetails.storyUser.firstName} {storyDetails.storyUser.lastName}
+                            </div>
+                        </div>
                         <div className='followContainer'>
                             <div className='authorFollowers'>{followerCount}  followers</div>
-                            {/* {(storyDetails.storyUser.id != currentUser?.id) &&
-                                (!iFollow) &&
-                                <button className='followBtn'>
-                                    Follow!
-                                </button>
-                            } */}
 
                             {currentUser ?
                                 (storyDetails.storyUser.id !== currentUser?.id) &&
@@ -102,18 +98,9 @@ const StoryDetail = ({ storyDetails }) => {
                     </div>
                     <div className='storyDetailsRightSide'>
                         <div className='clapsContainer'>
-                            <div className='totalClaps'>
-                                {storyDetails.totalClaps}
-                            </div>
-                            <button
-                                onClick={increaseClap}
-                                className='clapBtn'
-                            >
-                                <div>
-                                {/* <i type='storyDetailClap' class="fa-solid fa-hands-clapping"></i> */}
-                                    <img className='clapEmoji' src={require('./clap.svg').default} alt='svgImage' />
-
-                                </div>
+                            <p className='totalClaps'> {storyDetails.totalClaps} </p>
+                            <button onClick={increaseClap} className='clapBtn'>
+                                <img className='clapEmoji' src={require('./clap.svg').default} alt='svgImage' />
                             </button>
                         </div>
                         <button className='responseModal' onClick={() => setShowModal(true)}>

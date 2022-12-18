@@ -30,7 +30,7 @@
 .soloAuthorName {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     font-size: 30px;
     font-weight: bold;
     height: 70%;
@@ -45,13 +45,19 @@
 }
 
 .fa-user-circle {
-    font-size: 32px
+    font-size: 35px;
+}
+
+.authorsFirstandLast {
+    margin-left: 5px;
 }
 
 .authorFollowers {
     /* width: 10%; */
     display: flex;
     align-items: center;
+    font-size: 18px;
+    color: gray
 
 }
 
@@ -72,22 +78,24 @@
 .clapsContainer {
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: 60%;
     height: 100%;
-    align-self: flex-end
+    align-self: flex-end;
+    justify-content: flex-end;
+    text-align: right;
 }
 
 .totalClaps {
-    margin-top: 5px;
-    height: 40px;
-    width: 40px;
-    font-size: 30px;
-    margin-right: 0px;
+    height: 100%;
+    width: 50%;
+    font-size: 19px;
+    margin: 0;
+    margin-top: 6%;
 }
+
 
 .clapEmoji {
     padding-top: 4px;
-    padding-left: 5px;
     color: black;
     cursor: pointer;
     height: 30px;
@@ -96,8 +104,6 @@
 }
 
 .clapEmoji:hover {
-    padding-top: 4px;
-    padding-left: 5px;
     color: black;
     cursor: pointer;
     height: 30px;
@@ -108,8 +114,8 @@
 .clapBtn {
     display: flex;
     flex-direction: row;
-    width: 10%;
-    justify-content: space-between;
+    justify-content: flex-end;
+    width: 30%;
     cursor: pointer;
 }
 
@@ -177,7 +183,7 @@
 .storyDetailsRightSide {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 30%;
 }
 
 .responseModal {

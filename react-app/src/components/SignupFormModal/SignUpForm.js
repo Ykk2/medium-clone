@@ -23,6 +23,8 @@ function SignupForm({ setShowModal }) {
     if (!email.includes('@') || !email.includes(".")) validation.push("Invalid email.")
     if (password !== confirmPassword) validation.push("Passwords must match.")
     if (password.length < 8) validation.push("Password must be at least 8 characters.")
+    if(!firstName) validation.push("First Name is required")
+    if(!lastName) validation.push("Last Name is required")
     setErrors(validation)
   }, [email, confirmPassword])
 

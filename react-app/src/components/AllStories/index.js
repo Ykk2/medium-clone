@@ -24,38 +24,30 @@ const ShowAllStories = () => {
 
     if (!getStories.length) return null;
     return (
-        <div
-            className="allStoriesContainer">
+        <div className="allStoriesContainer">
             <NavLink to={`/stories/new`}>
                 <button
                     className="createStoryBtn"><i className="fa-regular fa-pen-to-square" />&nbsp;&nbsp;Write</button>
             </NavLink>
             {getStories.map(story => (
-                < div className="storyCard" key={story.storyId} >
-                    <NavLink to={`/stories/${story.storyId}`}>
-                        <div className="mainContain">
-                            <div className="left">
-                                <div className="authorName">
-                                    <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
-                                </div>
-                                <div className="storyTitle">
-                                    <div className="title">{story.Title}</div>
-                                </div>
-                                <div className="storyBody">
-                                    <div className="body">{story.story}</div>
-                                </div>
-                                <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(21)} min read &nbsp;
-                                    <span id="star-emoji">✨</span>
-                                </p>
-                            </div>
-                            <div className="right">
-                                <img src={story.Image} alt={story.name} className='storyImage'>
-                                </img>
-                            </div>
+            <div className="allStoriesWrapper">
+                <NavLink to={`/stories/${story.storyId}`}>
+                    <div className="storyCard" key={story.storyId} >
+                        <div className="left">
+                            <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
+                            <p className="title">{story.Title}</p>
+                            <p className="storytext">{story?.story?.slice(0, 110)}...</p>
+                            <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(21)} min read &nbsp;
+                                <span id="star-emoji">✨</span>
+                            </p>
                         </div>
-                    </NavLink>
-                </div>
-                // <AllStories key={story.id} story={story} />
+                        <div className="right">
+                            <img src={story.Image} alt={story.name} className='storyImage'/>
+                        </div>
+                    </div>
+                </NavLink>
+            </div>
+
             ))
             }
         </div >

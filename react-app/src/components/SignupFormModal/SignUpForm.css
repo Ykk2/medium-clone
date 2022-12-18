@@ -10,6 +10,11 @@
     min-width: 425px;
 }
 
+h1 {
+    font-family: Charter;
+    font-weight: 400px;
+}
+
 #signup-form-input {
     border-radius: 20px;
     height: 30px;
