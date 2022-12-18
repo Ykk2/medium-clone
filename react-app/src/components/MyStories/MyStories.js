@@ -30,7 +30,7 @@ const ShowMyStories = () => {
                 <div className="headerContainer">
                     <div className="header">Your Stories</div>
                     <button className="addStoryBtn">
-                        <NavLink to={`/stories/new`}>
+                        <NavLink to={`/stories/new`} className="write-a-story">
                             Write a Story
                         </NavLink>
                     </button>

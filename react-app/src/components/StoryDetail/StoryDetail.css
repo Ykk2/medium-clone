@@ -156,6 +156,21 @@
     cursor: pointer;
     height: 30px;
     width: 30px;
+    filter: invert(54%) sepia(1%) saturate(0%) hue-rotate(106deg) brightness(94%) contrast(84%);
+
+
+}
+
+.responseEmoji:hover {
+    padding-top: 4px;
+    padding-left: 5px;
+    color: black;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    filter: invert(0%) sepia(3%) saturate(0%) hue-rotate(257deg) brightness(104%) contrast(104%)
+
+
 
 }
 
