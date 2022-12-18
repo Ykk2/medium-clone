@@ -16,15 +16,6 @@ export const GetResponsesByStory = ({ storyDetails }) => {
 
     }, [dispatch, storyDetails?.id])
 
-    // useEffect(() => {
-    //     dispatch(getOneResponse(1))
-    // }, [dispatch])
-    // const storyId = storyResponse[0].storyId
-    // console.log('I NEED THIS ONE', storyId)
-
-    // useEffect(() => {
-    //     dispatch(getOneResponse(storyDetails.storyId, storyDetails.id))
-    // }, [storyDetails.storyId, storyDetails.id,  singleResponse, dispatch])
 
     return storyResponse && (
         <div className='biggestResponseContainer'>

@@ -17,7 +17,11 @@ def get_response(storyId):
         res = response.to_dict()
         claps = ResponseClap.query.filter_by(responseId = res["id"]).all()
         users = User.query.filter_by(id = res['userId']).first()
+
+        userClaps = ResponseClap.query.filter_by(userId = current_user.id, responseId = res["id"]).all()
+
         res['totalClaps'] = len(claps)
+        res['totalUserClaps'] = len(userClaps)
         res['user'] = users.to_dict()
 
         result.append(res)
@@ -74,14 +78,15 @@ def update_response(responseId):
     if form.validate_on_submit():
         setattr(response, 'body', form.data['body'])
 
-    print("WHAT ARE THE FORM ERRORS: ", form.errors)
     if form.errors:
         return "Invalid Data"
 
     db.session.commit()
     res = response.to_dict()
     claps = ResponseClap.query.filter_by(responseId = response.id).all()
+    userClaps = ResponseClap.query.filter_by(userId = current_user.id, responseId = res["id"]).all()
     res['totalClaps'] = len(claps)
+    res['totalUserClaps'] = len(userClaps)
     res['user'] = users.to_dict()
     return res
 
@@ -92,7 +97,9 @@ def getSingleResponse(storyId, resId):
     response = Response.query.filter_by(id = resId).first()
     res = response.to_dict()
     claps = ResponseClap.query.filter_by(responseId = resId).all()
+    userClaps = ResponseClap.query.filter_by(userId = current_user.id, responseId = res["id"]).all()
     res['totalClaps'] = len(claps)
+    res['totalUserClaps'] = len(userClaps)
     return jsonify(res)
 
 
