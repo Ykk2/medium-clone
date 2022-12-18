@@ -50,14 +50,16 @@ function ProfileButton({ setLogin }) {
             </div>
           </div>
           <div className="dropdownItems">
-            <NavLink id="profileItems" to="/profile">
-              <i style={{ fontSize: "30px" }} className="fa-solid fa-book" />
-            </NavLink>
-            <NavLink id="profileItems" to="/profile">Profile</NavLink>
+            {/* <NavLink id="profileItems" to="/profile">
+
+            </NavLink> */}
+            <NavLink id="profileItems" to="/profile"> <i style={{ fontSize: "30px" }} className="fa-solid fa-book" /> &nbsp;  Profile</NavLink>
           </div>
           <div className="dropdownItems">
-            <i id="logout" onClick={logout} style={{ fontSize: '30px' }} className="fa-solid fa-right-to-bracket" />
-            <button id="logout" style={{ fontFamily: 'Helvetica' }} onClick={logout}>Log Out</button>
+            <button id="logout" style={{ fontFamily: 'Helvetica' }} onClick={logout}>
+              <i style={{ fontSize: '30px' }} className="fa-solid fa-right-to-bracket" />
+              &nbsp;  &nbsp; Log Out
+            </button>
           </div>
         </div>
       }

@@ -27,6 +27,7 @@
 .responder {
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .responderProfile {
@@ -34,9 +35,10 @@
 }
 
 .responderName {
-    width: 20%;
-    font-size: 22px;
+    width: 100%;
+    font-size: 16px;
     font-weight: bold;
+    font-family: Helvetica;
     margin-left: 10px;
     margin-top: 8px
 }
@@ -44,8 +46,9 @@
 .responseBody {
     height: 45%;
     text-overflow: ellipsis;
+    font-family: Helvetica;
     overflow: hidden;
-    font-size: 20px
+    font-size: 16px
 }
 
 .responseActions {
@@ -71,8 +74,57 @@
 }
 
 
-/* .responseTotalClaps {
-    height: 40px;
-    width: 40px;
-    border: 5px black solid;
+.responseTotalClaps {
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: Helvetica;
+    display: flex;
+    align-content: center;
+}
+
+img.clapEmojiResponse {
+    height: 17.5px;
+    width: 17.5px;
+    filter: invert(54%) sepia(1%) saturate(0%) hue-rotate(106deg) brightness(94%) contrast(84%);
+
+
+}
+
+img.clapEmojiResponse:hover {
+    height: 17.5px;
+    width: 17.5px;
+    filter: invert(0%) sepia(3%) saturate(0%) hue-rotate(257deg) brightness(104%) contrast(104%)
+
+
+}
+
+button {
+    cursor: pointer;
+    color: grey;
+    font-family: Helvetica;
+}
+
+button:hover {
+    color:black;
+
+}
+
+input {
+    font-family: Helvetica;
+
+
+}
+
+
+/* img.clapEmojiResponse#storyDetailsClap {
+    height: 30px;
+    width: 30px;
+    color: grey;
+
+}
+
+img.clapEmojiResponse#storyDetailsClap:hover {
+    height: 30px;
+    width: 30px;
+    color: black;
 } */

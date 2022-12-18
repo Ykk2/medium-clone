@@ -63,7 +63,7 @@
     border-radius: 40px;
     background-color: black;
     color: white;
-    font-size: 1vw;
+    font-size: 1.1vw;
     margin-bottom: 10%;
     cursor: pointer;
 }
@@ -215,5 +215,5 @@ p.trending-on-hard-text {
     height: 170px;
     margin: 0;
     padding: 0;
-    object-fit: fill;
+    object-fit: cover;
 }

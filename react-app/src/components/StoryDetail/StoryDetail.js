@@ -110,12 +110,13 @@ const StoryDetail = ({ storyDetails }) => {
                                 className='clapBtn'
                             >
                                 <div>
+                                {/* <i type='storyDetailClap' class="fa-solid fa-hands-clapping"></i> */}
                                     <img className='clapEmoji' src={require('./clap.svg').default} alt='svgImage' />
 
                                 </div>
                             </button>
                         </div>
-                        <button className='bootyhole' onClick={() => setShowModal(true)}>
+                        <button className='responseModal' onClick={() => setShowModal(true)}>
 
                             <img className='responseEmoji' src={require('./responses.svg').default} alt='responseEmoji' />
 

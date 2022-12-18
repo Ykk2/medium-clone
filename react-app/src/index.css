@@ -101,3 +101,7 @@ html {
 #root {
     width: 100vw;
 }
+
+li {
+    list-style-type: none;
+}
