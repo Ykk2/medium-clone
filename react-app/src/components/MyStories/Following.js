@@ -13,7 +13,7 @@ function Following() {
 
     useEffect(() => {
         dispatch(gettingFollowings(sessionUser.id))
-    }, [dispatch, followersList, sessionUser.id])
+    }, [dispatch])
 
     const handleRemoveFollowClick = async (e, followerId) => {
         e.preventDefault()
