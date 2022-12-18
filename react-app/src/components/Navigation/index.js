@@ -34,7 +34,7 @@ function NavBar({ loaded }) {
                     <div className='navBar-right'>
                         <div className='about-page'>
                             <button className='aboutPageBtn'>
-                                <NavLink to={`/about`}>
+                                <NavLink to={`/about`} className="aboutUsLink">
                                     About
                                 </NavLink>
                             </button>

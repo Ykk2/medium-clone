@@ -25,6 +25,16 @@
     border-radius: 20px;
     height: 35px;
     width: 218px;
+    background-color: rgb(32, 32, 32);    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: Helvetica;
+}
+
+.LoginButton:hover {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
     background-color: black;
     color: white;
     margin-top: 10px;
@@ -33,6 +43,17 @@
 }
 
 .DemoUserButton {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: Helvetica;
+}
+
+.DemoUserButton:hover {
     border-radius: 20px;
     height: 35px;
     width: 218px;

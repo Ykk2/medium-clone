@@ -10,6 +10,11 @@
     min-width: 425px;
 }
 
+h1 {
+    font-family: Charter;
+    font-weight: 400px;
+}
+
 #signup-form-input {
     border-radius: 20px;
     height: 30px;
@@ -28,4 +33,16 @@
     color: white;
     margin-top: 10px;
     cursor: pointer;
+}
+
+.signup-button:hover {
+    border-radius: 20px;
+    height: 35px;
+    width: 218px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: rgb(32, 32, 32);
+
 }

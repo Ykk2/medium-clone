@@ -2,7 +2,7 @@ from app.models import db, Story, environment, SCHEMA
 
 def seed_stories():
     story1 = Story(
-        id='1', userId='1',story=""" Zero is a beautiful number. Not because it is round and cute (that could be an argument for it nevertheless) but because what it signifies. It marks the beginning of something. It marks the lowest something, or someone can go. It is the ultimate foundation to build anything upon.
+        id='1', userId='1',story="""Zero is a beautiful number. Not because it is round and cute (that could be an argument for it nevertheless) but because what it signifies. It marks the beginning of something. It marks the lowest something, or someone can go. It is the ultimate foundation to build anything upon.
 
 Over last several years, I’ve started several things from scratch and have failed at many (thus going back to zero), and I’ve realized there’s nothing more liberating than being at zero because the only way from zero is upwards. A very good friend once told me, “Don’t worry if you’ve failed. Rockets that touch the sky always launch from the ground.”
 
@@ -21,11 +21,11 @@ Whatever it’d be, I guess I’ll be little less nervous to begin whatever come
 On the new adventure, whatever it’d be, it’s time to buy an ice-cream for them this time.
 
  """,
-        tag='Zero',title='Zero',image='https://images.pexels.com/photos/66284/winter-nature-season-trees-66284.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Zero',title='Zero Zero Zero Zero Zero',image='https://images.pexels.com/photos/66284/winter-nature-season-trees-66284.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
 
     story2 = Story(
-        id='2', userId='2',story=''' That’s what I want my biography to be called. After all, you really would be amazed. The story goes like this. The year’s 2059 and twenty years ago, I was born on an overpopulated Earth. I remember my parents’ would quarrel almost every night. Both of them knew that it wasn’t either of their mistakes. They made some bets, and unfortunately, they failed.
+        id='2', userId='2',story='''That’s what I want my biography to be called. After all, you really would be amazed. The story goes like this. The year’s 2059 and twenty years ago, I was born on an overpopulated Earth. I remember my parents’ would quarrel almost every night. Both of them knew that it wasn’t either of their mistakes. They made some bets, and unfortunately, they failed.
 
 In the year 2041, my parents gambled and deposited all their life’s earning with a private company who was planning a mission to take humans to hospitable Mars by the year 2050. Overpopulation was the whole Earth’s problem, and several companies promised people to take them to Mars. Everyone was betting all of their savings on one of these enterprises. My parents did too.
 
@@ -50,7 +50,7 @@ As we lay our lives down, science is being written. Like all the other times, I 
     )
 
     story3 = Story(
-        id='3', userId='3',story=''' Xan is a character from my another story. Remember the time when I told you about my favorite story? Xan belongs there. Surprisingly, Xan is not a human being. Or an animal. Xan is a three-leaved plant that is hardly four inches tall. Legends have it that Xan is the first plant to ever breathe.
+        id='3', userId='3',story='''Xan is a character from my another story. Remember the time when I told you about my favorite story? Xan belongs there. Surprisingly, Xan is not a human being. Or an animal. Xan is a three-leaved plant that is hardly four inches tall. Legends have it that Xan is the first plant to ever breathe.
 
 The leaves were purple when it first sprouted and through its life, it changed to green to yellow to red to orange to currently golden. The property that is most unsettling among all is that it can grant any wish, given the seeker’s desire must be a desperate one. Once the protagonist in my other story asked Xan, “But what is a desperate desire?”
 
@@ -69,7 +69,7 @@ She doesn’t know that the girl in the story that she narrates to everyone is h
     )
 
     story4 = Story(
-        id='4', userId='4',story=''' Throughout the world, television sets were stormed by the news of the discovery of a stone that had a wicked writing on it. The stone became the center of attention for the global media after some scientists claimed the stone to be engraved by aliens. The headlines read, “Aliens sent us a message. Scientists are onto decoding it” throughout the world.
+        id='4', userId='4',story='''Throughout the world, television sets were stormed by the news of the discovery of a stone that had a wicked writing on it. The stone became the center of attention for the global media after some scientists claimed the stone to be engraved by aliens. The headlines read, “Aliens sent us a message. Scientists are onto decoding it” throughout the world.
 
 I was sitting in my living room with my kids listening to the radio in the background when the song stopped playing and a cacophony voice started speaking. “An alien message has been received and we think, this news is more important than the romantic songs. Scientists are claiming that we are very close to talking to aliens and that they have found and contacted us first. They claim that aliens engraved their message on a large stone that’s found in the Grand Canyon by some hikers.”
 
@@ -98,7 +98,7 @@ That’s what is written on the stone. There’s no alien message engraved on it
     )
 
     story5 = Story(
-        id='5', userId='5',story=''' Iremember how our teachers used to ask us to build models of various things during our summer vacation. Sometimes, it used to be a globe. Sometimes, a monument. And sometimes, a volcano.
+        id='5', userId='5',story='''I remember how our teachers used to ask us to build models of various things during our summer vacation. Sometimes, it used to be a globe. Sometimes, a monument. And sometimes, a volcano.
 
 During one such summer vacation, I was assigned the homework to build a model of a volcano. I, like an obedient student, noted it down in my diary and came back home. Every year, my plan for summer vacation was to finish the homework in the first couple of weeks itself and then spend the rest of the vacation chilling out, but that never happened. That year wasn’t different. But it was different in a sense. I did finish all my homework in first few weeks and spent the last few weeks making the volcano.
 
@@ -151,10 +151,10 @@ If you’ll make it, you’ll learn it. If you don’t, you won’t.
 I shouldn’t be afraid to show up just because I am different.
 And, the lava must flow.
  ''',
-        tag='Volcano',title='Volcano',image='https://images.pexels.com/photos/813872/pexels-photo-813872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        tag='Volcano',title='Volcano Volcano Volcano Volcano',image='https://images.pexels.com/photos/813872/pexels-photo-813872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     )
     story6 = Story(
-        id='6', userId='5',story=''' Bilal was alone at home on a Saturday evening, and on such occasions, he preferred watching porn. He bolted his room from inside and turned his laptop on. Plugging in his earphones, he played porn on the internet. After a while, his eyes fell on a sparkling, glittering ad that seemed to dance on the right side of the screen. The ad had one huge word — UNBOX — written over it. And below the huge word, had, “Imran recommends this to Bilal” written.
+        id='6', userId='5',story='''Bilal was alone at home on a Saturday evening, and on such occasions, he preferred watching porn. He bolted his room from inside and turned his laptop on. Plugging in his earphones, he played porn on the internet. After a while, his eyes fell on a sparkling, glittering ad that seemed to dance on the right side of the screen. The ad had one huge word — UNBOX — written over it. And below the huge word, had, “Imran recommends this to Bilal” written.
 
 Imran was Bilal’s best friend. For a minute, Bilal couldn’t believe how an ad could know about his friend. While there was nothing flattering to attract Bilal to the ad but the mention of his best friend’s name made him click on the ad regardless.
 
@@ -180,7 +180,7 @@ Bilal called Imran only to realize that Imran had never heard of the Unbox app. 
         tag='Unbox',title='Unbox',image='https://images.pexels.com/photos/327131/pexels-photo-327131.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story7 = Story(
-        id='7', userId='2',story=''' Steve was among those who took pride in being called busy. He was a salesman, single and smart. He was among those who wake up early in the morning, go to workout, go to work jumping from one meeting to another, come back home by dusk, spend time with the pet and go to sleep by nine o’clock.
+        id='7', userId='2',story='''Steve was among those who took pride in being called busy. He was a salesman, single and smart. He was among those who wake up early in the morning, go to workout, go to work jumping from one meeting to another, come back home by dusk, spend time with the pet and go to sleep by nine o’clock.
 
 He was in denial of his loneliness and somehow this had made him make extra efforts to look busy to the world. No matter what happens, no one must know Steve is lonely! Getting labeled busy is much better than getting labeled lonely, he thought.
 
@@ -216,7 +216,7 @@ On one such night, as his eyes were drooping, his phone rang.
         tag='Time to move fast',title='Time to move fast',image='https://images.pexels.com/photos/226400/pexels-photo-226400.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story8 = Story(
-        id='8', userId='3',story=''' Not many people know about my admiration for pancakes. I love them. I love when maple syrup flows over it, and I use my fork and knife to cut a piece, dip in the maple syrup and put it in my mouth to savor the taste. It’s not like I have pancakes day in and day out. I love having them when I’m having them.
+        id='8', userId='3',story='''Not many people know about my admiration for pancakes. I love them. I love when maple syrup flows over it, and I use my fork and knife to cut a piece, dip in the maple syrup and put it in my mouth to savor the taste. It’s not like I have pancakes day in and day out. I love having them when I’m having them.
 
 There’s a cafe on my way to the gym that serves delicious pancakes but the catch is that it serves them only between 8 am and 11 am — that’s the breakfast timing there. I call it a catch because I’ve tried several times but I could never reach the cafe before 11 am in the morning. Every time I pass in front of the cafe, my tongue remembers the taste the pancake dipped in maple syrup. Yum!
 
@@ -265,10 +265,10 @@ The teacher looked stupefied. She said, “Yes, squirrels, for example. They don
 “But I wonder something, miss,” Lara replied, and everyone realized what sort of question followed the phrase, “I wonder who taught squirrels to collect nuts. If a baby is born as winter approach, they could have seen their mothers collecting nuts. But I wonder about the baby squirrels who are born in summer. Before the winter arrives, their mother leaves them on their own. Who teaches them then?”
 
 And within a few minutes, she found herself out of the class, strolling in the garden. Like always, she stood under the tree and pretended to talk to squirrels. Perhaps, she was asking them the same question. ''',
-        tag='Question',title='Question',image='https://images.pexels.com/photos/3151907/pexels-photo-3151907.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Question',title='Questions, we all have questions',image='https://images.pexels.com/photos/3151907/pexels-photo-3151907.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story10 = Story(
-        id='10', userId='8',story=''' Everyone knew Mrs. Stella lived alone in a tiny log house at the end of the road and yet they found her cheerful every time they ran into her. Sometimes they stopped her and asked the secret of her happiness, to which she always replied, “My friends.”
+        id='10', userId='8',story='''Everyone knew Mrs. Stella lived alone in a tiny log house at the end of the road and yet they found her cheerful every time they ran into her. Sometimes they stopped her and asked the secret of her happiness, to which she always replied, “My friends.”
 
 Her smile — the smile of an elderly lonely woman — discouraged almost everyone to ask any follow-up question. Almost everyone. Almost. Joey was the notorious kid down the block who never gave up. He’d ask, “I am your friend. Who else? Where are they? Will they play with me?”
 
@@ -313,10 +313,10 @@ Mrs. Stella smiled at him. Holding his shoulders and moving in various direction
 Joey’s face bore an even more confused expression. He tried to comprehend what he just heard. Unable to find a relevant answer, he remarked, “I don’t think your friends will play with me,” and ran outside the building leaving Mrs. Stella alone among her friends.
 
  ''',
-        tag='Librarian',title='Librarian',image='https://images.pexels.com/photos/3732527/pexels-photo-3732527.jpeg?auto=compress&cs=tinysrgb&w=1600'
+        tag='Librarian',title='Librarians are our last hope',image='https://images.pexels.com/photos/3732527/pexels-photo-3732527.jpeg?auto=compress&cs=tinysrgb&w=1600'
     )
     story11 = Story(
-        id='11', userId='6',story=''' Afterlife isn’t what I thought it’d be. I expected an arching door welcoming me. I expected to be greeted under the bright sun on green grasslands. All this in case I was going to what living beings called The Heaven. In case I was sorted into The Hell, I had a different set of expectations. Blinding darkness all around. Raging fire. And Satan’s roaring laughs. Nope. Afterlife is nothing like I expected.
+        id='11', userId='6',story='''Afterlife isn’t what I thought it’d be. I expected an arching door welcoming me. I expected to be greeted under the bright sun on green grasslands. All this in case I was going to what living beings called The Heaven. In case I was sorted into The Hell, I had a different set of expectations. Blinding darkness all around. Raging fire. And Satan’s roaring laughs. Nope. Afterlife is nothing like I expected.
 
 Instead, I found myself standing in a pearly white room — probably, a dome it was as I couldn’t see any corner. I was naked. I turned around on the spot several times to locate another person whom I can ask for directions, but all I found was a screen greeting me. It read -
 
@@ -349,10 +349,10 @@ Instead, I used the only language I knew. I started crying.
 I still wonder what would have happened if I had pressed the other button.
 
  ''',
-        tag='Give',title='Give',image='https://cdn.pixabay.com/photo/2017/11/14/00/57/christmas-2947257__340.jpg'
+        tag='Give',title='Give give give before you take take take',image='https://cdn.pixabay.com/photo/2017/11/14/00/57/christmas-2947257__340.jpg'
     )
     story12 = Story(
-        id='12', userId='7',story=''' Iam in jail. A small cell to be more accurate. It’s dark in here. I shouldn’t have been here. What I call ‘heroism’, this world calls a ‘murder’. I just prevented a zombie apocalypse — by killing the first one to turn — my own wife. For a very brief moment right after I pulled the dagger out of her back, I felt like a hero, and then it dawned on me that the very world I saved, will become my enemy thereafter.
+        id='12', userId='7',story='''I am in jail. A small cell to be more accurate. It’s dark in here. I shouldn’t have been here. What I call ‘heroism’, this world calls a ‘murder’. I just prevented a zombie apocalypse — by killing the first one to turn — my own wife. For a very brief moment right after I pulled the dagger out of her back, I felt like a hero, and then it dawned on me that the very world I saved, will become my enemy thereafter.
 
 A night before while going to bed, Jesse, like every day, told me she loved me, kissed me on the forehead and wished me good night. I nodded my head, pulled up the sheet and closed my eyes. I slept facing away from her because she still was reading a book with the lights on her side switched on.
 
@@ -365,7 +365,7 @@ The man in a black suit appeared through the door and congratulated me. He was t
 The next thing I remember is a vague part of the judgment — “This murder is similar to the last twenty-five murders this town has seen. And apparently, all of these men have saved the world from a zombie apocalypse. Like others, put him in a dark cell.”
 
 I don’t think the world needs a hero. Perhaps this world needs an apocalypse. And when it comes, I will be safe in this dark cell. ''',
-        tag='Apocalypse',title='pocalypse',image='https://cdn.pixabay.com/photo/2019/10/07/11/26/winter-landscape-4532412__340.jpg'
+        tag='Apocalypse',title='Apocalypse Now? Maybe ...',image='https://cdn.pixabay.com/photo/2019/10/07/11/26/winter-landscape-4532412__340.jpg'
     )
     story13 = Story(
         id='13', userId='6',story=''' “Goooooood Moooooorning!” Vishwas exclaimed in full zeal.
@@ -392,7 +392,7 @@ The boss had come to visit with his wife, Ana. ''',
         tag='Expected lies',title='Expected lies',image='https://cdn.pixabay.com/photo/2018/01/04/14/11/viburnum-3060769__340.jpg'
     )
     story14 = Story(
-        id='14', userId='8',story=''' “Hey Namrata, Will it be possible for you to reach home on your own.”
+        id='14', userId='8',story='''“Hey Namrata, Will it be possible for you to reach home on your own.”
 
 As I will be late today.” *vishwas over the phone”
 
@@ -415,10 +415,10 @@ As I will be late today.” *vishwas over the phone”
 “No Ajay, I need to leave. I am not feeling well.” Namrata takes her bag and leave for her house.
 
 It was a sleepless night for her. The very thought of Vishwa’s affair was killing her. It was like a sudden relaisation that had happened to her. She found herslef in Vishwas’s shoes and the pain was unbearable. ''',
-        tag='Realizations',title='Realizations',image='https://cdn.pixabay.com/photo/2020/01/05/07/22/winter-4742436__340.jpg'
+        tag='Realizations',title='Realizations of an old man',image='https://cdn.pixabay.com/photo/2020/01/05/07/22/winter-4742436__340.jpg'
     )
     story15 = Story(
-        id='15', userId='7',story=''' he old man stood up to leave. He folded his hands and said, “Beta, I hope there are no hard feelings for any of us. Please try to sort out things with Sanjay, he is a nice guy and he has been suffering a lot lately.”
+        id='15', userId='7',story='''The old man stood up to leave. He folded his hands and said, “Beta, I hope there are no hard feelings for any of us. Please try to sort out things with Sanjay, he is a nice guy and he has been suffering a lot lately.”
 
 He saw Ria and brought his hand near her head to give her blessings and then left. Ria and Aman were completely confused and Mrs. Malhotra kept on weeping unable to figure out how to make things better.
 

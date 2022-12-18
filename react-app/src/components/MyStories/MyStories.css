@@ -22,26 +22,54 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .header {
 
-    margin-top: 20px;
+    /* margin-top: 20px; */
     font-size: 45px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: Helvetica;
+}
+
+a.write-a-story{
+    text-align: center;
+    width: 100%;
+    color: white;
+
+}
+
+a.write-a-story:hover{
+    text-align: center;
+    width: 100%;
+    color: black;
+
 }
 
 .addStoryBtn {
-    font-family: Helvetica;
-    border-radius: 50%;
-    margin-top: 20px;
-    width: 15%;
+    border-radius: 99em;
+    background-color: rgba(58, 155, 56, 1);
     color: white;
-    background-color: green;
-    height: 40px;
-    margin-right: 0px;
+    width: 15%;
+    text-decoration: none;
+    height: 20%;
+    padding: 2%;
     cursor: pointer;
+    font-family: Helvetica;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.addStoryBtn:hover {
+    color: black;
 }
 
 .story-card {

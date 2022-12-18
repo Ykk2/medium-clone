@@ -66,14 +66,13 @@ function LandingPage() {
             </div>
             <div className="remaining-stories-wrapper">
                 {remainingStories.map(story => (
-
                     <div className="remaining-story" key={story.id}>
                         <NavLink to={`/stories/${story.storyId}`}>
                             <div className="remaining-stories-divider">
                                 <div id="remaining-stories-left">
                                     <p className="userinfo"><i id='profile-review' className="fas fa-user-circle" /> &nbsp; {story.User.firstName} {story.User.lastName}</p>
                                     <p className="storytitle">{story.Title}</p>
-                                    <p className="storytext">{story.story.slice(0, 110)} ...</p>
+                                    <p className="landing-storytext">{story.story.slice(0, 110)} ...</p>
                                     <p className="storydate">{dateConverter(story.createdAt)} · {getRandomInt(21)} min read &nbsp;
                                         <span id="star-emoji">✨</span>
                                     </p>

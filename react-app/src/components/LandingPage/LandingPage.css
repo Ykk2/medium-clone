@@ -61,9 +61,23 @@
     font-size: 1.4rem;
     border: 3px solid black;
     border-radius: 40px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    font-size: 1.1vw;
+    margin-bottom: 10%;
+    cursor: pointer;
+}
+
+#start-reading:hover {
+    margin-top: 10%;
+    height: 45px;
+    width: 30%;
+    font-size: 1.4rem;
+    border: 3px solid black;
+    border-radius: 40px;
     background-color: black;
     color: white;
-    font-size: 1vw;
+    font-size: 1.1vw;
     margin-bottom: 10%;
     cursor: pointer;
 }
@@ -134,11 +148,13 @@ p.trending-on-hard-text {
     padding-bottom: 8px;
 }
 
-.storytext {
+.landing-storytext {
     white-space: pre-wrap;
     font-size: 16px;
     font-family: Helvetica;
-    color: grey
+    color: grey;
+    overflow: hidden;
+    height: 34.2%;
 }
 
 .storydate {
@@ -190,6 +206,13 @@ p.trending-on-hard-text {
     /* padding-bottom: 20px; */
     min-width: 50%;
     /* border: 1px solid black */
+    border-bottom: 0.1px solid rgba(211, 211, 211, 0);
+    /* border-right: 0.1px solid rgba(211, 211, 211, 0); */
+}
+
+.remaining-stories-divider:hover {
+    border-bottom: 0.1px solid lightgray;
+    /* border-right: 0.1px solid lightgray; */
 }
 
 #remaining-stories-left {
@@ -203,6 +226,10 @@ p.trending-on-hard-text {
     padding-top: 2%;
 }
 
+/* #remaining-stories-left:hover {
+    box-shadow: 1px 1px 1px rgb(194, 194, 194);
+} */
+
 .remaining-stories-right {
     width: 200px;
     height: 100%;
@@ -215,5 +242,5 @@ p.trending-on-hard-text {
     height: 170px;
     margin: 0;
     padding: 0;
-    object-fit: fill;
+    object-fit: cover;
 }

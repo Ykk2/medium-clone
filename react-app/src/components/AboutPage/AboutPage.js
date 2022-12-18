@@ -9,7 +9,7 @@ const AboutPage = () => {
     return (
         <div className="aboutPageContainer">
             <div className='aboutPageHeader'>
-                Our Team
+                Team Hard
             </div>
             <div className='teamIndividuals'>
                 <div className='playerCard'>

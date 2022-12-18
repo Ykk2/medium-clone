@@ -55,14 +55,15 @@ export const ResponseLoop = ({ resp, storyDetails }) => {
                     {
                         resp.totalClaps >= 0 &&
                         resp.totalClaps}
-                </div>
 
                 <button
                     onClick={increaseResponseClap}
                     className='responseClapBtn'>
-                    <img className='clapEmoji' src={require('./clap.svg').default} alt='svgImage' />
+                        {/* <i class="fa-solid fa-hands-clapping"></i> */}
+                    <img className='clapEmojiResponse' src={require('./clap.svg').default} alt='svgImage' />
 
                 </button>
+                        </div>
             </div>
             {
                 currentUser?.id === resp.userId &&

@@ -75,7 +75,7 @@
 
 
 * {
-    font-family: Charter;
+    font-family: Helvetica;
 }
 
 body {
@@ -100,4 +100,8 @@ html {
 
 #root {
     width: 100vw;
+}
+
+li {
+    list-style-type: none;
 }

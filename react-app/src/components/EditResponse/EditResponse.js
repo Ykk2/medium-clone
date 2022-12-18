@@ -18,7 +18,7 @@ function EditResponse({ storyDetails, responseId }) {
     useEffect(() => {
         const validationErrors = []
         // if (!response.length) validationErrors.push("Response must not be empty");
-        // if (response.length > 255) validationErrors.push("Response must be shorter than 255 characters")
+        if (response.length > 255) validationErrors.push("Response must be shorter than 255 characters")
         // if (response.length < 2) validationErrors.push("Response must be longer than 2 characters")
         setErrors(validationErrors)
     }, [response, storyDetails.id, responseId])
