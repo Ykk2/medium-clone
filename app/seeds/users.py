@@ -4,23 +4,23 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo',first_name='demo',last_name='Lee', email='demo@aa.io', password='password')
+        username='Demo',first_name='Demo',last_name='Lee', email='demo@aa.io', password='password')
     marnie = User(
-        username='marnie',first_name='marnie',last_name='Lee', email='marnie@gmail.com', password='password')
+        username='Marnie',first_name='Marnie',last_name='Lee', email='marnie@gmail.com', password='password')
     bobbie = User(
-        username='bobbie',first_name='bobbie',last_name='Lee', email='bobbie@gmail.com', password='password')
+        username='Bobbie',first_name='Bobbie',last_name='Lee', email='bobbie@gmail.com', password='password')
     andrew = User(
-        username='AK',first_name='andrew',last_name='Lee', email='andrew@gmail.com', password='password')
+        username='AK',first_name='Andrew',last_name='Lee', email='andrew@gmail.com', password='password')
     jeff = User(
-        username='jeff',first_name='jeff',last_name='Lee', email='jeff@gmail.com', password='password')
+        username='Jeff',first_name='Jeff',last_name='Lee', email='jeff@gmail.com', password='password')
     rich = User(
-        username='rich',first_name='rich',last_name='Lee', email='rich@gmail.com', password='password')
+        username='Rich',first_name='Rich',last_name='Lee', email='rich@gmail.com', password='password')
     sandy = User(
-        username='sandy',first_name='sandy',last_name='Lee', email='sandy@gmail.com', password='password')
+        username='Sandy',first_name='Sandy',last_name='Lee', email='sandy@gmail.com', password='password')
     mark = User(
-        username='mark',first_name='mark',last_name='Lee', email='mark@gmail.com', password='password')
+        username='Mark',first_name='Mark',last_name='Lee', email='mark@gmail.com', password='password')
     lucy = User(
-        username='lucy',first_name='lucy',last_name='Lee', email='lucy@gmail.com', password='password')
+        username='Lucy',first_name='Lucy',last_name='Lee', email='lucy@gmail.com', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)

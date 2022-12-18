@@ -9,6 +9,8 @@ import './SignUpForm.css'
 function SignupForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -32,7 +34,7 @@ function SignupForm({ setShowModal }) {
 
     if (!errors.length && password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signUp(username, email, password))
+      return dispatch(sessionActions.signUp(username, email, firstName, lastName, password))
         .then((res) => {
           console.log(res, "THIS IS COMING FROM SIGNUPFORM.JS")
           if (res == null) return setShowModal(false)
@@ -60,6 +62,24 @@ function SignupForm({ setShowModal }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
+          required
+        />
+      </label>
+      <label>
+        <input id="signup-form-input"
+          type="text"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          placeholder="First Name"
+          required
+        />
+      </label>
+      <label>
+        <input id="signup-form-input"
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          placeholder="Last Name"
           required
         />
       </label>

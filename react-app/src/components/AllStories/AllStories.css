@@ -38,7 +38,7 @@
 
 .storyImage {
     margin-bottom: 20px;
-    margin-left: 80px;
+    margin-left: 200px;
     height: 120px;
     width: 200px;
     object-fit: cover;
@@ -47,6 +47,7 @@
 .mainContain {
     display: flex;
     flex-direction: row;
+    /* width: 100vw; */
 }
 
 
@@ -56,6 +57,11 @@
     flex-direction: column;
     height: 200px;
     margin-bottom: 10px;
+    border-bottom: 0.1px solid lightgray;
+    border-right: 0.1px solid lightgray;
+}
+
+.storyCard:hover {
     border-bottom: 0.1px solid lightgray;
     border-right: 0.1px solid lightgray;
 }
