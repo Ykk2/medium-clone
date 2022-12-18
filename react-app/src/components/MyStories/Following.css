@@ -1,0 +1,57 @@
+.following-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+  }
+
+  .single-modal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .following-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: auto;
+  }
+
+  .follow-unfollow-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .following-unfollow-button {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .following-unfollow-button:hover {
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  i {
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+  }

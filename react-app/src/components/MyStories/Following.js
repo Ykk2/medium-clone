@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletingFollow, gettingFollowings } from '../../store/follow';
+import './Following.css'
 
 
 function Following() {
@@ -13,7 +14,7 @@ function Following() {
 
     useEffect(() => {
         dispatch(gettingFollowings(sessionUser.id))
-    }, [dispatch, followersList, sessionUser.id])
+    }, [dispatch])
 
     const handleRemoveFollowClick = async (e, followerId) => {
         e.preventDefault()

@@ -77,43 +77,37 @@ export const deletingFollow = (userId, currentUserId) => async dispatch => {
     }
 }
 
-export default function reducer(state = { Followers: {}, Followings: {}, totalFollowers: 0 }, action) {
+export default function reducer(
+    state = { Followers: {}, Followings: {}, totalFollowers: 0 },
+    action
+  ) {
     switch (action.type) {
-        case LOAD_FOLLOWERS: {
-
-            const newState = { Followers: {}, Followings: {}, totalFollowers: 0 }
-            action.followers.Followers.forEach(follower => {
-                newState.Followers[follower.id] = follower
-
-                newState.totalFollowers = action.followers.totalFollowers
-            })
-            return newState
+      case LOAD_FOLLOWERS: {
+        const Followers = {}
+        action.followers.Followers.forEach(follower => {
+          Followers[follower.id] = follower
+        })
+        return { Followers, Followings: {}, totalFollowers: action.followers.totalFollowers }
+      }
+      case LOAD_FOLLOWINGS: {
+        const Followings = {}
+        action.followings.Followings.forEach(following => {
+          Followings[following.id] = following
+        })
+        return { Followers: {}, Followings, totalFollowers: 0 }
+      }
+      case ADD_FOLLOW: {
+        return {
+          Followers: { ...state.Followers, [action.follower.follower.id]: action.follower.follower },
+          Followings: {},
+          totalFollowers: action.follower.totalFollowers
         }
-        case LOAD_FOLLOWINGS: {
-
-            const newState = { Followers: {}, Followings: {}, totalFollowers: 0 }
-            action.followings.Followings.forEach(following => {
-
-                newState.Followings[following.id] = following
-            })
-
-            return newState
-        }
-
-        case ADD_FOLLOW: {
-            const newState = { Followers: { ...state.Followers }, totalFollowers: 0 }
-
-            newState.Followers[action.follower.follower.id] = action.follower.follower
-
-            newState.totalFollowers = action.follower.totalFollowers
-            return newState
-        }
-        case DELETE_FOLLOW: {
-            const newState = { Followers: { ...state.Followers }, totalFollowers: state.totalFollowers }
-            delete newState.Followers[action.userId]
-            newState.totalFollowers--
-            return newState
-        }
-        default: return state
+      }
+      case DELETE_FOLLOW: {
+        const { [action.userId]: deletedFollow, ...Followers } = state.Followers
+        return { Followers, Followings: {}, totalFollowers: state.totalFollowers - 1 }
+      }
+      default:
+        return state
     }
 }
