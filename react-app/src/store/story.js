@@ -99,13 +99,24 @@ export const addLike = (id, userId) => async dispatch => {
 
 export const getMyStories = (userId) => async dispatch => {
     const response = await fetch(`/api/stories/user/${userId}/mine`)
-    console.log('DID THE RESPOSNE WOWKR????', response)
+
     if (response.ok) {
         const stories = await response.json()
-        console.log('ARE THERE ANY STORIES?', stories)
+
         dispatch(allStories(stories))
         return stories
 
+    }
+}
+
+export const getFollowingStories = (userId) => async dispatch => {
+    const response = await fetch(`/api/stories/user/${userId}/following`)
+    console.log(response)
+    if (response.ok) {
+        const followingStories = await response.json()
+        dispatch(allStories(followingStories))
+        console.log(followingStories)
+        return followingStories
     }
 }
 

@@ -37,6 +37,7 @@
     align-items: center;
     text-align: center;
     font-family: Helvetica;
+    min-width: 28%;
 }
 
 a.write-a-story{
@@ -72,32 +73,87 @@ a.write-a-story:hover{
     color: black;
 }
 
-.story-card {
-    /* border-top: 1px solid lightgray; */
-    border-bottom: 1px solid lightgray;
+.story-card-mystories {
+    border-bottom: 1px solid rgba(255,255,255,0);
     margin-top: 20px;
     padding-top: 5px;
-    height: 21%;
+    max-height: 30%;
     width: 100%;
+    padding-bottom: 20px;
 }
 
-.storyTitle {
+.story-card-mystories:hover {
+    margin-top: 20px;
+    padding-top: 5px;
+    max-height: 30%;
+    width: 100%;
+    /* border-top: 1px solid lightgray; */
+    border-bottom: 1px solid lightgray;
+}
+
+.story-stuff-mystories {
+    min-height: 80%;
+    display: flex;
+    flex-direction: column
+}
+
+.button-container {
+    min-height: 20%;
+}
+
+.storyTitle-mystories {
     margin-top: 5px;
     font-size: 20px;
     color: black;
     font-weight: bold;
+    max-height: 20%
 
 }
 
-.storyBody {
-    height: 25%;
+.mystories-test {
+    min-height: 80%;
+}
+
+.storyBody-mystories {
+    padding-top: 3px;
+    max-height: 60%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+            line-clamp: 4;
+    -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
     color: black;
-    white-space: pre-wrap;
+    white-space: normal;
     font-family: Helvetica;
+    font-size: 16px;
+    /* word-break: break-all */
+    margin: 0;
+}
+
+.divider {
+    min-height: 100%;
+    max-height: 100%
+}
+
+.userinfo-mystories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 20%;
+    color: black;
+    font-family: Helvetica;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.storyTitle-mystories {
+    max-height: 20%;
+    margin-bottom: 10px;
 
 }
+
 
 .deleteBtn {
     margin-top: 20px;
