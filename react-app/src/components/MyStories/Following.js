@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletingFollow, gettingFollowings } from '../../store/follow';
+import './Following.css'
 
 
 function Following() {
@@ -23,7 +24,13 @@ function Following() {
 
     return (
         <div className='following-modal'>
-            {followersList.map(follower => (
+            <h3 className="FollowingList">
+            Following List
+            </h3>
+
+            {followersList.length === 0 ?
+            <p className="no-following-msg">You are not following any users</p> :
+            followersList.map(follower => (
                 <div className="single-modal">
                     <div className="following-name">
                         <i className="fas fa-user-circle" /> &nbsp;&nbsp;{follower.firstName} {follower.lastName}</div>

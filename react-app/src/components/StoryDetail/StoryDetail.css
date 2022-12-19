@@ -34,6 +34,8 @@
     font-size: 30px;
     font-weight: bold;
     height: 70%;
+    width: 300px;
+
 }
 
 .followContainer {
@@ -50,6 +52,7 @@
 
 .authorsFirstandLast {
     margin-left: 5px;
+    width: 100%;
 }
 
 .authorFollowers {
