@@ -111,11 +111,11 @@ export const getMyStories = (userId) => async dispatch => {
 
 export const getFollowingStories = (userId) => async dispatch => {
     const response = await fetch(`/api/stories/user/${userId}/following`)
-    console.log(response)
+
     if (response.ok) {
         const followingStories = await response.json()
         dispatch(allStories(followingStories))
-        console.log(followingStories)
+
         return followingStories
     }
 }

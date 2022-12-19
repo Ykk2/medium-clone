@@ -87,7 +87,7 @@ def get_stories_by_follow(userId):
         following_user_stories = [story.to_dict() for story in following_user_stories_class]
 
         for story in following_user_stories:
-            print(story, "*********************************************")
+
             user = User.query.get(id).to_dict()
             response.append({
             "storyId": story['id'],

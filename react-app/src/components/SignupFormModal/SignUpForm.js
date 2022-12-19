@@ -38,7 +38,7 @@ function SignupForm({ setShowModal }) {
       setErrors([]);
       return dispatch(sessionActions.signUp(username, email, firstName, lastName, password))
         .then((res) => {
-          console.log(res, "THIS IS COMING FROM SIGNUPFORM.JS")
+
           if (res == null) return setShowModal(false)
           if (res) setErrors(res)
         })

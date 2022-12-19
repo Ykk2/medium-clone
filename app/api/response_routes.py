@@ -74,7 +74,7 @@ def update_response(responseId):
     if form.validate_on_submit():
         setattr(response, 'body', form.data['body'])
 
-    print("WHAT ARE THE FORM ERRORS: ", form.errors)
+
     if form.errors:
         return "Invalid Data"
 
