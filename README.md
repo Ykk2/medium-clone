@@ -10,8 +10,23 @@ To learn how to develop a fullstack application.
 
 Medium clone that attempts to imitate the functionalities of the original site.
 
+## Landing Page preview
+
+Below is a preview of the home page when a user is signed out:
+
 ![landing page gif updated](https://user-images.githubusercontent.com/106854954/208340724-c5469963-aabf-4987-8af2-6bbcb2760772.gif)
 
+## Story Page preview
+
+Below is a preview of a story page viewable to anyone:
+
+![updated story single](https://user-images.githubusercontent.com/106854954/208341907-095293d8-2e51-4bac-bfae-1df9c47f9b93.gif)
+
+## Clap a Response preview
+
+Here is a preview of claps working on responses to a story:
+
+![claps responses](https://user-images.githubusercontent.com/106854954/208342477-6dadf527-b13b-4961-ad8e-6c6124b66bc2.gif)
 
 ## Technologies
 
