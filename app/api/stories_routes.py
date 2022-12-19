@@ -62,7 +62,6 @@ def get_stories_by_user(userId):
                 "lastName": user.last_name
             }
         })
-    print(response)
     return jsonify({"Stories": response})
 
 
@@ -76,17 +75,33 @@ def get_stories_by_follow(userId):
 
     user = User.query.get(userId)
 
-    following_users = user.following.all()
+    following_users = user.followers.all()
 
     # follow2 = user.followers.all()
 
     following_user_ids = [user.to_dict()['id'] for user in following_users]
 
     for id in following_user_ids:
-        following_user = User.query.get(id).to_dict()
-        following_user_stories = Story.query.filter_by(userId = id)
-        following_user["stories"] = [story.to_dict() for story in following_user_stories]
-        response.append(following_user)
+
+        following_user_stories_class = Story.query.filter_by(userId = id)
+        following_user_stories = [story.to_dict() for story in following_user_stories_class]
+
+        for story in following_user_stories:
+            print(story, "*********************************************")
+            user = User.query.get(id).to_dict()
+            response.append({
+            "storyId": story['id'],
+            "Story": story['story'],
+            "Tag": story['tag'],
+            "Title": story['title'],
+            "Image": story['image'],
+            "createdAt": story['createdAt'],
+            "User": {
+                "id": user['id'],
+                "firstName": user['firstName'],
+                "lastName": user['lastName']
+            }
+        })
 
     return {"Stories": response}
 

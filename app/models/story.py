@@ -28,5 +28,6 @@ class Story(db.Model):
             "story": self.story,
             "tag": self.tag,
             "title": self.title,
-            "image": self.image
+            "image": self.image,
+            "createdAt": self.createdAt,
         }
